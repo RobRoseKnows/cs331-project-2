@@ -1,0 +1,40 @@
+<!-- add_appointment.html -->
+<!-- This file is the form for the advisor to create and appointment -->
+
+<?php require('header.html'); ?>
+    <h1>Add an appointment </h1>
+    <form method=post action="../../php/validate/validate_appointment.php">
+    <!-- Gets the necessary information about the appontment, date, time, location, group --> 
+    <p>Date: <input type=date name="date"/></p>
+    <p>
+      <!-- Time is restricted to only having the times between 8:00am and 4:30 pm selected in 30 minutes increments -->
+      Time: <select name="time">
+	<option value="08:00" selected>08:00am</option>
+	<option value="08:30">08:30am</option>
+	<option value="09:00">09:00am</option>
+	<option value="09:30">09:30am</option>
+	<option value="10:00">10:00am</option>
+	<option value="10:30">10:30am</option>
+	<option value="11:00">11:00am</option>
+	<option value="11:30">11:30am</option>
+	<option value="12:00">12:00pm</option>
+	<option value="12:30">12:30pm</option>
+	<option value="13:00">01:00pm</option>
+	<option value="13:30">01:30pm</option>
+	<option value="14:00">02:00pm</option>
+	<option value="14:30">02:30pm</option>
+	<option value="15:00">03:00pm</option>
+	<option value="15:30">03:30pm</option>
+	<option value="16:00">04:00pm</option>
+	<option value="16:30">04:30pm</option>
+      </select>
+    </p>
+    <p>Location: <input type=text name="location"/></p>
+    <p>Group? <select name="group">
+	<option value=1 selected>Yes</option>
+	<option value=0>No</option>
+      </select>
+    </p>
+    <p><input type=submit value="Submit"/></p>
+    </form>
+<?php require('footer.html'); ?>

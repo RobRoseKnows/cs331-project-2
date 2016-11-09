@@ -1,0 +1,14 @@
+<!-- login_avisor.html --> 
+<!-- This file will get a username from the user then compare it to the database, if there is a match then the user will be logged in --> 
+
+<?php include ('header.html'); ?>
+<h1>Advisor Login</h1>
+    <form method=post action='../../php/validate/validate_advisor_login.php'>
+      <!-- Gets the only necessary data, a username from the user --> 
+      <p>Username: <input type=text name="username"/></p>
+      <p><input type=submit value="Submit"/></p>
+    </form>
+	
+        <!-- Hyperlink to the register advisor page --> 
+	<p>Not signed up? Click <a href = "register_advisor.html">here</a> to register.</p>
+<?php include ('footer.html'); ?>

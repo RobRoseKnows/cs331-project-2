@@ -1,0 +1,15 @@
+<!-- advisor_login_error.html -->
+<!-- This file gives the form back to the advisor that attempted to log in with a name not found in the database-->
+
+<?php include ('../../html/header.html'); ?>
+<h1>Advisor Login</h1>
+<!-- Print the error message telling the advisor what they did incorrectly-->
+<?php echo $error_message; ?>
+    <form method=post action='validate_advisor_login.php'>
+      <!-- Gets the username from the user --> 
+      <p>Username: <input type=text name="username"/></p>
+      <p><input type=submit value="Submit"/></p>
+    </form>
+        <!-- Hyperlink to the registration page --> 
+	<p>Not signed up? Click <a href = "../../html/forms/register_advisor.html">here</a> to register.</p>
+<?php include ('../../html/footer.html'); ?>

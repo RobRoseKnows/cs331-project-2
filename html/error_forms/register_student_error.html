@@ -1,0 +1,35 @@
+<!-- register_student_error.html --> 
+<!-- This file gives the form back to student who submitted an invalid registration form --> 
+
+<?php require('../../html/header.html'); ?>
+<h1>Student Registration</h1>
+<!-- prints the error message to the student about what they did incorrectly-->
+<?php echo $error_message; ?>
+    <form method=post action='validate_student.php'>
+      <!-- Get the basic info about the student, username and major --> 
+      <p>Username: <input type=text name="username"/></p>
+      <p>First Name: <input type=text name="firstName"/></p>
+      <p>Last Name: <input type=text name="lastName"/></p>
+      <p>Student ID: <input type=text name="studentID"/></p>
+      <p>UMBC Email: <input type=text name="email"/></p>
+      <p>Major: <select name="major">
+	  
+	  <!-- Drop down menu of the possible options for the student to choose as a major --> 
+	  <option value = "Biological Sciences BA">Biological Sciences BA</option>
+	  <option value = "Biological Sciences BS">Biological Sciences BS</option>
+	  <option value = "Biochemistry & Molecular Biology BS">Biochemistry & Molecular Biology BS</option>
+	  <option value = "Bioinformatics & Computational Biology BS">Bioinformatics & Computational Biology BS</option>
+	  <option value = "Biology Education BA">Biology Education BA</option>
+	  <option value = "Chemistry BA">Chemistry BA</option>
+	  <option value = "Chemistry BS">Chemistry BS</option>
+	  <option value = "Chemistry Education BA">Chemistry Education BA</option>
+	  
+	  </select>
+	  </p>
+	  
+	  <p><input type=submit value="Submit"/></p>
+    </form>
+
+        <!-- Hyperlink to the student login page --> 
+	<p>Already signed up? Click <a href = "../../html/forms/login_student.html">here</a> to log in.</p>
+<?php require('../../html/footer.html'); ?>

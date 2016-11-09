@@ -1,0 +1,19 @@
+<!-- register_advisor_error.html -->
+<!-- This file gives the form back to the advisor that attempted to register with the same username in the database or left a field blank --> 
+
+<?php require('../../html/header.html'); ?>
+    <h1>Advisor Registration</h1>
+        <!-- Print the error message to the user about what they did incorrectly --> 
+	<?php echo $error_message; ?>
+    <form method=post action='validate_advisor.php'>
+      <!-- Gets information about the advisor, username, first name, and last name --> 
+      <p>Username: <input type=text name="username"/></p>
+	  <p>First Name: <input type=text name="fName"/></p>
+	  <p>Last Name: <input type=text name="lName"/></p>
+	  <p>Office: <input type=text name="office"/></p>
+      <p><input type=submit value="Submit"/></p>
+    </form>
+
+	<!-- hyperlink to the login page --> 
+	<p>Already signed up? Click <a href = "../../html/forms/login_advisor.html">here</a> to log in.</p>
+<?php require('../../html/footer.html'); ?>

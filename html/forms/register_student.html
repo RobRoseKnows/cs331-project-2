@@ -1,0 +1,35 @@
+<!-- student_advisor.html -->
+<!-- Gets information from a potential student compares it to make sure
+ there is not a match by username in the database then creates and logs in a new advisor 
+--> 
+
+<?php require('../header.html'); ?>
+    <h1>Student Registration</h1>
+    <form method=post action='../../php/validate/validate_student.php'>
+      <!-- Gets information from the potential student, username, major --> 
+      <p>Username: <input type=text name="username"/></p>
+      <p>First Name: <input type=text name="firstName"/></p>
+      <p>Last Name: <input type=text name="lastName"/></p>
+      <p>Student ID: <input type=text name="studentID"/></p>
+      <p>UMBC Email: <input type=text name="email"/></p>
+      <p>Major: <select name="major">
+	  
+	  <!-- This creates a drop down box of the possible major choices -->
+	  <option value = "Biological Sciences BA">Biological Sciences BA</option>
+	  <option value = "Biological Sciences BS">Biological Sciences BS</option>
+	  <option value = "Biochemistry & Molecular Biology BS">Biochemistry & Molecular Biology BS</option>
+	  <option value = "Bioinformatics & Computational Biology BS">Bioinformatics & Computational Biology BS</option>
+	  <option value = "Biology Education BA">Biology Education BA</option>
+	  <option value = "Chemistry BA">Chemistry BA</option>
+	  <option value = "Chemistry BS">Chemistry BS</option>
+	  <option value = "Chemistry Education BA">Chemistry Education BA</option>
+	  
+	  </select>
+	  </p>
+	  
+      <p><input type=submit value="Submit"/></p>
+    </form>
+	
+    	<!-- Hyperlink to the login student page -->
+	<p>Already signed up? Click <a href = "login_student.html">here</a> to log in.</p>
+<?php require(../'footer.html'); ?>

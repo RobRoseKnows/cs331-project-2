@@ -1,0 +1,30 @@
+<!-- first_page.html -->
+<!-- This file is the first page seen by the user and is used to make session variables as well as get if the user is an advisor or a student -->
+
+<!-- This will reset the session if a session is already made when reaching this page --> 
+<?php require('../header.html'); 
+
+if($_SESSION['username'])
+{
+	unset($_SESSION['username']); 
+}
+
+if($_SESSION['appt'])
+{
+	unset($_SESSION['appt']);
+}
+session_destroy(); 
+?>
+
+<h1> Are you a student or an advisor? </h1>
+
+<!-- Gets if the user is an advisor or a student then directs them to the appropriate page --> 
+<form method=post action="register_advisor.html">
+<input type=submit value="Advisor"/>
+</form>
+    
+<form method=post action="register_student.html">
+<input type=submit value="Student"/>
+</form>
+
+<?php require('../footer.html'); ?>
