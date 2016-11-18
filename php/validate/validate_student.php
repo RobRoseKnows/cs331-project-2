@@ -11,6 +11,7 @@ $rs = mysql_query($sql, $conn);
 //By default no errors
 $errors = False;
 $error_message = "";
+$other_print = "";
 
 //Loop through usernames, check for match
 while($username = mysql_fetch_array($rs)) 
@@ -37,7 +38,12 @@ if ($_POST['major'] == "")
   $errors = True;
   $error_message .= "Major field can't be left blank.<br>";
 }
+if ($_POST['major'] == "Other")
+{
+  //set a variable and store the other error message in it
+  $other_print .= "PRINT SOME MESSAGE ABOUT BEING AN OTHER.<br>";
 
+}
 // First name left blank check
 if ($_POST['firstName'] == "")
 {
@@ -73,6 +79,7 @@ if ($errors != True)
   $rs = mysql_query($sql, $conn);
   session_start();
   $_SESSION['username'] = $_POST['username'];
+  $_SESSION['otherMessage'] = $other_print;
 
   // Go to the student_view.php file
   header('Location:../view/student_view.php');

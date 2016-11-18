@@ -25,6 +25,7 @@ top:8px;
 <?php 
 require_once('../mysql_connect.php');
 session_start();
+echo "Notice: " . $_SESSION['otherMessage']; 
 
 // Set timezone to the east coast
 date_default_timezone_set('America/New_York');

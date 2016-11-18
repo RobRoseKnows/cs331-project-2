@@ -22,6 +22,8 @@ top:8px;
 </head>
 <body>
 
+
+
 <?php
 require_once('../mysql_connect.php'); 
 session_start();
@@ -109,5 +111,8 @@ else
    <input type=submit value="Add Appointment"/>
 </form>
 <br/>
+
+<p> Register an Advisor: Click <a href = "../../html/forms/register_advisor.html">here</a> to register.</p>
+
 </body>
 </html>
