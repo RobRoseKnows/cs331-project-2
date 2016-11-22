@@ -16,15 +16,31 @@ if($_SESSION['appt'])
 session_destroy(); 
 ?>
 
-<h1> Are you a student or an advisor? </h1>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advising Homepage</title>
+            	<link rel='stylesheet' type='text/css' href='../standard.css'/>
+		<link rel="icon" type="image/png" href="../corner.png" />
 
-<!-- Gets if the user is an advisor or a student then directs them to the appropriate page --> 
-<form method=post action="register_advisor.html">
-<input type=submit value="Advisor"/>
-</form>
+  </head>
+  <body>
+<div id="background">
+
+	<h1> Welcome to UMBC advising! </h1>
+
+	<!-- Gets if the user is an advisor or a student then directs them to the appropriate page --> 
+	<form method="link" action="login_advisor.html">
+	 <input type=submit class="button large go" value="Advisor"/>
+		
+	</form>
     
-<form method=post action="register_student.html">
-<input type=submit value="Student"/>
-</form>
+	<form method=post action="register_student.html">
+	 <input type=submit class="button large go" value="Student"/>
+	</form>
 
+
+</div>
+</body>
+</html>
 <?php require('../footer.html'); ?>
