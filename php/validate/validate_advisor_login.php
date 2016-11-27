@@ -10,7 +10,7 @@ $password = ($_POST['password']);
 $truePassword = md5($password);
 
 // Make the query to get the info out of advisors table
-$sql = "SELECT * FROM `Advisor Data` WHERE `Username` = '$username' AND `Password` = '$truePassword'";
+$sql = "SELECT * FROM `advisors` WHERE `Username` = '$username' AND `Password` = '$truePassword'";
 $rs = mysql_query($sql, $conn);
 $name_found = False;
 $error_message  = "";
