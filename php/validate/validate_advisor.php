@@ -50,12 +50,24 @@ if ($_POST['office'] == "")
     $error_message .= "Office field can't be blank.<br>";
   }
 
+//passwords given do not match
+if ($_POST['password'] == $_POST['rePassword']) 
+{
+    $errors = True;
+    $error_message .= "Passwords do not match.<br>";
+}
+
 if ($errors != True) 
 {
   //No errors - GOOD - Insert into database
   $fullName = $_POST['fName'] . " " . $_POST['lName'];
-  $sql = "INSERT INTO advisors (username, fullName, Office) VALUES (\"" . $_POST['username'] . "\" , \"" . $fullName . "\", \"" . $_POST['office'] . "\")";
+  $uName = $_POST['username'];
+  $office = $_POST['office'];
+  $password = $_POST['password'];
+  
+  $sql = "insert into `advisors` (`Username`, `id`, `fullName`, `Office`, `Password`) values ('$uName', NULL, '$fullName', '$office', '".md5($password)."'); 
   $rs = mysql_query($sql, $conn);
+  
   session_start();
   $_SESSION['username'] = $_POST['username'];
   header('Location:../../php/view/advisor_view.php');
