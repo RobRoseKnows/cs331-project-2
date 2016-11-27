@@ -14,13 +14,13 @@ $error_message = "";
 $other_print = "";
 
 //Loop through usernames, check for match
-while($username = mysql_fetch_array($rs)) 
+while($existing = mysql_fetch_array($rs))
 {
-  if ($_POST['username'] == $username['Username']) 
+  if ($_POST['email'] == $existing['Email'])
   {
     //Match found - BAD - there is an error
     $errors = True;
-    $error_message = "Username already taken<br>";
+    $error_message = "Email already taken<br>";
     break;
   }
 }
@@ -29,7 +29,10 @@ while($username = mysql_fetch_array($rs))
 if ($_POST['username'] == "") 
 {
   $errors = True;
-  $error_message .= "Username field can't be blank.<br>";
+  $error_message .= "Email field can't be blank.<br>";
+} elseif (preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email'])) {
+    $errors = True;
+    $error_message .= "Not a valid UMBC Email<br>";
 }
 
 //Major left blank check
@@ -82,19 +85,24 @@ if ($_POST['password'] == $_POST['rePassword'])
 if ($errors != True) 
 {
   //No errors - GOOD - Insert into database
-  $uName = $_POST['username'];
   $email = $_POST['email'];
   $major = $_POST['major'];
   $fName = $_POST['fName'];
   $lName = $_POST['lName'];
-  $studentID = $_POST['studentID']
+  $studentID = $_POST['studentID'];
   $password = $_POST['password'];
- 
-  $sql = "insert into `students` (`Username`, `email`, `Major`, `Appt`, `id`, `firstName`, `lastName`, `studentID`, `Password`) values ('$uName', '$email', '$major', NULL, NULL, '$fName', '$lName', '$studentID', '".md5($password)."'); 
-  $rs = mysql_query($sql, $conn);
- 
+  $hashedPass = md5($password);
+
+  $queryFormat =
+      "INSERT INTO `students` (`Email`, `Major`, `firstName`, `lastName`, `studentID`, `Password`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')";
+
+  $queryBuilt =
+      sprintf($queryFormat, $email, $major, $fName, $lName, $studentID, $hashedPass);
+
+  $rs = mysql_query($queryBuilt, $conn);
+
   session_start();
-  $_SESSION['username'] = $_POST['username'];
+  $_SESSION['username'] = $_POST['email'];
   $_SESSION['otherMessage'] = $other_print;
 
   // Go to the student_view.php file

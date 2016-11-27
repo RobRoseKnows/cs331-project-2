@@ -6,10 +6,12 @@
 require_once('../mysql_connect.php');
 session_start();
 
+$email = $_SESSION['username'];
+
 // Creates the query to get the information from the appointments database where the username is equal to the current session username
-$sql = "SELECT Date, Time FROM appointments WHERE AdvisorUsername = \"". $_SESSION['username'] . "\"";
+$sql = "SELECT Date, Time FROM appointments WHERE `AdvisorUsername` = '$email'";
 $rs = mysql_query($sql, $conn);
-$errors = "False";
+$errors = False;
 $error_message = "";
 
 // Set the time zone to the east coast 
@@ -59,19 +61,21 @@ if ($location == "")
 }
 
 // If there are errors 
-if($errors != "True")
+if(!$errors)
 {
   // Get the information from the advisors database for the fullName
   // This will be used in the next query 
-  $sql = "SELECT fullName FROM advisors WHERE Username = \"" . $_SESSION['username'] . "\"";
+  $sql = "SELECT fullName FROM advisors WHERE `Email` = '$email'";
   $rs = mysql_query($sql, $conn);
   $fullName = mysql_fetch_array($rs)['fullName'];
 
   echo $sql;
-	
+
   // Insert a new appointment into the appointments table
-  $sql = "INSERT INTO appointments (Date, Time, Location, isGroup, Advisor, AdvisorUsername) VALUES (\"" . $date . "\", \"" . $time . "\", \"" . $location . "\", " . $group . ", \"" . $fullName . "\", \"" . $_SESSION['username'] . "\")";                    
-  $rs = mysql_query($sql, $conn);
+  $sql =
+      "INSERT INTO appointments (Date, Time, Location, isGroup, Advisor, AdvisorUsername) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')";
+  $formatted = sprintf($sql, $date, $time, $location, $group, $fullName, $email);
+  $rs = mysql_query($formatted, $conn);
 
   // Go back to the advisor_view.php 
   header('Location:../view/advisor_view.php');

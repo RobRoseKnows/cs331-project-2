@@ -5,17 +5,16 @@
 
 <?php require('../header.html'); ?>
     <h1>Student Registration</h1>
-    <form method=post action='../../php/validate/validate_student.php'>
+    <form method=post action='../../php/validate/validate_student_register.php'>
       <!-- Gets information from the potential student, username, major, etc. --> 
-      <p>Username: <input type=text name="username"/></p>
-      <p>First Name: <input type=text name="firstName"/></p>
-      <p>Last Name: <input type=text name="lastName"/></p>
-      <p>Student ID: <input type=text name="studentID"/></p>
-      <p>UMBC Email: <input type=text name="email"/></p>
-      <p>Password: <input type=password name="password"/></p>
-      <p>Retype Password: <input type=password name="rePassword"/></p>
+      <label>Email: <input type=text name="email" pattern="[A-Za-z0-9._+-]+@umbc\.edu" required/></label>
+      <label>First Name: <input type=text name="firstName" required /></label>
+      <label>Last Name: <input type=text name="lastName" required /></label>
+      <label>Student ID: <input type=text name="studentID" required /></label>
+      <label>Password: <input type=password name="password" required /></label>
+      <label>Retype Password: <input type=password name="rePassword" required /></label>
      
-      <p>Major: <select name="major">
+      <label>Major: <select name="major" required>
 	  
 	  <!-- This creates a drop down box of the possible major choices -->
 	  <option value = "Biological Sciences BA">Biological Sciences BA</option>
@@ -31,9 +30,9 @@
 
 	  
 	  </select>
-	  </p>
+	  </labeL>
 	  
-      <p><input type=submit value="Submit"/></p>
+      <input type=submit value="Submit"/>
     </form>
 	
     	<!-- Hyperlink to the login student page -->
