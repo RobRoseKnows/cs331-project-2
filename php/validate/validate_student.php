@@ -72,11 +72,27 @@ if ($_POST['email'] == "")
   $error_message .= "Email field can't be left blank.<br>";
 }
 
+//passwords given do not match
+if ($_POST['password'] == $_POST['rePassword']) 
+{
+    $errors = True;
+    $error_message .= "Passwords do not match.<br>";
+}
+  
 if ($errors != True) 
 {
   //No errors - GOOD - Insert into database
-  $sql = "INSERT INTO students (username, major, email, firstName, lastName, studentID) VALUES (\"" . $_POST['username'] . "\", \"" . $_POST['major'] . "\", \"" . $_POST['email'] . "\", \"" . $_POST['firstName'] . "\", \"" . $_POST['lastName'] . "\", \"" . $_POST['studentID'] . "\")";
+  $uName = $_POST['username'];
+  $email = $_POST['email'];
+  $major = $_POST['major'];
+  $fName = $_POST['fName'];
+  $lName = $_POST['lName'];
+  $studentID = $_POST['studentID']
+  $password = $_POST['password'];
+ 
+  $sql = "insert into `students` (`Username`, `email`, `Major`, `Appt`, `id`, `firstName`, `lastName`, `studentID`, `Password`) values ('$uName', '$email', '$major', NULL, NULL, '$fName', '$lName', '$studentID', '".md5($password)."'); 
   $rs = mysql_query($sql, $conn);
+ 
   session_start();
   $_SESSION['username'] = $_POST['username'];
   $_SESSION['otherMessage'] = $other_print;
