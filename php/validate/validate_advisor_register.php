@@ -4,7 +4,7 @@
 <?php
 require_once('../mysql_connect.php');
 
-$sql = "SELECT username FROM advisors";
+$sql = "SELECT Email FROM advisors";
 $rs = mysql_query($sql, $conn);
 
 //By default no errors
@@ -12,21 +12,27 @@ $errors = False;
 $error_message = "";
 
 //Loop through usernames, check for match
-while($username = mysql_fetch_array($rs)) 
+while($existing = mysql_fetch_array($rs))
 {
-  if ($_POST['username'] == $username['username']) 
+  if ($_POST['email'] == $existing['Email'])
   {
     //Match found - BAD - there is an error
     $errors = True;
-    $error_message = "Username already taken<br>";
+    $error_message = "Email already taken<br>";
   }
 }
 
 //Username left blank check
-if ($_POST['username'] == "") 
+if ($_POST['email'] == "")
 {
     $errors = True;
-    $error_message .= "Username field can't be blank.<br>";
+    $error_message .= "Email field can't be blank.<br>";
+}
+
+elseif (preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email']))
+{
+    $errors = True;
+    $error_message .= "Not a valid UMBC Email Address<br>";
 }
 
 //First name left blank check
@@ -61,15 +67,19 @@ if ($errors != True)
 {
   //No errors - GOOD - Insert into database
   $fullName = $_POST['fName'] . " " . $_POST['lName'];
-  $uName = $_POST['username'];
+  $email = $_POST['email'];
   $office = $_POST['office'];
   $password = $_POST['password'];
+    $hashedPass = md5($password);
+
+    $queryFormat = "INSERT INTO `advisors` (`Email`, `fullName`, `Office`, `Password`) VALUES ('%s', '%s', '%s', '%s')";
+
+    $queryBuilt = sprintf($queryFormat, $email, $fullName, $office, $hashedPass);
   
-  $sql = "insert into `advisors` (`Username`, `id`, `fullName`, `Office`, `Password`) values ('$uName', NULL, '$fullName', '$office', '".md5($password)."'); 
-  $rs = mysql_query($sql, $conn);
+  $rs = mysql_query($queryBuilt, $conn);
   
   session_start();
-  $_SESSION['username'] = $_POST['username'];
+  $_SESSION['username'] = $_POST['email'];
   header('Location:../../php/view/advisor_view.php');
 }
 else

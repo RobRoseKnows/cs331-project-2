@@ -5,10 +5,12 @@
 <h1>Student Login</h1>
     <form method=post action='../../php/validate/validate_student_login.php'>
       <!-- Gets the necessary data, a username and password from the user --> 
-      <p>Username: <input type=text name="username"/></p>
-      <p>Password: <input type=password name="password"/></p>
-      <p><input type=submit value="Submit"/></p>
+      <label>Email: <input type=text name="email" pattern="[A-Za-z0-9._+-]+@umbc\.edu" required /></label><br>
+      <label>Password: <input type=password name="password" required /></label><br>
+      <label><input type=submit value="Submit"/></label>
     </form>
+
+    <br>
 	
         <!-- Hyperlink to the register students page -->   
 	<p> Not signed up? Click <a href = "register_student.html">here</a> to register.</p>

@@ -5,12 +5,12 @@
 
 require_once('../mysql_connect.php');
 
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = ($_POST['password']);
 $truePassword = md5($password);
 
 // Make the query to get the info out of advisors table
-$sql = "SELECT * FROM `students` WHERE `Username` = '$username' AND `Password` = '$truePassword'";
+$sql = "SELECT * FROM `students` WHERE `Email` = '$email' AND `Password` = '$truePassword'";
 $rs = mysql_query($sql, $conn);
 $name_found = False;
 $error_message  = "";
@@ -27,7 +27,7 @@ if($num_rows == 1){
 if ($name_found) 
 {
   session_start();
-  $_SESSION['username'] = $_POST['username'];
+  $_SESSION['username'] = $email;
 
   // go to the student_view.php page
   header('Location:../../php/view/student_view.php');
@@ -37,7 +37,7 @@ if ($name_found)
 else
 {
   // Check if the username was left blank
-  if ($_POST['username'] == "") 
+  if ($email == "")
   {
     $error_message .= "Username field can't be blank.<br>";
   }
