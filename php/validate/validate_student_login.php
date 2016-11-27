@@ -5,19 +5,22 @@
 
 require_once('../mysql_connect.php');
 
-// Make a query to get the usernames from the students database
-$sql = "SELECT Username FROM students";
+$username = $_POST['username'];
+$password = ($_POST['password']);
+$truePassword = md5($password);
+
+// Make the query to get the info out of advisors table
+$sql = "SELECT * FROM `students` WHERE `Username` = '$username' AND `Password` = '$truePassword'";
 $rs = mysql_query($sql, $conn);
 $name_found = False;
-$error_message = "";
+$error_message  = "";
 
-//Checking if name in db - GOOD if found
-while($username = mysql_fetch_array($rs)) 
-{
-  if ($_POST['username'] == $username['Username']) 
-  {
-    $name_found = True;
-  }
+//count of how many many rows are returned when query is run 
+$num_rows = mysql_num_rows($rs);
+
+//if only one match, password correct
+if($num_rows == 1){
+   $name_found = True;
 }
 
 // This is the pass case
@@ -39,10 +42,10 @@ else
     $error_message .= "Username field can't be blank.<br>";
   }
   
-  // Check if the username was not found in the data base
+  // Check if the username or password was not found in the data base
   else 
   {
-    $error_message = "Username not recognized.<br>";
+    $error_message = "Username or password not recognized.<br>";
   } 
   
   // go to the student_login_error.html file 
