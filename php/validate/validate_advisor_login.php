@@ -5,20 +5,24 @@
 
 require_once('../mysql_connect.php');
 
+$username = $_POST['username'];
+$password = ($_POST['password']);
+$truePassword = md5($password);
+
 // Make the query to get the info out of advisors table
-$sql = "SELECT username FROM advisors";
+$sql = "SELECT * FROM `Advisor Data` WHERE `Username` = '$username' AND `Password` = '$truePassword'";
 $rs = mysql_query($sql, $conn);
 $name_found = False;
 $error_message  = "";
 
-//Checking if name in db - GOOD if found
-while($username = mysql_fetch_array($rs)) 
-{
-  if ($_POST['username'] == $username['username']) 
-  {
-    $name_found = True;
-  }
+//count of how many many rows are returned when query is run 
+$num_rows = mysql_num_rows($rs);
+
+//if only one match, password correct
+if($num_rows == 1){
+   $name_found = True;
 }
+
 
 // This is the pass case
 if ($name_found) 
@@ -37,10 +41,10 @@ else
     $error_message .= "Username field can't be blank.<br>";
   }
 
-  // Username does not exists in the table
+  // Username does not exist in the table OR password is incorrect
   else 
   {
-    $error_message = "Username not recognized.<br>";
+    $error_message = "Username or password not recognized.<br>";
   } 
   
   include('../../html/error_forms/advisor_login_error.html');
