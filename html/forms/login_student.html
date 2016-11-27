@@ -1,11 +1,12 @@
 <!-- login_student.html --> 
-<!-- This file will get a username from the user then compare it to the database, if there is a match then the user will be logged in --> 
+<!-- This file will get a username and password from the user then compare it to the database, if there is a match then the user will be logged in --> 
 
 <?php include ('header.html'); ?>
 <h1>Student Login</h1>
     <form method=post action='../../php/validate/validate_student_login.php'>
-      <!-- Gets the only necessary data, a username from the user --> 
+      <!-- Gets the necessary data, a username and password from the user --> 
       <p>Username: <input type=text name="username"/></p>
+      <p>Password: <input type=password name="password"/></p>
       <p><input type=submit value="Submit"/></p>
     </form>
 	
