@@ -9,11 +9,11 @@ session_start();
 $appt = $_SESSION['appt'];
 
 //Delete appointment in appointment table
-$sql = "UPDATE appointments SET isFull=0, NumStudents=(NumStudents-1) WHERE id = \"" . $appt . "\"";
+$sql = "UPDATE appointments SET isFull=0, NumStudents=(NumStudents-1) WHERE id = $appt";
 mysql_query($sql, $conn);
 
 //Update the students appointment number to NULL
-$sql = "UPDATE students SET Appt = NULL WHERE Username = \"" . $_SESSION['username'] . "\"";
+$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . $_SESSION['username'] . "'";
 mysql_query($sql, $conn);
 
 //Redirect to student view
