@@ -42,7 +42,7 @@ if ($appt['isGroup'] == 1) {
 
 echo "updateing students table <br/>";
   //update student
-  $sql = "UPDATE students SET Appt = $apptID WHeRE Username=\"" . $_SESSION['username'] . "\"";
+  $sql = "UPDATE students SET Appt = $apptID WHeRE Email='" . $_SESSION['username'] . "'";
 echo $sql;
 
   mysql_query($sql, $conn);

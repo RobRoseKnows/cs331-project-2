@@ -32,12 +32,12 @@ session_start();
 date_default_timezone_set('America/New_York');
 
 //Fetching appointments
-$sql = "SELECT * FROM appointments WHERE AdvisorUsername=\"" . $_SESSION['username'] . "\" ORDER BY Date ASC, Time ASC";
+$sql = "SELECT * FROM appointments WHERE AdvisorUsername='" . $_SESSION['username'] . "' ORDER BY Date ASC, Time ASC";
 $rs = mysql_query($sql, $conn);
 
 // Tell the user who they are logged in as
 echo "Logged in as: " . $_SESSION['username']; 
-echo  "<pre>  <a href = \"../../html/forms/first_page.html\">Log Me Out</a></pre>";
+echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
 $appt = mysql_fetch_array($rs);
 
@@ -78,7 +78,7 @@ if($appt)
     {
       echo "<td>";
       echo "<form method=post action='view_students.php'>";
-      echo "<input type=hidden name='ID' value=$apptID />";
+      echo "<input type=hidden name='ID' value='$apptID' />";
       echo "<input type=submit value='View Registered Students'/>";
       echo "</form>";
       echo "</td>";
@@ -91,7 +91,7 @@ if($appt)
     ?>
     <td>
     <form method=post action="../cancel_advisor_appointment.php">
-       <?php echo "<input type=hidden name='ID' value=$apptID />"; ?>
+       <?php echo "<input type=hidden name='ID' value='$apptID' />"; ?>
        <input type=submit value="Cancel"/>
        </form>
 	 </td> 
