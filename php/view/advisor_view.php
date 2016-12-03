@@ -18,13 +18,18 @@ form {
 position:relative;
 top:8px;
 }
-</style>
 </head>
 <body>
 
-
-
 <?php
+
+switch($_GET['done']) {
+case 'enable':
+
+    break;
+
+}
+
 require_once('../mysql_connect.php'); 
 session_start();
 
