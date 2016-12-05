@@ -5,23 +5,25 @@ require('error_codes.php');
 
 session_start();
 
+// Grab the username and the requested action
 $email = $_SESSION['username'];
 $do = $_POST['do'];
 
+// This query checks to see if the person on the page is an advisor.
 $verifySQL = "SELECT id FROM advisors WHERE `Email` = $email";
 $sqlResult = mysql_query($verifySQL, $conn);
 $numRows = mysql_num_rows($sqlResult);
 
-$resultCode = $DISEN_DEFAULT_CODE;
+$resultCode = ErrorCode::$DISEN_DEFAULT_CODE;
 
 if($do == 'disable') {
 
     if($numRows > 0) {
         $updateSQL = "UPDATE advisors SET setEndOfSession=TRUE WHERE `Email` = '$email'";
         mysql_query($updateSQL, $conn);
-        $resultCode = $SUCCESS_DISABLE_ADVISING;
+        $resultCode = ErrorCode::$SUCCESS_DISABLE_ADVISING;
     } else {
-        $resultCode = $FAILURE_DISABLE_ADVISING_NOT_ADVISOR;
+        $resultCode = ErrorCode::$FAILURE_DISABLE_ADVISING_NOT_ADVISOR;
     }
 
 } else if($_POST['do'] == 'enable') {
@@ -30,12 +32,16 @@ if($do == 'disable') {
     if($numRows > 0) {
         $updateSQL = "UPDATE advisors SET setEndOfSession=FALSE WHERE 1=1";
         mysql_query($updateSQL, $conn);
-        $resultCode = $SUCCESS_ENABLE_ADVISING;
+        $resultCode = ErrorCode::$SUCCESS_ENABLE_ADVISING;
     } else {
-        $resultCode = $FAILURE_ENABLE_ADVISING_NOT_ADVISOR;
+        $resultCode = ErrorCode::$FAILURE_ENABLE_ADVISING_NOT_ADVISOR;
     }
 }
 
-header("Location: view/advisor_view.php?done=$resultCode");    
+if($resultCode != ErrorCode::$FAILURE_DISABLE_ADVISING_NOT_ADVISOR && $resultCode != ErrorCode::$FAILURE_ENABLE_ADVISING_NOT_ADVISOR) {
+    header("Location: view/advisor_view.php?done=$resultCode");    
+} else {
+    header("Location: view/student_view.php?done=$resultCode");
+}
 
 ?>

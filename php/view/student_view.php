@@ -45,9 +45,9 @@ if(mysql_fetch_array($rs))
 
   echo "Logged in as: " . $_SESSION['username']; 
   echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
-?>
 
-<?php if($studentApptNum) { ?>
+// Use isset instead of just if for best practices.
+if(isset($studentApptNum)) { ?>
 
 <table>
 <tr>
@@ -70,7 +70,7 @@ $rs = mysql_query($sql, $conn);
 $appt = mysql_fetch_array($rs);
 
 // Print out the student's appointment 
-if($appt)
+if(isset($appt))
 {
   echo "<tr>";
   echo "<td>" . $appt['Date'] . "</td>";
@@ -97,7 +97,7 @@ else
 </table>
 
 <?php
-if ( $studentApptNum )
+if ( isset( $studentApptNum ) )
 {
   $_SESSION['appt'] = $studentApptNum;
   // Print a button to cancel the student appointment 
