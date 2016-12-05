@@ -4,14 +4,14 @@ if(isset($_GET['done'])) {
     require_once('../error_codes.php');
     
     $showBanner = false;
-    $bannerClass = $TYPE_INFO;
+    $bannerClass = ErrorCodes::$TYPE_INFO;
     $bannerMsg = "NO MESSAGE";
 
     switch($_GET['done']) {
     
     case ErrorCodes::$DISEN_DEFAULT_CODE:
         $showBanner = true;
-        $bannerClass = $TYPE_INFO;
+        $bannerClass = ErrorCodes::$TYPE_INFO;
         $bannerMsg = "Default code from disen_advising.php";
         break;
 
@@ -20,19 +20,19 @@ if(isset($_GET['done'])) {
 
     case ErrorCodes::$SUCCESS_ENABLE_ADVISING:
         $showBanner = true;
-        $bannerClass = $TYPE_POSITIVE;
+        $bannerClass = ErrorCodes::$TYPE_POSITIVE;
         $bannerMsg = "Successfully started advising season.";
         break;
 
     case ErrorCodes::$FAILURE_ENABLE_ADVISING_GENERIC:
         $showBanner = true;
-        $bannerClass = $TYPE_NEGATIVE;
+        $bannerClass = ErrorCodes::$TYPE_NEGATIVE;
         $bannerMsg = "Failed to start advising season (Generic)";
         break;
 
     case ErrorCodes::$FAILUTE_ENABLE_ADVISING_NOT_ADVISOR:
         $showBanner = true;
-        $bannerClass = $TYPE_NEGATIVE;
+        $bannerClass = ErrorCodes::$TYPE_NEGATIVE;
         $bannerMsg = "Failed to start advising season (You are not an advisor)";
         break;
 
@@ -42,19 +42,19 @@ if(isset($_GET['done'])) {
 
     case ErrorCodes::$SUCCESS_DISABLE_ADVISING:
         $showBanner = true;
-        $bannerClass = $TYPE_POSITIVE;
+        $bannerClass = ErrorCodes::$TYPE_POSITIVE;
         $bannerMsg = "Successfully ended advising season.";
         break;
 
     case ErrorCodes::$FAILURE_DISABLE_ADVISING_GENERIC:
         $showBanner = true;
-        $bannerClass = $TYPE_NEGATIVE;
+        $bannerClass = ErrorCodes::$TYPE_NEGATIVE;
         $bannerMsg = "Failed to end advising season (Generic)";
         break;
 
     case ErrorCodes::$FAILURE_DISABLE_ADVISING_NOT_ADVISOR:
         $showBanner = true;
-        $bannerClass = $TYPE_NEGATIVE;
+        $bannerClass = ErrorCodes::$TYPE_NEGATIVE;
         $bannerMsg = "Failed to end advising season (You are not an advisor)";
         break;
     }

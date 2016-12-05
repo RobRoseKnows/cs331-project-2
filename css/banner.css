@@ -1,6 +1,8 @@
 div#banner {
     background-color: #FFA500;
-    width: 100%;
+    width: 110%;
+    margin-left: -5%;
+    margin-top: -8px;
 }
 
 div#banner .positive {
@@ -19,6 +21,6 @@ div#banner-content {
     width: 800px;
     margin: 0 auto;
     padding: 10px;
-    border: 1px solid #000;
     color: #FFF;
+    
 }
