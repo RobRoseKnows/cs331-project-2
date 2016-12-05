@@ -29,7 +29,7 @@ top:8px;
 
 <?php
 
-require_once('banner.php');
+require_once('../banner.php');
 
 require_once('../mysql_connect.php'); 
 session_start();

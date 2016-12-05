@@ -25,6 +25,9 @@ top:8px;
 <?php 
 require_once('../mysql_connect.php');
 session_start();
+
+require_once('../banner.php');
+
 echo "Notice: " . $_SESSION['otherMessage']; 
 
 // Set timezone to the east coast
