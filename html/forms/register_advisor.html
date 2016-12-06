@@ -4,15 +4,34 @@
 --> 
 
 <?php require('../header.html'); ?>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advising Homepage</title>
+    <link rel='stylesheet' type='text/css' href='../standard.css'/>
+    <link rel="icon" type="image/png" href="../corner.png" />
+  </head>
+  <body>
+<div id="background">
+  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
     <h1>Advisor Registration</h1>
-    <form method=post action='../../php/validate/validate_advisor_register.php'>
-      <!-- Gets information from the potential advisor, username, first name, last name, office, password --> 
-      <label>Email: <input type=text name="email"  pattern="[A-Za-z0-9._+-]+@umbc\.edu" required/></label><br>
-	  <label>First Name: <input type=text name="fName" required /></label><br>
-	  <label>Last Name: <input type=text name="lName" required /></label><br>
-	  <label>Office: <input type=text name="office" required /></label><br>
-	  <label>Password: <input type=password name="password" required /></label><br>
-	  <label>Retype Password: <input type=password name="rePassword" required /></label><br>
-      <input type=submit value="Submit"/>
+    <form method=post action='../../php/validate/validate_advisor.php'>
+      <!-- Gets information from the potential advisor, username, first name, last name -->
+      <p style='color: #FF0000;'>Username: <input type=text name="username"/></p>
+	  <p style='color: #FF0000;'>First Name: <input type=text name="fName"/></p>
+	  <p style='color: #FF0000;'>Last Name: <input type=text name="lName"/></p>
+	  <p style='color: #FF0000;'>Office: <input type=text name="office"/></p>
+      <p><input type=submit value="Submit"/></p>
     </form>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<!-- Hyperlink to the login advisor page -->
+	<p style='color: #FF0000;'>Already signed up? Click <a href = "login_advisor.html">here</a> to log in.</p>
+
+
+<h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
+
+</div>
+</body>
+</html>
 <?php require('../footer.html'); ?>

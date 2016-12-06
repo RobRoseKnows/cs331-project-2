@@ -6,12 +6,12 @@
 
 if($_SESSION['username'])
 {
-	unset($_SESSION['username']); 
+      unset($_SESSION['username']); 
 }
 
 if($_SESSION['appt'])
 {
-	unset($_SESSION['appt']);
+      unset($_SESSION['appt']);
 }
 session_destroy(); 
 ?>
@@ -20,26 +20,27 @@ session_destroy();
   <head>
     <meta charset="UTF-8" />
     <title>Advising Homepage</title>
-            	<link rel='stylesheet' type='text/css' href='../standard.css'/>
-		<link rel="icon" type="image/png" href="../corner.png" />
-
+    <link rel='stylesheet' type='text/css' href='../standard.css'/>
+    <link rel="icon" type="image/png" href="../corner.png" />
   </head>
   <body>
+
 <div id="background">
+  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
 
-	<h1> Welcome to UMBC advising! </h1>
+  <h1> Welcome to UMBC advising! </h1>
 
-	<!-- Gets if the user is an advisor or a student then directs them to the appropriate page --> 
-	<form method="link" action="login_advisor.html">
-	 <input type=submit class="button large go" value="Advisor"/>
-		
-	</form>
+  <!-- Gets if the user is an advisor or a student then directs them to the appropriate page --> 
+  <form method="link" action="login_advisor.html">
+     <input type=submit class="button large go" value="Advisor"/>
+     
+     </form>
     
-	<form method=post action="register_student.html">
-	 <input type=submit class="button large go" value="Student"/>
-	</form>
+  <form method=post action="register_student.html">
+     <input type=submit class="button large go" value="Student"/>
+     </form>
 
-
+  <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 </div>
 </body>
 </html>
