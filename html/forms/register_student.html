@@ -4,17 +4,27 @@
 --> 
 
 <?php require('../header.html'); ?>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advising Homepage</title>
+    <link rel='stylesheet' type='text/css' href='../standard.css'/>
+    <link rel="icon" type="image/png" href="../corner.png" />
+  </head>
+  <body>
+
+<div id="background">
+  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
+
     <h1>Student Registration</h1>
-    <form method=post action='../../php/validate/validate_student_register.php'>
-      <!-- Gets information from the potential student, username, major, etc. --> 
-      <label>Email: <input type=text name="email" pattern="[A-Za-z0-9._+-]+@umbc\.edu" required/></label>
-      <label>First Name: <input type=text name="firstName" required /></label>
-      <label>Last Name: <input type=text name="lastName" required /></label>
-      <label>Student ID: <input type=text name="studentID" required /></label>
-      <label>Password: <input type=password name="password" required /></label>
-      <label>Retype Password: <input type=password name="rePassword" required /></label>
-     
-      <label>Major: <select name="major" required>
+    <form method=post action='../../php/validate/validate_student.php'>
+      <!-- Gets information from the potential student, username, major --> 
+      <p style='color: #FF0000;'>Username: <input type=text name="username"/></p>
+      <p style='color: #FF0000;'>First Name: <input type=text name="firstName"/></p>
+      <p style='color: #FF0000;'>Last Name: <input type=text name="lastName"/></p>
+      <p style='color: #FF0000;'>Student ID: <input type=text name="studentID"/></p>
+      <p style='color: #FF0000;'>UMBC Email: <input type=text name="email"/></p>
+      <p style='color: #FF0000;'>Major: <select name="major">
 	  
 	  <!-- This creates a drop down box of the possible major choices -->
 	  <option value = "Biological Sciences BA">Biological Sciences BA</option>
@@ -25,16 +35,21 @@
 	  <option value = "Chemistry BA">Chemistry BA</option>
 	  <option value = "Chemistry BS">Chemistry BS</option>
 	  <option value = "Chemistry Education BA">Chemistry Education BA</option>
-	  <option value = "Other">Other</option>
-
-
 	  
 	  </select>
-	  </labeL>
+	  </p>
 	  
-      <input type=submit value="Submit"/>
+      <p><input type=submit value="Submit"/></p>
     </form>
-	
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>	
     	<!-- Hyperlink to the login student page -->
-	<p>Already signed up? Click <a href = "login_student.html">here</a> to log in.</p>
+	<p style='color: #FF0000;'>Already signed up? Click <a href = "login_student.html">here</a> to log in.</p>
+
+<h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
+
+</div>
+</body>
+</html>
 <?php require(../'footer.html'); ?>
