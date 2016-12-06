@@ -37,14 +37,14 @@ $rs = mysql_query($sql, $conn);
 if(mysql_fetch_array($rs))
 {
   //Getting Appointment Number
-  $sql = "SELECT Appt FROM students WHERE Username=\"" . $_SESSION['username'] . "\"";
+  $sql = "SELECT Appt FROM students WHERE Email='" . $_SESSION['username'] . "'";
   $rs = mysql_query($sql, $conn);
   
   $sqlRow = mysql_fetch_array($rs);
   $studentApptNum = $sqlRow['Appt']; 
 
   echo "Logged in as: " . $_SESSION['username']; 
-  echo  "<pre>  <a href = \"../../html/forms/first_page.html\">Log Me Out</a></pre>";
+  echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 ?>
 
 <?php if($studentApptNum) { ?>
@@ -64,7 +64,7 @@ if(mysql_fetch_array($rs))
 require_once('../mysql_connect.php'); 
 
 //Showing the students appointment
-$sql = "SELECT * FROM appointments WHERE id=\"" . $studentApptNum . "\" ORDER BY Date ASC, Time ASC";
+$sql = "SELECT * FROM appointments WHERE id='" . $studentApptNum . "' ORDER BY Date ASC, Time ASC";
 $rs = mysql_query($sql, $conn);
 
 $appt = mysql_fetch_array($rs);
@@ -119,7 +119,7 @@ else
 else
 {
   echo "Sorry, no advisors exist<br/>";
-  echo  "<pre> <a href = \"../../html/forms/first_page.html\">Log Me Out</a></pre>";
+  echo  "<pre> <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 }
 
 ?>

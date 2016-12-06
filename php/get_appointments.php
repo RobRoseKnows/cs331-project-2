@@ -78,7 +78,7 @@ while ($appt = mysql_fetch_array($rs))
   ?>
     <td>
        <form method=post action="table_handler.php">
-       <?php echo "<input type=hidden name='ID' value=\"" . $apptID . "\"/>"; ?>
+       <?php echo "<input type=hidden name='ID' value=$apptID/>"; ?>
        <input type=submit value="Register"/>
        </form>
        </td>

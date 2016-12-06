@@ -1,13 +1,16 @@
 <!-- login_student.html --> 
-<!-- This file will get a username from the user then compare it to the database, if there is a match then the user will be logged in --> 
+<!-- This file will get a username and password from the user then compare it to the database, if there is a match then the user will be logged in --> 
 
 <?php include ('header.html'); ?>
 <h1>Student Login</h1>
     <form method=post action='../../php/validate/validate_student_login.php'>
-      <!-- Gets the only necessary data, a username from the user --> 
-      <p>Username: <input type=text name="username"/></p>
-      <p><input type=submit value="Submit"/></p>
+      <!-- Gets the necessary data, a username and password from the user --> 
+      <label>Email: <input type=text name="email" pattern="[A-Za-z0-9._+-]+@umbc\.edu" required /></label><br>
+      <label>Password: <input type=password name="password" required /></label><br>
+      <label><input type=submit value="Submit"/></label>
     </form>
+
+    <br>
 	
         <!-- Hyperlink to the register students page -->   
 	<p> Not signed up? Click <a href = "register_student.html">here</a> to register.</p>

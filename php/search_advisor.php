@@ -19,12 +19,11 @@ $rs = mysql_query($sql, $conn);
 <?php
   // Prints out all the names of the advisors
   while ($advisor = mysql_fetch_array($rs)) {
-  echo "<option value=\"" . $advisor['Username'] . "\">" . $advisor['fullName'] . " - " . $advisor['Username'] . "</option>";
+  echo "<option value='" . $advisor['Email'] . "'>" . $advisor['fullName'] . " - " . $advisor['Username'] . "</option>";
 }
 ?>  
 </select>
   <input type=submit value="Submit"/>
 </form>
 
-</body>
-</html>
+<?php include('../html/footer.html'); ?>
