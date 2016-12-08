@@ -3,7 +3,9 @@
 
 <html>
 <head>
+
 <title>View Appointments</title>
+
 <style>
 table, th, td {
 border: 1px solid black;
@@ -19,12 +21,16 @@ position:relative;
 top:8px;
 }
 </style>
+
+<link rel='stylesheet' type='text/css' href='../../css/banner.css' />
+
 </head>
 <body>
 
-
-
 <?php
+
+require_once('../banner.php');
+
 require_once('../mysql_connect.php'); 
 session_start();
 
