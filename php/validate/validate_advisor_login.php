@@ -41,7 +41,7 @@ else
     $error_message .= "Email field can't be blank.<br>";
   }
 
-  elseif (preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $email)) {
+  elseif (!preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $email)) {
     $error_message .= "Email is not a valid UMBC email.<br>";
   }
 
