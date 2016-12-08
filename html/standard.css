@@ -1,110 +1,130 @@
 html{ 
 
-		text-align: center;
-		font-family: Calibri, sans-serif;
-		font-size: 15px; 
-		position: center;
-	}
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 15px; 
+    position: center;
+    }
 h1{
-	color: #FF0000;
-	}
+    color: #FF0000;
+    }
 #background{
-	background-color: rgba(0,0,0,1);
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+    background-color: rgba(0,0,0,1);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    }
 
-	}
 form{
-	margin: 0 auto;
-	width: 50px;
-	height: 50px;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
 
-	}
+    }
 
-	app_type_buttons {
-		vertical-align: center;
-	}
+app_type_buttons {
+    vertical-align: center;
+    }
 
-	.button {
-		background-color: #122232;
-		border: none;
-		color: #fff;
-		cursor: pointer;
-		display: inline-block;
-		font-family: Calibri, Helvetica, sans-serif;
-		font-size:20px;
-		font-weight: bold;
-		height: 25px;
-		overflow: visible;
-		padding: 0 12px;
-		margin: 0px auto 0;
-		text-decoration: none;
-		vertical-align: top;
-		white-space: nowrap;
-		width: auto;
-		border-radius: 4px;
-		line-height: 25px;
-	}
+.button {
+    background-color: #122232;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Calibri, Helvetica, sans-serif;
+    font-size:20px;
+    font-weight: bold;
+    height: 25px;
+    overflow: visible;
+    padding: 0 12px;
+    margin: 0px auto 0;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: auto;
+    border-radius: 4px;
+    line-height: 25px;
+    }
 
-	.button:hover {
-		background-color: #BE6CE;
-		
-		text-decoration: none;
-		 
-	}
+.button:hover {
+    background-color: #BE6CE;
+    
+    text-decoration: none;
+     
+    }
 
-	a.button.large {
-        line-height: 32px;	
-	}
+a.button.large {
+    line-height: 32px;
+    }
 
-	.button.large {
-		font-size: 20px;
-		height: 32px;
-		padding: 0 16px;
-	}
-	.button.large:hover{
-		background-color: #BE6CE;
+.button.large {
+    font-size: 20px;
+    height: 32px;
+    padding: 0 16px;
+    }
+.button.large:hover{
+    background-color: #BE6CE;
 
-	}
+    }
 
-	.button.go {
-		background-color: #122232;
-		color: #FFF;
-	}
+.button.go {
+    background-color: #122232;
+    color: #FFF;
+    }
 
 
-	.button.go:hover {
-		background-color: #BE6CE;
-		
-	}
+.button.go:hover {
+    background-color: #BE6CE;
+    
+    }
 
-	.button.main {
-		text-align: left;
-		height: 60px;
-		width: 370px;
-		border-radius: 0px;
-		border-bottom: 1px solid #000;
-	}
-		
-	.button.main:hover {
-		padding-left: 20px;
-	}
+.button.main {
+    text-align: left;
+    height: 60px;
+    width: 370px;
+    border-radius: 0px;
+    border-bottom: 1px solid #000;
+    }
 
-	.button.selected {
-		cursor: default;
-		height: 30px;
-		width: 320px;
-		border-radius: 0px;
-		border-bottom: 1px solid #000;
-		margin: 0 auto 0;
-		background-color: #97A2AD;
-		padding: 17px 0px 12px 50px;
-	}
-	
-	.button.logout{
-		background-color: #FF0000;
-		float: center;
-		margin-top: 10px;
-		margin-right: 50%;
-		margin-left: 50%;
-	}
+.button.main:hover {
+    padding-left: 20px;
+    }
+
+.button.selected {
+    cursor: default;
+    height: 30px;
+    width: 320px;
+    border-radius: 0px;
+    border-bottom: 1px solid #000;
+    margin: 0 auto 0;
+    background-color: #97A2AD;
+    padding: 17px 0px 12px 50px;
+    }
+
+.button.logout{
+    background-color: #FF0000;
+    float: center;
+    margin-top: 10px;
+    margin-right: 50%;
+    margin-left: 50%;
+    }
+
+image {
+    width: 20%;
+    height: 20%;
+    //background-image: url('umbc50logo.jpg');
+    //background-repeat: no-repeat;
+}
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}

@@ -25,6 +25,11 @@
 <?php
 require_once('../mysql_connect.php');
 session_start();
+
+require_once('../check_disabled.php');
+
+require_once('../banner.php');
+
 echo "Notice: " . $_SESSION['otherMessage'];
 
 // Set timezone to the east coast
@@ -51,9 +56,11 @@ if (mysql_fetch_array($rs)) {
     }
     echo "Logged in as: " . $_SESSION['username'];
     echo "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
-    ?>
 
-    <?php if ($studentApptNum) { ?>
+
+// Use isset instead of just if for best practices.
+    if(isset($studentApptNum)) {
+        ?>
 
         <table>
         <tr>
@@ -76,18 +83,19 @@ if (mysql_fetch_array($rs)) {
     $appt = mysql_fetch_array($rs);
 
 // Print out the student's appointment 
-    if ($appt) {
-        echo "<tr>";
-        echo "<td>" . $appt['Date'] . "</td>";
-        echo "<td>" . date("g:ia", strtotime($appt['Time'])) . "</td>";
-        echo "<td>" . $appt['Advisor'] . " (" . $appt['AdvisorUsername'] . ")</td>";
-        echo "<td>" . $appt['Location'] . "</td>";
-
-        // Check if the appointment is a group or not
-        if ($appt['isGroup'] == 0)
-            echo "<td>" . "No" . "</td>";
-        else
-            echo "<td>" . "Yes" . "</td>";
+if(isset($appt))
+{
+  echo "<tr>";
+  echo "<td>" . $appt['Date'] . "</td>";
+  echo "<td>" . date("g:ia", strtotime($appt['Time'])) . "</td>";
+  echo "<td>" . $appt['Advisor'] . " (" .$appt['AdvisorUsername'] . ")</td>";
+  echo "<td>" . $appt['Location'] . "</td>";
+  
+  // Check if the appointment is a group or not 
+  if($appt['isGroup'] == 0)
+	echo "<td>" . "No" . "</td>";
+  else
+	echo "<td>" . "Yes" . "</td>";
 
         echo "<td>" . $appt['NumStudents'] . "</td>";
         echo "</tr>";
@@ -98,20 +106,23 @@ if (mysql_fetch_array($rs)) {
     ?>
     </table>
 
-    <?php
-    if ($studentApptNum) {
-        $_SESSION['appt'] = $studentApptNum;
-        // Print a button to cancel the student appointment
-        echo '<form method=post action="../cancel_student_appointment.php">';
-        echo '<input type=submit value="Cancel Appointment"/>';
-        echo '</form>';
-    } else {
-        // Print a button to schedual an appointment
-        echo '<form method=post action="../schedule_student_appointment.php">';
-        echo '<input type=submit value="Schedule Appointment"/>';
-        echo '</form>';
-    }
-    ?>
+<?php
+if ( isset( $studentApptNum ) )
+{
+  $_SESSION['appt'] = $studentApptNum;
+  // Print a button to cancel the student appointment 
+  echo '<form method=post action="../cancel_student_appointment.php">';
+  echo '<input type=submit value="Cancel Appointment"/>';
+  echo '</form>';
+}
+else
+{
+  // Print a button to schedual an appointment 
+  echo '<form method=post action="../schedule_student_appointment.php">';
+  echo '<input type=submit value="Schedule Appointment"/>';
+  echo '</form>';
+}
+?>
 
 <?php } //handles the case if no advisors have made an appointment
 else {
