@@ -6,7 +6,7 @@
 <?php require('../header.html'); ?>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <!--<meta charset="UTF-8" />-->
     <title>Advising Homepage</title>
     <link rel='stylesheet' type='text/css' href='../standard.css'/>
     <link rel="icon" type="image/png" href="../corner.png" />
@@ -14,17 +14,19 @@
   <body>
 
 <div id="background">
-  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
+  <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
+<left><div id="wrapper">
 
+	 <h1>Welcome to CMNS Advising</h1>
     <h1>Student Registration</h1>
     <form method=post action='../../php/validate/validate_student.php'>
       <!-- Gets information from the potential student, username, major --> 
-      <p style='color: #FF0000;'>Username: <input type=text name="username"/></p>
-      <p style='color: #FF0000;'>First Name: <input type=text name="firstName"/></p>
-      <p style='color: #FF0000;'>Last Name: <input type=text name="lastName"/></p>
-      <p style='color: #FF0000;'>Student ID: <input type=text name="studentID"/></p>
-      <p style='color: #FF0000;'>UMBC Email: <input type=text name="email"/></p>
-      <p style='color: #FF0000;'>Major: <select name="major">
+      <pre><h4>Username: <input type='text' name="username"/></h4></pre>
+      <pre><h4>First Name: <input type='text' name="firstName"/></h4></pre>
+      <pre><h4>Last Name: <input type='text' name="lastName"/></h4></pre>
+      <pre><h4>Student ID: <input type='text' name="studentID"/></h4></pre>
+      <pre><h4>UMBC Email: <input type='text' name="email"/></h4></pre>
+      <pre><h4>Major: <select name="major">
 	  
 	  <!-- This creates a drop down box of the possible major choices -->
 	  <option value = "Biological Sciences BA">Biological Sciences BA</option>
@@ -37,19 +39,19 @@
 	  <option value = "Chemistry Education BA">Chemistry Education BA</option>
 	  
 	  </select>
-	  </p>
+	  </h4></pre>
 	  
       <p><input type=submit value="Submit"/></p>
     </form>
 
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>	
     	<!-- Hyperlink to the login student page -->
 	<p style='color: #FF0000;'>Already signed up? Click <a href = "login_student.html">here</a> to log in.</p>
 
 <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 
 </div>
+	</left>
+	  </div>
 </body>
 </html>
 <?php require(../'footer.html'); ?>
