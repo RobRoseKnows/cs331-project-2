@@ -5,6 +5,8 @@
 <head>
 
 <title>View Appointments</title>
+	<link rel='stylesheet' type='text/css' href='../../html/standard.css'/>
+	<link rel='icon' type='image/png' href='../../html/standard.css'/>
 
 <style>
 table, th, td {
@@ -27,6 +29,10 @@ top:8px;
 </head>
 <body>
 
+	<div id="background">
+	<left><div id="wrapper">
+	<h1>CMNS Advising</h1>
+	
 <?php
 
 require_once('../banner.php');
@@ -120,5 +126,10 @@ else
 
 <p> Register an Advisor: Click <a href = "../../html/forms/register_advisor.html">here</a> to register.</p>
 
+<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>		
 </body>
 </html>
