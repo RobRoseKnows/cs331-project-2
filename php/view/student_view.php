@@ -22,9 +22,11 @@ top:8px;
 </head>
 <body>
 
-<?php 
+<?php
 require_once('../mysql_connect.php');
 session_start();
+
+require_once('../check_disabled.php');
 
 require_once('../banner.php');
 
