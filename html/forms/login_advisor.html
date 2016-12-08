@@ -1,7 +1,7 @@
 <!-- login_avisor.html --> 
 <!-- This file will get a username from the user then compare it to the database, if there is a match then the user will be logged in --> 
 
-<?php include ('header.html'); ?>
+<?php include ('../header.html'); ?>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,10 +12,19 @@
   <body>
 <div id="background">
 <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
+
+<!-- Prints out the error message which tells the student what they did incorrectly -->
+<h1><?php echo "Error: {$_SESSION['error_message']}"; 
+session_destroy();
+session_unset();
+?></h1>
+	
 <h1>Advisor Login</h1>
-    <form method=post action='../../php/validate/validate_advisor_login.php'>
-      <!-- Gets the only necessary data, a username from the user --> 
-      <p style='color: #FF0000;'>Username: <input type=text name="username"/></p>
+    
+   <form method=post action='../../php/validate/validate_advisor_login.php'>
+      <!-- Gets the necessary data, a username and password from the user --> 
+      <p style='color: #000000;'>UMBC Email: <input type=text name="email"/></p>
+      <p style ='color: #000000;'>Password: <input type=password name="password"/></p>
       <p><input type=submit value="Submit"/></p>
     </form>
 	
