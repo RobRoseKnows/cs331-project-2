@@ -13,14 +13,19 @@
   </head>
   <body>
 <div id="background">
-  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
+<left><div id="wrapper">
+
+  <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
+	<h1>Welcome to CMNS Advising</h1>
     <h1>Advisor Registration</h1>
+	
     <form method=post action='../../php/validate/validate_advisor.php'>
       <!-- Gets information from the potential advisor, username, first name, last name -->
-      <p style='color: #FF0000;'>Username: <input type=text name="username"/></p>
-	  <p style='color: #FF0000;'>First Name: <input type=text name="fName"/></p>
-	  <p style='color: #FF0000;'>Last Name: <input type=text name="lName"/></p>
-	  <p style='color: #FF0000;'>Office: <input type=text name="office"/></p>
+          <pre><h4>Username: <input type=text name="username"/></h4></pre>
+          <pre><h4>First Name: <input type=text name="fName"/></h4></pre>
+          <pre><h4>Last Name: <input type=text name="lName"/></h4></pre>
+          <pre><h4>Office: <input type=text name="office"/></h4></pre>
+
       <p><input type=submit value="Submit"/></p>
     </form>
 
@@ -32,6 +37,9 @@
 <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 
 </div>
-</body>
+	  
+	</left>
+	  </div>
+	</body>
 </html>
 <?php require('../footer.html'); ?>
