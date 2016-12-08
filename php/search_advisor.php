@@ -4,7 +4,20 @@
 
 <?php
 include ('../html/header.html');
-// connect to the database
+?>
+
+<html lang="en">
+   <head>
+   <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+   <link rel='icon' type='image/png' href='../html/standard.css'/>
+   </head>
+<body>
+<div id="background">
+
+<left><div id="wrapper">
+
+<?php
+// connect to the database                                                            
 include ('mysql_connect.php');
 
 // make a query that will select all rows from the advisors table
@@ -13,6 +26,7 @@ $rs = mysql_query($sql, $conn);
 
 
 ?>
+<h1>CMNS Advising</h1>
 <h2>Choose An Advisor</h2>
 <form method=post action='schedule_by_advisor.php'>
   <select name="advisor">
@@ -26,4 +40,11 @@ $rs = mysql_query($sql, $conn);
   <input type=submit value="Submit"/>
 </form>
 
+     <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>
+</body>
+     
 <?php include('../html/footer.html'); ?>
