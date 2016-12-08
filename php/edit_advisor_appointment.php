@@ -44,13 +44,7 @@ if(isset($_POST['cancelEditAppointment'])){
     $sql = 'SELECT * from students WHERE Appt='.$id.';';
     $rs = mysql_query($sql, $conn);
     while($row = mysql_fetch_assoc($rs)){
-        $to = $row['email'];
-        $subject = 'Alert: Advising Appointment Rescheduled';
-        $message = file_get_contents('../html/appointment_changed_email.html');
-        $header = "From: noreply@umbc.edu \r\n";
-        $header .= "MIME-Version: 1.0 \r\n";
-        $header .= "Content-type: text/html\r\n";
-        mail($to, $subject, $message, $header);
+        $studentSql = "UPDATE students SET appointmentChanged=1 WHERE Email='" . $row['Email'] . "'";
     }
 
     header("Location: view/advisor_view.php");

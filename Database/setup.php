@@ -33,6 +33,7 @@ PRIMARY KEY ('id')
 'lastName' text NOT NULL,
 'studentID' varchar(9) NOT NULL,
 'Password' text NOT NULL,
+'appointmentChanged' TINYINT(1) NOT NULL DEFAULT '0',
 PRIMARY KEY ('id'),
 KEY 'id' ('id')
 )";
