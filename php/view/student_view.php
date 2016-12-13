@@ -38,7 +38,14 @@ date_default_timezone_set('America/New_York');
 $sql = "SELECT * FROM `advisors`";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-if (mysql_fetch_array($rs)) {
+
+echo '<form method=post action="../editStudentInfo.php">';
+echo '<input type=submit value="Edit Information"/>';
+echo '</form>';
+
+
+if(mysql_fetch_array($rs))
+  {
     //Getting Appointment Number
     $sql = "SELECT `Appt` FROM `students` WHERE `Email`='" . $_SESSION["email"] . "'";
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);

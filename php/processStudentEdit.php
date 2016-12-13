@@ -16,10 +16,10 @@ $sid = $_SESSION["SIDNumber"];
 
 //Actually update student data
 $debug = false;
-include('./CommonMethods.php');
+include('../CommonMethods.php');
 $COMMON = new Common($debug);
-	$sql = "update `Student Data` set `FirstName` = '$firstn', `LastName` = '$lastn', `Email` = '$email', `Major` = '$major' where `StudentID` = '$sid'";
+	$sql = "update `students` set `firstName` = '$firstn', `lastName` = '$lastn', `Email` = '$email', `Major` = '$major' where `studentID` = '$sid'";
 	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-header('Location: studentHome.php');
+header('Location: view/student_view.php');
 ?>

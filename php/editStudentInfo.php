@@ -1,22 +1,22 @@
 <?php
 session_start();
-include('CommonMethods.php');
+include('../CommonMethods.php');
 
 $debug = false;
 $COMMON = new Common($debug);
 
-$sql = "select * from `Student Data`";
+$sql = "select * from `students`";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 //Fetch student info for session use
 while($row = mysql_fetch_row($rs)){
-	if($row[1] == $_SESSION["SIDNumber"]){
+	if($row[0] == $_SESSION["email"]){
 		
-		$_SESSION["firstName"] = $row[2];
-		$_SESSION["lastName"] = $row[3];
-		$_SESSION["major"] = $row[6];
-		$_SESSION["studEmail"]=$row[7];
-		$_SESSION["SIDNumber"]=$row[1];
+		$_SESSION["firstName"] = $row[4];
+		$_SESSION["lastName"] = $row[5];
+		$_SESSION["major"] = $row[1];
+		$_SESSION["studEmail"]=$row[0];
+		$_SESSION["SIDNumber"]=$row[6];
 	}
 }
 
@@ -51,15 +51,15 @@ while($row = mysql_fetch_row($rs)){
 			<div class="field">
 				  <label for="major">Major</label>
 				  <select id="major" name = "major">
-					<option <?php if($_SESSION["major"] == 'Biochem'){echo("selected");}?> value='Biochem'>Biochemistry & Molecular Biology BS</option>
-					<option <?php if($_SESSION["major"] == 'Bioinfo'){echo("selected");}?> value='Bioinfo'>Bioinformatics & Computational Biology BS</option>
-					<option <?php if($_SESSION["major"] == 'BioBA'){echo("selected");}?> value='BioBA'>Biological Sciences BA</option>
-					<option <?php if($_SESSION["major"] == 'BioBS'){echo("selected");}?> value='BioBS'>Biological Sciences BS</option>
-					<option <?php if($_SESSION["major"] == 'Bioed'){echo("selected");}?> value='Bioed'>Biology Education BA</option>
+					<option <?php if($_SESSION["major"] == 'Biochemistry & Molecular Biology BS'){echo("selected");}?> value='Biochemistry & Molecular Biology BS'>Biochemistry & Molecular Biology BS</option>
+					<option <?php if($_SESSION["major"] == 'Bioinformatics & Computational Biology BS'){echo("selected");}?> value='Bioinformatics & Computational Biology BS'>Bioinformatics & Computational Biology BS</option>
+					<option <?php if($_SESSION["major"] == 'Biological Sciences BA'){echo("selected");}?> value='Biological Sciences BA'>Biological Sciences BA</option>
+					<option <?php if($_SESSION["major"] == 'Bioinformatics & Computational Biology BS'){echo("selected");}?> value='Biological Sciences BS'>Biological Sciences BS</option>
+					<option <?php if($_SESSION["major"] == 'Biology Education BA'){echo("selected");}?> value='Biology Education BA'>Biology Education BA</option>
 
-					<option <?php if($_SESSION["major"] == 'ChemBA'){echo("selected");}?> value='ChemBA'>Chemistry BA</option>
-					<option <?php if($_SESSION["major"] == 'ChemBS'){echo("selected");}?> value='ChemBS'>Chemistry BS</option>
-					<option <?php if($_SESSION["major"] == 'Chemed'){echo("selected");}?> value='Chemed'>Chemistry Education BA</option>
+					<option <?php if($_SESSION["major"] == 'Chemistry BA'){echo("selected");}?> value='Chemistry BA'>Chemistry BA</option>
+					<option <?php if($_SESSION["major"] == 'Chemistry BS'){echo("selected");}?> value='Chemistry BS'>Chemistry BS</option>
+					<option <?php if($_SESSION["major"] == 'Chemistry Education BA'){echo("selected");}?> value='Chemistry Education BA'>Chemistry Education BA</option>
 
 				  </select>
 			</div>
