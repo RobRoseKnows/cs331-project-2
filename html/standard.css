@@ -1,5 +1,4 @@
 html{ 
-
     text-align: center;
     font-family: Calibri, sans-serif;
     font-size: 15px; 
@@ -9,17 +8,20 @@ h1{
     color: #FF0000;
     }
 #background{
-    background-color: rgba(0,0,0,1);
+    /*background-color: rgba(0,0,0,1);*/
+    background-image: url("dogw_logo.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    padding-top: 22%;
+    padding-left: 2%;
+    padding-bottom: 2%;
     }
 
-form{
-    margin: 0 auto;
-    width: 50px;
-    height: 50px;
-
-    }
+form {
+    margin-left: 25%;
+    margin-right: 75%;
+    color: #FF0000;
+}
 
 app_type_buttons {
     vertical-align: center;
@@ -79,9 +81,9 @@ a.button.large {
     }
 
 .button.main {
-    text-align: left;
-    height: 60px;
-    width: 370px;
+    text-align: center;
+    height: 35px;
+    width: 234px;
     border-radius: 0px;
     border-bottom: 1px solid #000;
     }
@@ -93,7 +95,7 @@ a.button.large {
 .button.selected {
     cursor: default;
     height: 30px;
-    width: 320px;
+    width: 300px;
     border-radius: 0px;
     border-bottom: 1px solid #000;
     margin: 0 auto 0;
@@ -112,8 +114,7 @@ a.button.large {
 image {
     width: 20%;
     height: 20%;
-    //background-image: url('umbc50logo.jpg');
-    //background-repeat: no-repeat;
+
 }
 
 header, footer {
@@ -127,4 +128,70 @@ header, footer {
 div.container {
     width: 100%;
     border: 1px solid gray;
+}
+
+#wrapper {
+    width: 65%;
+    border: 10px solid white;
+    /*padding: 8px;*/
+    border-radius: 20px;
+    text-align: center;
+    background-color: #F3F2F2;
+}
+
+#wrapper2 {
+    width: 53.8%;
+    border: 2px solid white;
+    /*border-radius: 20px;*/
+    text-align: left;
+    background-color: #F3F2F2;
+    float: left;
+    position: relative;
+    /*background: #fff;
+    border-right: 1px solid black;
+    float: left;*/
+    /*padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;*/
+}
+
+#nav {
+    background-color: #566069;
+    border: 2px solid black;
+    border-top: none;
+    float: left;
+    width: 45%;
+    margin-bottom: 2%;
+    padding-bottom: 2%;
+    /*min-height: 499px;*/
+    overflow: auto;
+    position: relative;
+    text-align: left;
+    height: 36%;
+}
+
+h4 {
+    font-size: 15px;
+    padding: 1%;
+    color: #FF0000;
+    text-align: left;
+}
+
+pre {
+    font-size: 15px;
+    padding: 1%;
+    color: #FF0000;
+    text-align: left;
+}
+
+body {
+    /*background-image: url('dogw_logo.jpg');*/
+    /*background-color: #F9ADCB;*/
+    background-repeat: no-repeat;
+    width: 95%;
+    height: 95%;
+}
+
+h2 {
+    color: #FF0000;
 }

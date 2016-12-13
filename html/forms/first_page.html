@@ -14,6 +14,7 @@ if($_SESSION['appt'])
       unset($_SESSION['appt']);
 }
 session_destroy(); 
+session_start();
 ?>
 
 <html lang="en">
@@ -28,27 +29,26 @@ session_destroy();
 <div id="background">
   <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
 
-      
 <left><div id="wrapper">
-      
+
   <h1> Welcome to UMBC advising! </h1>
-      <h1>College of Mathematical and Natural Sciences</h1>
+  <h1>College of Mathematics and Natural Sciences</h1>
 
   <!-- Gets if the user is an advisor or a student then directs them to the appropriate page --> 
+
   <form method="link" action="login_advisor.html">
      <input type=submit class="button large go" value="Advisor"/>
      
      </form>
     
-  <form method=post action="register_student.html">
+  <form method=post action="register_student.php">
      <input type=submit class="button large go" value="Student"/>
      </form>
 
   <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
-       </div>
-       </left>
-    
 </div>
+</div>
+</left>
 </body>
 </html>
 <?php require('../footer.html'); ?>
