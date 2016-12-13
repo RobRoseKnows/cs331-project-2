@@ -4,7 +4,7 @@
 <?php require('header.html'); ?>
     <h1>Add an appointment </h1>
     <form method=post action="../../php/validate/validate_appointment.php">
-    <!-- Gets the necessary information about the appontment, date, time, location, group --> 
+    <!-- Gets the necessary information about the appontment, date, time, location, group -->
     <label>Date: <input type="date" name="date" required/></label> <br>
       <!-- Time is restricted to only having the times between 8:00am and 4:30 pm selected in 30 minutes increments -->
     <label>  Time: <select name="time">
@@ -34,12 +34,12 @@
 	<option value=1 selected>Yes</option>
 	<option value=0>No</option>
       </select></label><br>
-    <label>Maximun Number of Attendees: <input type=int name="maxAttend" required></label><br>
+    <label>Maximum Number of Attendees: <input type=text name="maxAttend" required></label><br>
     <label>Session Leader: <select name="leader" required>
-	<option value='Bulger' selected> Ms. Michelle Bulger</option>
-	<option value='Crosby' selected> Ms. Julie Crosby</option>
-	<option value='Powers' selected> Ms. Christine Powers</option>
-	<option value='Avisors' selected> CNMS Advisors</option>
+	<option value='Ms. Michelle Bulger' selected> Ms. Michelle Bulger</option>
+	<option value='Ms. Julie Crosby' selected> Ms. Julie Crosby</option>
+	<option value='Ms. Christine Powers' selected> Ms. Christine Powers</option>
+	<option value='CNMS Advisors' selected> CNMS Advisors</option>
     </select></label><br>
 
     <p><input type=submit value="Submit"/></p>

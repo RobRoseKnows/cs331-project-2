@@ -1,15 +1,16 @@
 <!-- validate_appointment.php -->
 <!-- This file will make sure that an advisor does not input an invalid appointment -->
-
+<html>
+<head>
 <?php
 
 require_once('../mysql_connect.php');
 session_start();
 
-$email = $_SESSION['username'];
+$email = $_SESSION['email'];
 
 // Creates the query to get the information from the appointments database where the username is equal to the current session username
-$sql = "SELECT Date, Time FROM appointments WHERE `AdvisorUsername` = '$email'";
+$sql = "SELECT Date, Time FROM appointments WHERE `AdvisorEmail` = '$email'";
 $rs = mysql_query($sql, $conn);
 $errors = False;
 $error_message = "";
@@ -22,6 +23,8 @@ $date = $_POST['date'];
 $time = $_POST['time'];
 $location = $_POST['location'];
 $group = $_POST['group'];
+$leader = $_POST['leader'];
+$maxAttendees = $_POST['maxAttend'];
 
 // Create a date for today 
 $today = date_create();
@@ -63,26 +66,25 @@ if ($location == "")
 // If there are errors 
 if(!$errors)
 {
-  // Get the information from the advisors database for the fullName
-  // This will be used in the next query 
-  $sql = "SELECT fullName FROM advisors WHERE `Email` = '$email'";
-  $rs = mysql_query($sql, $conn);
-  $fullName = mysql_fetch_array($rs)['fullName'];
 
   echo $sql;
 
   // Insert a new appointment into the appointments table
   $sql =
-      "INSERT INTO appointments (Date, Time, Location, isGroup, Advisor, AdvisorUsername) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')";
-  $formatted = sprintf($sql, $date, $time, $location, $group, $fullName, $email);
+      "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+  $formatted = sprintf($sql, $date, $time, $location, $group, $leader, $email, $maxAttendees);
+    echo($formatted);
   $rs = mysql_query($formatted, $conn);
 
   // Go back to the advisor_view.php 
-  header('Location:../view/advisor_view.php');
+  //header('Location:../view/advisor_view.php');
 }
 else
 {
+    echo($error_message);
   // Go to the error page for add appoinment 
-  require('../../html/error_forms/add_appointment_error.html');
+  require('../../html/error_forms/add_appointment.html');
 }
 ?>
+</head>
+</html>
