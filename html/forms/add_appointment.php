@@ -1,6 +1,18 @@
 <!-- add_appointment.html -->
 <!-- This file is the form for the advisor to create and appointment -->
 
+<html>
+<head>
+<title>Appointments</title>
+  <link rel='stylesheet' type='text/css' href='../standard.css'/>
+  <link rel='icon' type='image/png' href='../standard.css'/>
+</head>
+<body>
+<div id="background">
+
+<left><div id="wrapper">
+<h1>CMNS Advising</h1>
+
 <?php
 require('../../html/header.html');
 
@@ -33,21 +45,22 @@ if (isset($_POST['ID'])) {
     echo("<h1>Add an appointment </h1>");
 }
 
+echo("<div id='form1'>");
 echo('<form method=post action="../../php/validate/validate_appointment.php">');
 //Gets the necessary information about the appontment, date, time, location, group
 
 if (isset($id)) {
     echo("<input type=hidden name='ID' value=" . $id . " />");
 }
-echo('<label>Date: <input type="date" name="date"');
+echo('<pre><h4><label>Date: <input type="date" name="date" placeholder="MM/DD/YYYY"');
 if (isset($date)) {
     echo(' value="' . $date.'"');
 }
-echo(' required/></label> <br>');
+echo(' required/></label></h4></pre>');
 // Time is restricted to only having the times between 8:00am and 4:30 pm selected in 30 minutes increments
 $times = array("8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "1:00", "1:30", "2:00", "2:30", "3:00", "3:30", "4:00", "4:30", "5:00");
 $ends = array("am", "am", "am", "am", "am", "am", "am", "am", "pm", "pm", "pm", "pm", "pm", "pm", "pm", "pm", "pm", "pm", "pm");
-echo('<label>Time: <select name="time" required>');
+echo('<pre><h4><label>Time: <select name="time" required>');
 for ($i = 0; $i < count($times) - 1; $i++) {
     echo('<option value="' . str_pad($times[$i], 5, "0", STR_PAD_LEFT) . '"');
     if (!isset($time) && $i == 0) {
@@ -58,26 +71,26 @@ for ($i = 0; $i < count($times) - 1; $i++) {
     }
     echo('>' . $times[$i] . $ends[$i] . ' - ' . $times[$i + 1] . $ends[$i + 1] . '</option>');
 }
-echo("</select></label><br>");
-echo('<label>Location: <input type = text name = "location"');
+echo("</select></label></h4></pre>");
+echo('<pre><h4><label>Location: <input type = text name = "location"');
 if(isset($location)){
     echo(' value='.$location);
 }
-echo (' required></label><br>');
-echo('<label> Group Advising Session ? <select name = "group" required >');
+echo (' required></label></h4></pre>');
+echo('<pre><h4><label>Group Advising Session ? <select name = "group" required >');
 echo('<option value = 1 selected > Yes</option >');
 echo('<option value = 0');
 if(isset($isGroup) && $isGroup == 0){
    echo(" selected");
 }
 echo('>No</option >');
-echo('</select ></label><br >');
-echo('<label > Maximum Number of Attendees: <input type = text name = "maxAttend"');
+echo('</select ></label></h4></pre>');
+echo('<pre><h4><label>Maximum Number of Attendees: <input type = text name = "maxAttend"');
 if(isset($maxAttendees)){
     echo(' value='.$maxAttendees);
 }
-echo(' required></label ><br >');
-echo('<label > Session Leader: <select name = "leader" required >');
+echo(' required></label></h4></pre>');
+echo('<pre><h4><label>Session Leader: <select name = "leader" required >');
 $advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Powers', 'CNMS Advisors');
 for($i = 0; $i < count($advisors); $i++){
     echo('<option value="'.$advisors[$i].'"');
@@ -86,7 +99,18 @@ for($i = 0; $i < count($advisors); $i++){
     }
     echo('>'.$advisors[$i].'</option>');
 }
-echo('</select ></label ><br >');
+echo('</select ></label ></h4></pre>');
 echo('<p ><input type = submit value = "Submit" /></p >');
 echo('</form >');
-require('../../html/footer.html'); ?>
+echo('</div>');
+?>
+
+<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>
+</body>
+</html>
+
+<?php require('../../html/footer.html'); ?>
