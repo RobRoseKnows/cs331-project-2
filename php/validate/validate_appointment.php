@@ -67,17 +67,17 @@ if ($location == "")
 if(!$errors)
 {
 
-  echo $sql;
+  //echo $sql;
 
   // Insert a new appointment into the appointments table
   $sql =
       "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
   $formatted = sprintf($sql, $date, $time, $location, $group, $leader, $email, $maxAttendees);
-    echo($formatted);
+    //echo($formatted);
   $rs = mysql_query($formatted, $conn);
 
   // Go back to the advisor_view.php 
-  //header('Location:../view/advisor_view.php');
+  header('Location:../view/advisor_view.php');
 }
 else
 {
