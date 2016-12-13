@@ -4,12 +4,10 @@
 <?php
 include('mysql_connect.php');
 $apptID = $_POST['ID'];
-echo $apptID;
 session_start();
 
 //query for isFull calc
 $sql = "SELECT isGroup, NumStudents FROM appointments WHERE id=$apptID";
-echo $sql;
 $rs = mysql_query($sql, $conn);
 $appt = mysql_fetch_array($rs);
 
@@ -26,7 +24,6 @@ if ($appt['isGroup'] == 1) {
   } else {
 
     // group but not full yet
-    echo "UPdating appoitnments table group<br/>";
     $sql = "UPDATE appointments SET NumStudents=(NumStudents+1) WHERE id=$apptID";
     mysql_query($sql, $conn);
 
@@ -40,9 +37,9 @@ if ($appt['isGroup'] == 1) {
 
 }
 
-echo "updateing students table <br/>";
+echo "updating students table <br/>";
   //update student
-  $sql = "UPDATE students SET Appt = $apptID WHeRE Email='" . $_SESSION['username'] . "'";
+  $sql = "UPDATE students SET Appt = $apptID WHERE Email='" . $_SESSION['email'] . "'";
 echo $sql;
 
   mysql_query($sql, $conn);

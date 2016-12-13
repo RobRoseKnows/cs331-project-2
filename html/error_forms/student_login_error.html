@@ -5,12 +5,25 @@
 <h1>Student Login</h1>
 <!-- Prints out the error message which tells the student what they did incorrectly --> 
 <?php echo $error_message; ?>
-    <form method=post action='validate_student_login.php'>
-      <!-- Gets the basic log in info about a student from the user, username --> 
-      <p>Username: <input type=text name="username"/></p>
+
+<div id="background">
+
+  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
+
+<h1>Student Login</h1>
+    <form method=post action='../../php/validate/validate_student_login.php'>
+      <!-- Gets the only necessary data, a username from the user -->
+      <p style='color: #FF0000;'>UMBC Email: <input type=text name="email"/></p>
+      <p style ='color: #FF0000;'>Password: <input type=password name="password"/></p>
       <p><input type=submit value="Submit"/></p>
     </form>
-	
-    <!-- Hyperlink to the student registration page -->
-    <p>Not signed up? Click <a href = "../../html/forms/register_student.html">here</a> to register.</p>
+        <br><br>
+        <!-- Hyperlink to the register students page -->
+        <p style='color: #FF0000;'> Not signed up? Click <a href = "register_student.html">here</a> to register.</p>
+
+        <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
+</div>
+</body>
+</html>
+
 <?php include ('../../html/footer.html'); ?>

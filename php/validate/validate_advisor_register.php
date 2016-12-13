@@ -2,6 +2,8 @@
 <!-- This file will validate the registration of the advisor -->
 
 <?php
+session_start();
+
 require_once('../mysql_connect.php');
 
 $sql = "SELECT Email FROM advisors";
@@ -29,11 +31,13 @@ if ($_POST['email'] == "")
     $error_message .= "Email field can't be blank.<br>";
 }
 
-elseif (!preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email']))
+/*
+elseif (preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email']))
 {
     $errors = True;
     $error_message .= "Not a valid UMBC Email Address<br>";
 }
+*/
 
 //First name left blank check
 if ($_POST['fName'] == "") 
@@ -57,7 +61,7 @@ if ($_POST['office'] == "")
   }
 
 //passwords given do not match
-if ($_POST['password'] == $_POST['rePassword']) 
+if ($_POST['password'] != $_POST['rePassword']) 
 {
     $errors = True;
     $error_message .= "Passwords do not match.<br>";

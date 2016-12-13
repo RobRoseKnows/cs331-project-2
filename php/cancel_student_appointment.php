@@ -13,8 +13,9 @@ $sql = "UPDATE appointments SET isFull=0, NumStudents=(NumStudents-1) WHERE id =
 mysql_query($sql, $conn);
 
 //Update the students appointment number to NULL
-$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . $_SESSION['username'] . "'";
+$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . $_SESSION['email'] . "'";
 mysql_query($sql, $conn);
+
 
 //Redirect to student view
 header('Location:view/student_view.php');

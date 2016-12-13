@@ -1,7 +1,10 @@
 <!-- login_student.html --> 
 <!-- This file will get a username from the user then compare it to the database, if there is a match then the user will be logged in --> 
 
-<?php include ('header.html'); ?>
+<?php include ('../header.html'); 
+session_start();
+?>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,20 +16,38 @@
 
 <div id="background">
 
-  <p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>
+  <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
 
+
+<left><div id="wrapper">
+
+<h1>Welcome to CMNS Advising</h1>
 <h1>Student Login</h1>
+
+<!-- Prints out the error message which tells the student what they did incorrectly -->
+<h2>
+<?php 
+if( isset($_SESSION["error_message"]))
+{
+echo( "ERROR: " . $_SESSION["error_message"]);
+session_destroy();
+}
+?>
+</h2>
     <form method=post action='../../php/validate/validate_student_login.php'>
       <!-- Gets the only necessary data, a username from the user --> 
-      <p style='color: #FF0000;'>Username: <input type=text name="username"/></p>
+      <pre><h4>UMBC Email: <input type=text name="email"/></h4></pre>
+      <pre><h4>Password: <input type=password name="password"/></h4></pre>
       <p><input type=submit value="Submit"/></p>
     </form>
-	<br><br>
+
         <!-- Hyperlink to the register students page -->   
-	<p style='color: #FF0000;'> Not signed up? Click <a href = "register_student.html">here</a> to register.</p>
+	<p style='color: #FF0000;'> Not signed up? Click <a href = "register_student.php">here</a> to register.</p>
 
 	<h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 </div>
+</div>
+</left>
 </body>
 </html>
-<?php include ('footer.html'); ?>
+<?php include ('../footer.html'); ?>

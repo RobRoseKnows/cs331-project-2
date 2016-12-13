@@ -2,115 +2,112 @@
 <!-- This file checks if the student registering is entering valid information -->
 
 <?php
-require_once('../mysql_connect.php');
+
+session_start();
+include('../../CommonMethods.php');
+$debug = true;
+$COMMON = new Common($debug);
 
 // Finds all the usernames from the database
-$sql = "SELECT Username FROM students";
-$rs = mysql_query($sql, $conn);
+$email = ($_POST['email']);
+$sql = "SELECT * FROM `students` WHERE `Email` = '$email'";
+$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+$num_rows = mysql_num_rows($rs);
+$row = mysql_fetch_row($rs);
 
 //By default no errors
-$errors = False;
-$error_message = "";
-$other_print = "";
+$errors = FALSE;
+$_SESSION["error_message"] = "ERRORS: <br>";
+  $major = $_POST['major'];
+  $firstName = $_POST['firstName'];
+  $lastName = $_POST['lastName'];
+  $studentID = $_POST['studentID'];
+  $password = $_POST['password'];
+  $rePass = $_POST['rePassword'];
+  $prefName = $_POST['prefName'];
+
 
 //Loop through usernames, check for match
-while($existing = mysql_fetch_array($rs))
+if($num_rows > 0)
 {
-  if ($_POST['email'] == $existing['Email'])
-  {
     //Match found - BAD - there is an error
-    $errors = True;
-    $error_message = "Email already taken<br>";
-    break;
-  }
+    $errors = TRUE;
+    $_SESSION["error_message"] .= "Email already taken<br>";
 }
 
 //Username left blank check
-if ($_POST['username'] == "") 
+if ($email == "") 
 {
-  $errors = True;
-  $error_message .= "Email field can't be blank.<br>";
-} elseif (!preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email'])) {
-    $errors = True;
-    $error_message .= "Not a valid UMBC Email<br>";
-}
+  $errors = TRUE;
+  $_SESSION["error_message"] .= "Email field can't be blank.<br>";
+} 
 
 //Major left blank check
-if ($_POST['major'] == "") 
+if ($major == "") 
 {
-  $errors = True;
-  $error_message .= "Major field can't be left blank.<br>";
+  $errors = TRUE;
+  $_SESSION["error_message"] .= "Major field can't be left blank.<br>";
 }
-if ($_POST['major'] == "Other")
+if ($major == "Other")
 {
   //set a variable and store the other error message in it
-  $other_print .= "PRINT SOME MESSAGE ABOUT BEING AN OTHER.<br>";
+  $_SESSION["other_message"] = "PRINT SOME MESSAGE ABOUT BEING AN OTHER.<br>";
 
 }
 // First name left blank check
-if ($_POST['firstName'] == "")
+if ($firstName == "")
 {
-  $errors = True;
-  $error_message .= "First Name field can't be left blank.<br>";
+  $errors = TRUE;
+  $_SESSION["error_message"] .= "First Name field can't be left blank.<br>";
 }
 
 // Last name left blank check
-if ($_POST['lastName'] == "")
+if ($lastName == "")
 {
-  $errors = True;
-  $error_message .= "Last Name field can't be left blank.<br>";
+  $errors = TRUE;
+  $_SESSION["error_message"] .= "Last Name field can't be left blank.<br>";
 }
 
 // StudentID left blank check
-if ($_POST['studentID'] == "") 
+if ($studentID == "") 
 {
-  $errors = True;
-  $error_message .= "Student ID field can't be left blank.<br>";
+  $errors = TRUE;
+  $_SESSION["error_message"] .= "Student ID field can't be left blank.<br>";
 }
 
 // email left blank check
-if ($_POST['email'] == "")
+if ($email == "")
 {
-  $errors = True;
-  $error_message .= "Email field can't be left blank.<br>";
+  $errors = TRUE;
+  $_SESSION["error_message"] .= "Email field can't be left blank.<br>";
 }
 
 //passwords given do not match
-if ($_POST['password'] == $_POST['rePassword']) 
+if ($password != $rePass) 
 {
-    $errors = True;
-    $error_message .= "Passwords do not match.<br>";
+    $errors = TRUE;
+    $_SESSION["error_message"] .= "Passwords do not match.<br>";
 }
   
-if ($errors != True) 
+if ($errors != TRUE) 
 {
   //No errors - GOOD - Insert into database
-  $email = $_POST['email'];
-  $major = $_POST['major'];
-  $fName = $_POST['fName'];
-  $lName = $_POST['lName'];
-  $studentID = $_POST['studentID'];
-  $password = $_POST['password'];
+
   $hashedPass = md5($password);
+  $_SESSION["email"] = ($_POST['email']);
 
-  $queryFormat =
-      "INSERT INTO `students` (`Email`, `Major`, `firstName`, `lastName`, `studentID`, `Password`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')";
 
-  $queryBuilt =
-      sprintf($queryFormat, $email, $major, $fName, $lName, $studentID, $hashedPass);
+      
 
-  $rs = mysql_query($queryBuilt, $conn);
-
-  session_start();
-  $_SESSION['username'] = $_POST['email'];
-  $_SESSION['otherMessage'] = $other_print;
+  $sql = "INSERT INTO `students` (`Email`, `Major`, `firstName`, `lastName`, `studentID`, `Password`, `prefName`) VALUES ('$email', '$major', '$firstName', '$lastName', '$studentID', '$hashedPass', '$prefName')";
+  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
   // Go to the student_view.php file
-  header('Location:../view/student_view.php');
+  header('Location: ../view/student_view.php');
 }
 else
 {
-  // Go to the register_student_error.html file
-  require('../../html/error_forms/register_student_error.html');
+  // Go to the register_student.php file
+  header('Location: ../../html/forms/register_student.php');
 }
 ?>
