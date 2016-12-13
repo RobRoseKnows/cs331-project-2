@@ -1,7 +1,8 @@
-<!-- validate_student_login.php -->
-<!-- This file will check if the student logging in is entering a valid value --> 
+//validate_student_login.php 
+//This file will check if the student logging in is entering a valid value 
 
 <?php
+session_start();
 
 require_once('../mysql_connect.php');
 
@@ -13,10 +14,12 @@ $truePassword = md5($password);
 $sql = "SELECT * FROM `students` WHERE `Email` = '$email' AND `Password` = '$truePassword'";
 $rs = mysql_query($sql, $conn);
 $name_found = False;
-$error_message  = "";
+$_SESSION["error_message"] = "";
 
 //count of how many many rows are returned when query is run 
 $num_rows = mysql_num_rows($rs);
+
+echo "should print";
 
 //if only one match, password correct
 if($num_rows == 1){
@@ -27,7 +30,7 @@ if($num_rows == 1){
 if ($name_found) 
 {
   session_start();
-  $_SESSION['username'] = $email;
+  $_SESSION['email'] = $email;
 
   // go to the student_view.php page
   header('Location:../../php/view/student_view.php');
@@ -39,16 +42,20 @@ else
   // Check if the username was left blank
   if ($email == "")
   {
-    $error_message .= "Username field can't be blank.<br>";
+    echo "should print";
+      $_SESSION["error_message"] = "Username field can't be blank.<br>";
+
   }
   
   // Check if the username or password was not found in the data base
   else 
   {
-    $error_message = "Username or password not recognized.<br>";
+      $_SESSION["error_message"] = "Username or password not recognized.<br>";
+      echo "should print";
   } 
   
-  // go to the student_login_error.html file 
-  include('../../html/error_forms/student_login_error.html');
+  // go back to the login_student.html file 
+  header('Location: ../../html/forms/login_student.php');
+
 }
 ?>

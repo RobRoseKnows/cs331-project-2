@@ -4,7 +4,7 @@
 <?php
 
 require_once('../mysql_connect.php');
-
+session_start();
 $email = $_POST['email'];
 $password = ($_POST['password']);
 $truePassword = md5($password);
@@ -13,8 +13,8 @@ $truePassword = md5($password);
 $sql = "SELECT * FROM advisors WHERE `Email` = '$email' AND `Password` = '$truePassword'";
 $rs = mysql_query($sql, $conn);
 $name_found = False;
-$error_message  = "";
 
+$_SESSION['error_message'] = "";
 //count of how many many rows are returned when query is run 
 $num_rows = mysql_num_rows($rs);
 
@@ -27,7 +27,7 @@ if($num_rows == 1){
 // This is the pass case
 if ($name_found) 
 {
-  session_start();		
+ 
   $_SESSION['username'] = $email;
   header('Location:../../php/view/advisor_view.php');
 } 
@@ -35,22 +35,20 @@ if ($name_found)
 // This is the fail case
 else
 {
+
   // Username field left blank
   if ($email == "")
   {
-    $error_message .= "Email field can't be blank.<br>";
-  }
-
-  elseif (!preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $email)) {
-    $error_message .= "Email is not a valid UMBC email.<br>";
+    $_SESSION['error_message'] .= "Email field can't be blank.<br>";
   }
 
   // Username does not exist in the table OR password is incorrect
   else 
   {
-    $error_message = "Email or password not recognized.<br>";
+    $_SESSION['error_message'] = "Email or password not recognized.<br>";
   } 
   
-  include('../../html/error_forms/advisor_login_error.html');
+  header('Location: ../../html/forms/login_advisor.html');
 }
+
 ?>
