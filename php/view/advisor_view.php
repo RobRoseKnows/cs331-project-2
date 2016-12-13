@@ -10,18 +10,21 @@ session_start();
 date_default_timezone_set('America/New_York');
 
 //Fetching appointments
-$sql = "SELECT * FROM appointments WHERE AdvisorUsername='" . $_SESSION['email'] . "' ORDER BY Date ASC, Time ASC";
+$sql = "SELECT * FROM appointments WHERE AdvisorEmail='" . $_SESSION['email'] . "' ORDER BY Date ASC, Time ASC";
 $rs = mysql_query($sql, $conn);
 
 // Tell the user who they are logged in as
 echo "Logged in as: " . $_SESSION['email']; 
 echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
-$appt = mysql_fetch_array($rs);
 
-// Prints out the titles of the table 
-if($appt)
+// If there was no appointment, $rs will be false
+if($rs)
 {
+  // Get the appointments
+  $appt = mysql_fetch_array($rs);
+
+  // Prints out the titles of the table
   echo "<h3> My Scheduled Appointments </h3>";	
   echo "<table>";
   echo "<tr>";
@@ -68,6 +71,10 @@ if($appt)
 
     ?>
     <td>
+      <form method=post action="../../html/forms/add_appointment.php">
+        <?php echo "<input type=hidden name='ID' value='$apptID' />"; ?>
+        <input type=submit name=editAppointment value="Edit"/>
+      </form>
     <form method=post action="../cancel_advisor_appointment.php">
        <?php echo "<input type=hidden name='ID' value='$apptID' />"; ?>
        <input type=submit value="Cancel"/>
@@ -85,7 +92,7 @@ else
   echo "<h3>You have not scheduled any appointments</h3>";
 }
 ?>
-<form method=post action="../../html/forms/add_appointment.html">
+<form method=post action="../../html/forms/add_appointment.php">
    <input type=submit value="Add Appointment"/>
 </form>
 <br/>

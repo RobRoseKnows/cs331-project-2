@@ -37,7 +37,7 @@ $rs = mysql_query($sql, $conn);
 $fullName = mysql_fetch_array($rs)['fullName'];
 
 // Make a query to get appointmenst where it has the correct advisor username
-$sql = "SELECT * FROM appointments WHERE AdvisorUsername='$username' AND isFull=0";
+$sql = "SELECT * FROM appointments WHERE AdvisorEmail='$username' AND isFull=0";
 $rs = mysql_query($sql, $conn);
 
 ?>
@@ -55,7 +55,7 @@ $rs = mysql_query($sql, $conn);
 <?php
 
  // Go line by line through the selected rows of the appointments 
-while ($appt = mysql_fetch_array($rs))
+while ($rs != false && $appt = mysql_fetch_array($rs))
 {
   // Get whether the appointment is a group or not
   if ($appt['isGroup'] == 0) {

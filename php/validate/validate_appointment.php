@@ -10,7 +10,7 @@ session_start();
 $email = $_SESSION['email'];
 
 // Creates the query to get the information from the appointments database where the username is equal to the current session username
-$sql = "SELECT Date, Time FROM appointments WHERE `AdvisorEmail` = '$email'";
+$sql = "SELECT * FROM appointments WHERE `AdvisorEmail` = '$email'";
 $rs = mysql_query($sql, $conn);
 $errors = False;
 $error_message = "";
@@ -32,9 +32,10 @@ $todayStr = date_format($today, 'Y-m-d');
 $currTime = date_format($today, 'G:i');
 
 //Time not already scheduled check
-while($row = mysql_fetch_array($rs)) 
+while($row = mysql_fetch_assoc($rs))
 {
-  if ($time == $row['Time'] && $date == $row['Date'])
+    echo(var_dump($row));
+  if (($time == $row['Time'] && $date == $row['Date']) && !(isset($_POST['ID']) && $row['id'] == $_POST['ID']))
   {
     //Match found - BAD - there is an error
     $errors = True;
@@ -66,10 +67,17 @@ if ($location == "")
 // If there are errors 
 if(!$errors)
 {
-
-  // Insert a new appointment into the appointments table
-  $sql =
-      "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+    if(isset($_POST['ID'])){
+        // Notify students with this appointment
+        $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='".$_POST['ID']."'";
+        mysql_query($sql, $conn);
+        // Modify an existing appointment
+        $sql = "UPDATE appointments SET Date='%s', Time='%s', Location='%s', isGroup='%s', SessionLeader='%s', AdvisorEmail='%s', MaxAttendees='%s' WHERE id='".$_POST['ID']."'";
+    }
+    else {
+        // Insert a new appointment into the appointments table
+        $sql = "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+    }
   $formatted = sprintf($sql, $date, $time, $location, $group, $leader, $email, $maxAttendees);
 
   $rs = mysql_query($formatted, $conn);
@@ -81,7 +89,7 @@ else
 {
     $_SESSION['appointmentError'] = $error_message;
   // Go to the error page for add appoinment 
-  require('../../html/forms/add_appointment.html');
+  require('../../html/forms/add_appointment.php');
 }
 ?>
 </head>
