@@ -10,11 +10,11 @@ session_start();
 date_default_timezone_set('America/New_York');
 
 //Fetching appointments
-$sql = "SELECT * FROM appointments WHERE AdvisorUsername='" . $_SESSION['username'] . "' ORDER BY Date ASC, Time ASC";
+$sql = "SELECT * FROM appointments WHERE AdvisorUsername='" . $_SESSION['email'] . "' ORDER BY Date ASC, Time ASC";
 $rs = mysql_query($sql, $conn);
 
 // Tell the user who they are logged in as
-echo "Logged in as: " . $_SESSION['username']; 
+echo "Logged in as: " . $_SESSION['email']; 
 echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
 $appt = mysql_fetch_array($rs);
