@@ -25,16 +25,19 @@ session_start();
 require('../../CommonMethods.php');
 $debug = true;
 $COMMON = new Common($debug);
-if( isset($_SESSION["other_message"]))
-{
-echo "Notice: " . $_SESSION["other_message"]; 
-}
+
 // Set timezone to the east coast
 date_default_timezone_set('America/New_York');
 
 // Get all info about advisors 
 $sql = "SELECT * FROM `advisors`";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+
+
+echo '<form method=post action="../editStudentInfo.php">';
+echo '<input type=submit value="Edit Information"/>';
+echo '</form>';
+
 
 if(mysql_fetch_array($rs))
   {
