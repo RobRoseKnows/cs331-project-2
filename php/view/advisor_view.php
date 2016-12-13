@@ -1,3 +1,44 @@
+<!-- advisor_view.php -->
+<!-- This file shows the advisor what appointments they have scheduled -->
+
+<html>
+<head>
+<title>View Appointments</title>
+   <link rel='stylesheet' type='text/css' href='../../html/standard.css'/>
+   <link rel='icon' type='image/png' href='../../html/standard.css'/>
+<style>
+table, th, td {
+border: 1px solid black;
+}
+
+td {
+text-align:center;
+vertical-align:middle;
+}
+
+form {
+position:relative;
+top:8px;
+}
+</style>
+</head>
+<body>
+
+<div id="background">
+<left><div id="wrapper">
+<h1>CMNS Advising</h1>
+
+<table border="0">
+<tr>
+<form action="../processAdvisorHomepage.php" method="post" name="Home">
+  <td><input type="submit" name="next" class="button main selection" value="Schedule appointment"></td>
+
+  <td><input type="submit" name="next" class="button main selection" value="Print schedule"></td>
+
+  <td><input type="submit" name="next" class="button main selection" value="Search appointments"></td>
+</form>
+</tr>
+</table>
 
 <?php
 //advisor_view.php
@@ -18,13 +59,11 @@ echo "Logged in as: " . $_SESSION['email'];
 echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
 
-// If there was no appointment, $rs will be false
-if($rs)
-{
-  // Get the appointments
-  $appt = mysql_fetch_array($rs);
+$appt = mysql_fetch_array($rs);
 
-  // Prints out the titles of the table
+// Prints out the titles of the table 
+if($appt)
+{
   echo "<h3> My Scheduled Appointments </h3>";	
   echo "<table>";
   echo "<tr>";
@@ -71,10 +110,6 @@ if($rs)
 
     ?>
     <td>
-      <form method=post action="../../html/forms/add_appointment.php">
-        <?php echo "<input type=hidden name='ID' value='$apptID' />"; ?>
-        <input type=submit name=editAppointment value="Edit"/>
-      </form>
     <form method=post action="../cancel_advisor_appointment.php">
        <?php echo "<input type=hidden name='ID' value='$apptID' />"; ?>
        <input type=submit value="Cancel"/>
@@ -92,12 +127,17 @@ else
   echo "<h3>You have not scheduled any appointments</h3>";
 }
 ?>
-<form method=post action="../../html/forms/add_appointment.php">
+<form method=post action="../../html/forms/add_appointment.html">
    <input type=submit value="Add Appointment"/>
 </form>
 <br/>
 
 <p> Register an Advisor: Click <a href = "../../html/forms/register_advisor.html">here</a> to register.</p>
 
+	<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>
 </body>
 </html>
