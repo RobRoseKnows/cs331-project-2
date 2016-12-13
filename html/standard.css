@@ -17,9 +17,15 @@ h1{
     padding-bottom: 2%;
     }
 
-form {
+#form1 {
     margin-left: 25%;
     margin-right: 75%;
+    color: #FF0000;
+}
+
+form {
+    /*margin-left: 25%;
+    margin-right: 75%;*/
     color: #FF0000;
 }
 
