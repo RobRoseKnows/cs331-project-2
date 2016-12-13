@@ -28,14 +28,11 @@ top:8px;
 <table border="0">
 <tr>
 <form action="../processAdvisorHomepage.php" method="post" name="Home">
-  <td><input type="submit" name="next" class="button main selection" value="Schedule\
- appointment"></td>
+  <td><input type="submit" name="next" class="button main selection" value="Schedule appointment"></td>
 
-  <td><input type="submit" name="next" class="button main selection" value="Print sc\
-hedule"></td>
+  <td><input type="submit" name="next" class="button main selection" value="Print schedule"></td>
 
-  <td><input type="submit" name="next" class="button main selection" value="Search a\
-ppointments"></td>
+  <td><input type="submit" name="next" class="button main selection" value="Search appointments"></td>
 </form>
 </tr>
 </table>
