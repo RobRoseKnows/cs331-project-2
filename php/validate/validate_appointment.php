@@ -67,13 +67,11 @@ if ($location == "")
 if(!$errors)
 {
 
-  //echo $sql;
-
   // Insert a new appointment into the appointments table
   $sql =
       "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
   $formatted = sprintf($sql, $date, $time, $location, $group, $leader, $email, $maxAttendees);
-    //echo($formatted);
+
   $rs = mysql_query($formatted, $conn);
 
   // Go back to the advisor_view.php 
@@ -81,9 +79,9 @@ if(!$errors)
 }
 else
 {
-    echo($error_message);
+    $_SESSION['appointmentError'] = $error_message;
   // Go to the error page for add appoinment 
-  require('../../html/error_forms/add_appointment.html');
+  require('../../html/forms/add_appointment.html');
 }
 ?>
 </head>
