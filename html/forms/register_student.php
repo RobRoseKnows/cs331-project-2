@@ -32,6 +32,7 @@ session_destroy();
 </h2>
 
     <h1>Student Registration</h1>
+	<div id="form1">
     <form method='post' action='../../php/validate/validate_student_register.php'>
       <!-- Gets information from the potential student, username, major --> 
       <pre><h4>First Name: <input type='text' name="firstName"/></h4></pre>
@@ -42,7 +43,7 @@ session_destroy();
       <pre><h4>UMBC Email: <input type='text' name="email"/></h4></pre>
       <pre><h4>Password: <input type='password' name="password"/></h4></pre>
       <pre><h4>Re-Type Password: <input type='password' name="rePassword"/></h4></pre>
-      <pre><h4>Major: <select name="major"></h4></pre><br>
+      <pre><h4>Major: <select name="major">
 	  
 	  <!-- This creates a drop down box of the possible major choices -->
 	  <option value = "Biological Sciences BA">Biological Sciences BA</option>
@@ -56,12 +57,18 @@ session_destroy();
 	  <option value = "Other">Other</option>
 	  
 	  </select>
-	  <otherText>Select the major that you intend to pursue NEXT SEMESTER (this may be different from your current officially declared major).
-The major selected can be either your primary or secondary major. If you are only planning to pursue ONE major, and your
-major of choice is not listed, please choose Other</otherText>
+	    </h4></pre>
+	  <pre><h4>Select the major that you intend to pursue 
+	  NEXT SEMESTER (this may be different from your 
+	  current officially declared major).
+	The major selected can be either your 
+	primary or secondary major. If you are only 
+	planning to pursue ONE major, and your
+	major of choice is not listed, please choose Other</h4></pre>
 	  
       <p><input type=submit value="Submit"/></p>
     </form>
+	</div>
 
 
 
@@ -71,8 +78,8 @@ major of choice is not listed, please choose Other</otherText>
 <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 
 </div>
-</div>
 </left>
+</div>
 </body>
 </html>
 <?php require('../footer.html'); ?>
