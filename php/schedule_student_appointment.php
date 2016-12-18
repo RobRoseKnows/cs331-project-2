@@ -2,11 +2,22 @@
 <!-- This code shows a form to look up advisors by the date --> 
 
 <?php include ('../html/header.html'); ?>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advising Homepage</title>
+    <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+    <link rel="icon" type="image/png" href="../corner.png" />
+  </head>
+  <body>
 
+<div id="background">
+<left><div id="wrapper">
 <h1>Schedule an appointment </h1>
+   <div id="form1">
     <form method=post action="get_appointments.php">
-	<h3>When would you like to schedule the appointment?</h3>
-	<p>Choose Week: <select name="week"/>
+	<pre><h3>When would you like to schedule the appointment?</h3></pre>
+	<pre><h4>Choose Week: <select name="week"/>
 	<option value = 0 selected>this week</option>
 	<option value = 1> next week</option>
 
@@ -30,18 +41,23 @@
 	?>
 	<!-- END PHP -->
 	</select>
-	</p>
+	</h4></pre>
 	
-    <p>Group? 
-	<select name="group">
+    <pre><h4>Group? <select name="group">
 	  <option value=1>Yes</option>
 	  <option value=0>No</option>
 	  <option value=2 selected>Don't care</option>
 		</select>
-	</p>
+	</h4></pre>
     <p><input type=submit value="Submit"/></p>
     </form>
+</div>
     <!-- HyperLink to search appointments by advisor --> 
     <p><a href = "search_advisor.php"> Or Look Up By Advisor </a></p>
-	
+
+</div>
+</left>
+</div>
+</body>
+</html>	
 <?php include ('../html/footer.html'); ?>
