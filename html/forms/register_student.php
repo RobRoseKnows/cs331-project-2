@@ -36,7 +36,7 @@
                     <!-- Gets information from the potential student, username, major -->
                     <pre><h4>First Name: <input type='text' name="firstName"/></h4></pre>
                     <pre><h4>Last Name: <input type='text' name="lastName"/></h4></pre>
-                    <pre><h4>Preffered Name: <input type='text' name="prefName"/></h4></pre>
+                    <pre><h4>Preferred Name: <input type='text' name="prefName"/></h4></pre>
 
                     <pre><h4>Campus ID: <input type='text' name="studentID"/></h4></pre>
                     <pre><h4>UMBC Email: <input type='text' name="email"/></h4></pre>
