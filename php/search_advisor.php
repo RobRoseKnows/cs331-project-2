@@ -3,7 +3,21 @@
      this will eventually put them in a dropdown box -->
 
 <?php
-include ('../html/header.html');
+include ('../html/header.html'); ?>
+
+<html>
+<head>
+    <title>View Appointments</title>
+    <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+    <link rel='icon' type='image/png' href='../../html/standard.css'/>
+</head>
+<body>
+
+<div id="background">
+<left><div id="wrapper">
+<h1>CMNS Advising</h1>
+
+<?php
 // connect to the database
 include ('mysql_connect.php');
 
@@ -25,5 +39,13 @@ $rs = mysql_query($sql, $conn);
 </select>
   <input type=submit value="Submit"/>
 </form>
+
+<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>
+</body>
+</html>
 
 <?php include('../html/footer.html'); ?>

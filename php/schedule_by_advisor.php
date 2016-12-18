@@ -5,6 +5,8 @@
 
 <html>
 <head><title>Advising</title>
+<link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+<link rel='icon' type='image/png' href='../../html/standard.css'/>
 <style>
 table, th, td {
 border: 1px solid black;
@@ -22,6 +24,10 @@ top:8px;
 </style>
 </head>
 <body>
+
+<div id="background">
+<left><div id="wrapper">
+<h1>CMNS Advising</h1>
 
 <?php
 
@@ -83,6 +89,12 @@ while ($rs != false && $appt = mysql_fetch_array($rs))
   echo "</tr>";
   }
 ?>
+
+<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>
 </table>
 </body>
 </html>

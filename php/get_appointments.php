@@ -28,7 +28,7 @@ top:8px;
 <left><div id="wrapper">
 <h1>CMNS Advising</h1>
 
-<table border="0">
+<!--<table border="0">
 <tr>
 <form action="processAdvisorHomepage.php" method="post" name="Home">
   <td><input type="submit" name="next" class="button main selection" value="Schedule appointment"></td>
@@ -38,7 +38,7 @@ top:8px;
   <td><input type="submit" name="next" class="button main selection" value="Search appointments"></td>
 </form>
 </tr>
-</table>
+</table>-->
 
   
 <?php
@@ -86,7 +86,7 @@ while ($appt = mysql_fetch_array($rs))
   echo "<tr>";
   echo "<td class='not_register'>" . $appt['Date'] . "</td>";
   echo "<td class='not_register'>" . date("g:ia", strtotime($appt['Time'])) . "</td>";
-  echo "<td class='not_register'>" . $appt['Advisor'] . "</td>";
+  echo "<td class='not_register'>" . $appt['SessionLeader'] . "</td>";
   echo "<td class='not_register'>" . $appt['Location'] . "</td>";
   if($appt['isGroup'] == 0)
     echo "<td class='not_register'>" . "No" . "</td>";
@@ -98,7 +98,7 @@ while ($appt = mysql_fetch_array($rs))
   ?>
     <td>
        <form method=post action="table_handler.php">
-       <?php echo "<input type=hidden name='ID' value=$apptID/>"; ?>
+       <?php echo "<input type=hidden name='ID' value=\"" .$apptID . "\"/>"; ?>
        <input type=submit value="Register"/>
        </form>
        </td>
