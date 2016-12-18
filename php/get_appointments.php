@@ -86,7 +86,7 @@ while ($appt = mysql_fetch_array($rs))
   echo "<tr>";
   echo "<td class='not_register'>" . $appt['Date'] . "</td>";
   echo "<td class='not_register'>" . date("g:ia", strtotime($appt['Time'])) . "</td>";
-  echo "<td class='not_register'>" . $appt['Advisor'] . "</td>";
+  echo "<td class='not_register'>" . $appt['SessionLeader'] . "</td>";
   echo "<td class='not_register'>" . $appt['Location'] . "</td>";
   if($appt['isGroup'] == 0)
     echo "<td class='not_register'>" . "No" . "</td>";
