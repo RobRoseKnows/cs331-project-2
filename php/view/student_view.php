@@ -63,10 +63,34 @@ if(mysql_fetch_array($rs))
     echo "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
     if (!is_null(($studentApptNum))) {
+      //print a table containing info about the student's appointment
+?>
+<table>
+<tr>
+<th>Date</th>
+<th>Time</th>
+<th>Location</th>
+<th>Advisor</th>
+</tr>
+<?php
+
+	//Get the appointment information
+	$sql2 = "SELECT `SessionLeader`, `Date`, `Time`, `Location` FROM `appointments` WHERE `id` = $studentApptNum";
+      $rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
+      $myRow = mysql_fetch_row($rs2);
+      
+      echo"<tr>";
+      echo"<td class='not_register'>" .$myRow[1] . "</td>";
+      echo"<td class='not_register'>" .$myRow[2] . "</td>";
+      echo"<td class='not_register'>" .$myRow[3] . "</td>";
+      echo"<td class='not_register'>" .$myRow[0] . "</td>";
+      
         // Print a button to cancel the student appointment
+      echo"<td>";
         echo '<form method=post action="../cancel_student_appointment.php">';
         echo '<input type=submit value="Cancel Appointment"/>';
         echo '</form>';
+	echo"</td>";
     } else {
         // Print a button to schedule an appointment
         echo '<form method=post action="../schedule_student_appointment.php">';
