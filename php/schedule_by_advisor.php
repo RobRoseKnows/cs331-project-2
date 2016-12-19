@@ -5,6 +5,8 @@
 
 <html>
 <head><title>Advising</title>
+<link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+<link rel='icon' type='image/png' href='../../html/corner.png'/>
 <style>
 table, th, td {
 border: 1px solid black;
@@ -22,6 +24,10 @@ top:8px;
 </style>
 </head>
 <body>
+
+<div id="background">
+<left><div id="wrapper">
+<h1>CMNS Advising</h1>
 
 <?php
 
@@ -44,7 +50,7 @@ $rs = mysql_query($sql, $conn);
 
 <!-- Prints out a table of the available appointments  -->
 <?php echo "<h2> Showing available appointments for: <br/> $fullName ($username)</h2>"; ?>
-<table>
+<center><table>
 <tr>
 <th>Date</th>
 <th>Time</th>
@@ -83,6 +89,13 @@ while ($rs != false && $appt = mysql_fetch_array($rs))
   echo "</tr>";
   }
 ?>
-</table>
+
+</table></center>
+
+<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+
+</div>
+</left>
+</div>
 </body>
 </html>
