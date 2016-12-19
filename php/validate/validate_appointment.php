@@ -19,12 +19,12 @@ $error_message = "";
 date_default_timezone_set('America/New_York');
 
 // Post all the information input by the advisor
-$date = $_POST['date'];
-$time = $_POST['time'];
-$location = $_POST['location'];
-$group = $_POST['group'];
-$leader = $_POST['leader'];
-$maxAttendees = $_POST['maxAttend'];
+$date = mysqli_real_escape_string($_POST['date']);
+$time = mysqli_real_escape_string($_POST['time']);
+$location = mysqli_real_escape_string($_POST['location']);
+$group = mysqli_real_escape_string($_POST['group']);
+$leader = mysqli_real_escape_string($_POST['leader']);
+$maxAttendees = mysqli_real_escape_string($_POST['maxAttend']);
 
 // Create a date for today 
 $today = date_create();
@@ -68,15 +68,27 @@ if ($location == "")
 if(!$errors)
 {
     if(isset($_POST['ID'])){
+        $escaped_id = mysqli_real_escape_string($_POST['ID']);
+
         // Notify students with this appointment
-        $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='".$_POST['ID']."'";
+        $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='$escaped_id'";
         mysql_query($sql, $conn);
         // Modify an existing appointment
-        $sql = "UPDATE appointments SET Date='%s', Time='%s', Location='%s', isGroup='%s', SessionLeader='%s', AdvisorEmail='%s', MaxAttendees='%s' WHERE id='".$_POST['ID']."'";
+        $sql = "UPDATE appointments
+                SET `Date`='%s', 
+                    `Time`='%s', 
+                    Location='%s', 
+                    isGroup='%s', 
+                    SessionLeader='%s', 
+                    AdvisorEmail='%s', 
+                    MaxAttendees='%s' 
+                    WHERE id='$escaped_id'";
     }
     else {
         // Insert a new appointment into the appointments table
-        $sql = "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+        $sql = "INSERT INTO appointments 
+                (`Date`, `Time`, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) 
+                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
     }
   $formatted = sprintf($sql, $date, $time, $location, $group, $leader, $email, $maxAttendees);
 
