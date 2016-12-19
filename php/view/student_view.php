@@ -65,7 +65,7 @@
                 if (!is_null(($studentApptNum))) {
                     //print a table containing info about the student's appointment
                     ?>
-                    <table>
+                    <center><table>
                     <tr>
                         <th>Date</th>
                         <th>Time</th>
@@ -98,7 +98,7 @@
                     echo '</form>';
                 }
                 ?>
-                </table>
+                        </table></center>
 
             <?php } //handles the case if no advisors have made an appointment
             else {
