@@ -53,13 +53,14 @@
 
             if (mysql_fetch_array($rs)) {
                 //Getting Appointment Number
-                $sql = "SELECT `Appt` FROM `students` WHERE `Email`='" . $_SESSION["email"] . "'";
+                $session_email = mysqli_real_escape_string($_SESSION['email']);
+                $sql = "SELECT `Appt` FROM `students` WHERE `Email`='$session_email'";
                 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
                 $row = mysql_fetch_row($rs);
                 $studentApptNum = $row[0];
                 $_SESSION['appt'] = $row[0];
 
-                echo "Logged in as: " . $_SESSION["email"] . "<br>";
+                echo "Logged in as: $session_email<br>";
                 echo "<a href = '../../html/forms/first_page.html'>Log Me Out</a>";
 
                 if (!is_null(($studentApptNum))) {
@@ -75,7 +76,8 @@
                     <?php
 
                     //Get the appointment information
-                    $sql2 = "SELECT `SessionLeader`, `Date`, `Time`, `Location` FROM `appointments` WHERE `id` = $studentApptNum";
+                    $sql2 = "SELECT `SessionLeader`, `Date`, `Time`, `Location` 
+                            FROM `appointments` WHERE `id` = $studentApptNum";
                     $rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
                     $myRow = mysql_fetch_row($rs2);
 

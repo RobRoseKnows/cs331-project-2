@@ -6,26 +6,22 @@ session_start();
 
 require_once('../mysql_connect.php');
 
-$sql = "SELECT Email FROM advisors";
+$posted_email = mysqli_real_escape_string($_POST['email']);
+
+$sql = "SELECT Email FROM advisors WHERE `Email` = '$posted_email'";
 $rs = mysql_query($sql, $conn);
 
 //By default no errors
 $errors = False;
 $error_message = "";
 
-//Loop through usernames, check for match
-while($existing = mysql_fetch_array($rs))
-{
-  if ($_POST['email'] == $existing['Email'])
-  {
-    //Match found - BAD - there is an error
-    $errors = True;
-    $error_message = "Email already taken<br>";
-  }
+if(mysql_num_rows($rs) > 0) {
+  $errors = True;
+  $error_message = "Email already taken<br>";
 }
 
 //Username left blank check
-if ($_POST['email'] == "")
+if ($posted_email == "")
 {
     $errors = True;
     $error_message .= "Email field can't be blank.<br>";
@@ -40,7 +36,7 @@ elseif (preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email']))
 */
 
 //First name left blank check
-if ($_POST['fName'] == "") 
+if ($_POST['fName']) == "") 
 {
     $errors = True;
     $error_message .= "First name field can't be blank.<br>";
@@ -70,9 +66,9 @@ if ($_POST['password'] != $_POST['rePassword'])
 if ($errors != True) 
 {
   //No errors - GOOD - Insert into database
-  $fullName = $_POST['fName'] . " " . $_POST['lName'];
-  $email = $_POST['email'];
-  $office = $_POST['office'];
+  $fullName = mysqli_real_escape_string($_POST['fName'] . " " . $_POST['lName']);
+  $email = mysqli_real_escape_string($_POST['email']);
+  $office = mysqli_real_escape_string($_POST['office']);
   $password = $_POST['password'];
     $hashedPass = md5($password);
 
@@ -83,7 +79,7 @@ if ($errors != True)
   $rs = mysql_query($queryBuilt, $conn);
   
   session_start();
-  $_SESSION['username'] = $_POST['email'];
+  $_SESSION['username'] = $email;
   header('Location:../../php/view/advisor_view.php');
 }
 else

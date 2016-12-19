@@ -47,12 +47,14 @@ session_start();
 // set the timezone to the east coast
 date_default_timezone_set('America/New_York');
 
+$email = mysqli_real_escape_string($_SESSION['email']);
+
 //Fetching appointments
-$sql = "SELECT * FROM appointments WHERE AdvisorEmail='" . $_SESSION['email'] . "' ORDER BY Date ASC, Time ASC";
+$sql = "SELECT * FROM appointments WHERE AdvisorEmail='$email' ORDER BY `Date` ASC, `Time` ASC";
 $rs = mysql_query($sql, $conn);
 
 // Tell the user who they are logged in as
-echo "Logged in as: " . $_SESSION['email']; 
+echo "Logged in as: " . $email; 
 echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
 
