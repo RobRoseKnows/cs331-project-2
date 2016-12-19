@@ -222,7 +222,7 @@ if($searchVar != "") {
 }
 ?>
  
-
+<p><a href="view/advisor_view.php"> Go Back to Advisor View </a></p>
 <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
 
 </div>
