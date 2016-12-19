@@ -3,7 +3,7 @@
 
 <?php
 include('mysql_connect.php');
-$apptID = mysqli_real_escape_string($_POST['ID']);
+$apptID = $_POST['ID'];
 session_start();
 
 //query for isFull calc

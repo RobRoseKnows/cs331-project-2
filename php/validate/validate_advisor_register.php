@@ -6,7 +6,7 @@ session_start();
 
 require_once('../mysql_connect.php');
 
-$posted_email = mysqli_real_escape_string($_POST['email']);
+$posted_email = ($_POST['email']);
 
 $sql = "SELECT Email FROM advisors WHERE `Email` = '$posted_email'";
 $rs = mysql_query($sql, $conn);
@@ -36,7 +36,7 @@ elseif (preg_match("/^[A-Za-z0-9._+-]+@umbc\.edu$/", $_POST['email']))
 */
 
 //First name left blank check
-if ($_POST['fName']) == "") 
+if ($_POST['fName'] == "")
 {
     $errors = True;
     $error_message .= "First name field can't be blank.<br>";
@@ -66,9 +66,9 @@ if ($_POST['password'] != $_POST['rePassword'])
 if ($errors != True) 
 {
   //No errors - GOOD - Insert into database
-  $fullName = mysqli_real_escape_string($_POST['fName'] . " " . $_POST['lName']);
-  $email = mysqli_real_escape_string($_POST['email']);
-  $office = mysqli_real_escape_string($_POST['office']);
+  $fullName = ($_POST['fName'] . " " . $_POST['lName']);
+  $email = ($_POST['email']);
+  $office = ($_POST['office']);
   $password = $_POST['password'];
     $hashedPass = md5($password);
 

@@ -2,16 +2,16 @@
 session_start();
 
 //grabs session vars
-$_SESSION["firstName"] = mysqli_real_escape_string($_POST["firstName"]);
-$_SESSION["lastName"] = mysqli_real_escape_string($_POST["lastName"]);
-$_SESSION["studEmail"] = mysqli_real_escape_string($_POST["studEmail"]);
-$_SESSION["major"] = mysqli_real_escape_string($_POST["major"]);
+$_SESSION["firstName"] = ($_POST["firstName"]);
+$_SESSION["lastName"] = ($_POST["lastName"]);
+$_SESSION["studEmail"] = $_POST["studEmail"];
+$_SESSION["major"] = $_POST["major"];
 
 //makes changes changes
-$firstn = mysqli_real_escape_string($_POST["firstName"]);
-$lastn = mysqli_real_escape_string($_POST["lastName"]);
-$email = mysqli_real_escape_string($_POST["studEmail"]);
-$major = mysqli_real_escape_string($_POST["major"]);
+$firstn = ($_POST["firstName"]);
+$lastn = ($_POST["lastName"]);
+$email = $_POST["studEmail"];
+$major = $_POST["major"];
 $sid = $_SESSION["SIDNumber"];
 
 //Actually update student data

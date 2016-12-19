@@ -6,14 +6,14 @@
 require_once('mysql_connect.php');
 session_start();
 
-$appt = mysqli_real_escape_string($_SESSION['appt']);
+$appt = $_SESSION['appt'];
 
 //Delete appointment in appointment table
 $sql = "UPDATE appointments SET isFull=0, NumStudents=(NumStudents-1) WHERE id = $appt";
 mysql_query($sql, $conn);
 
 //Update the students appointment number to NULL
-$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . mysqli_real_escape_string($_SESSION['email']) . "'";
+$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . $_SESSION['email'] . "'";
 mysql_query($sql, $conn);
 
 

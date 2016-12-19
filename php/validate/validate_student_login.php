@@ -6,7 +6,7 @@ session_start();
 
 require_once('../mysql_connect.php');
 
-$email = mysqli_real_escape_string($_POST['email']);
+$email = $_POST['email'];
 $password = ($_POST['password']);
 $truePassword = md5($password);
 
