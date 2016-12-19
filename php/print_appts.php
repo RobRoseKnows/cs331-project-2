@@ -3,6 +3,9 @@
 
 ?>
 <html>
+<head>
+<link rel="icon" type="image/png" href="../html/corner.png" />
+</head>
 <style>
 table, th, td {
   border: 1px solid black;
@@ -66,9 +69,10 @@ if($appt)
       // check if the appointment is a group appointment or not                          
       if($appt['isGroup'] == 0)
 	echo "<td>" . "No" . "</td>";
-    else
-      // not a group appointment                                                       
+      else {
+	// not a group appointment                                                       
       echo "<td>" . "Yes" . "</td>";
+      }
 
       echo "<td>" . $appt['NumStudents'] . "</td>";
 
