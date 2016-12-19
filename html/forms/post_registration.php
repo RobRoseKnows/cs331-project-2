@@ -76,11 +76,11 @@ if(isset($_POST['submit_post_register'])){
 
                 What are your current post-UMBC plans? For example: Medical School, Teach
                 middle school science, Research career, Master’s/PhD, etc.<br>
-                <textarea rows="4" style="width: 100%" name="plans" required></textarea><br>
+                <textarea maxlength="1000" rows="4" style="width: 100%" name="plans" required></textarea><br>
                 Do you have any questions or concerns that you would like to discuss during
                 your advising session? For example: Withdrawing from a course, adding a
                 second major, etc.<br>
-                <textarea rows="4" style="width: 100%" name="questions"></textarea>
+                <textarea maxlength="1000" rows="4" style="width: 100%" name="questions"></textarea>
                 <br><br>
                 Note: Certain questions and concerns may require more time for discussion than a student’s Registration Advising appointment will allow. If your question or
                 concern is complex, or is sensitive in nature, you may be asked to schedule a
