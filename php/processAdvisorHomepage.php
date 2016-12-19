@@ -9,7 +9,7 @@ $value = isset($_POST['next']) ? $_POST['next'] : "";
 echo $value;
 
 if($value == $value1) {
-  header('Location: view/advisor_view.php');
+  header('Location: ../html/forms/add_appointment.php');
 } 
 
 if($value == $value2) {
