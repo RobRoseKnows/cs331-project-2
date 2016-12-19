@@ -5,7 +5,7 @@ include('../CommonMethods.php');
 $debug = false;
 $COMMON = new Common($debug);
 
-$email = mysqli_real_escape_string($_SESSION['email']);
+$email = mysql_real_escape_string($_SESSION['email']);
 
 $sql = "select * from `students` WHERE Email='$email'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);

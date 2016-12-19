@@ -8,7 +8,7 @@ $debug = false;
 $COMMON = new Common($debug);
 
 // Finds all the usernames from the database
-$email = mysqli_real_escape_string($_POST['email']);
+$email = mysql_real_escape_string($_POST['email']);
 $sql = "SELECT * FROM `students` WHERE `Email` = '$email'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $num_rows = mysql_num_rows($rs);
@@ -17,13 +17,13 @@ $row = mysql_fetch_row($rs);
 //By default no errors
 $errors = FALSE;
 $_SESSION["error_message"] = "ERRORS: <br>";
-$major = mysqli_real_escape_string($_POST['major']);
-$firstName = mysqli_real_escape_string($_POST['firstName']);
-$lastName = mysqli_real_escape_string($_POST['lastName']);
-$studentID = mysqli_real_escape_string($_POST['studentID']);
-$password = mysqli_real_escape_string($_POST['password']);
-$rePass = mysqli_real_escape_string($_POST['rePassword']);
-$prefName = mysqli_real_escape_string($_POST['prefName']);
+$major = mysql_real_escape_string($_POST['major']);
+$firstName = mysql_real_escape_string($_POST['firstName']);
+$lastName = mysql_real_escape_string($_POST['lastName']);
+$studentID = mysql_real_escape_string($_POST['studentID']);
+$password = $_POST['password'];
+$rePass = mysql_real_escape_string($_POST['rePassword']);
+$prefName = mysql_real_escape_string($_POST['prefName']);
 
 
 //Loop through usernames, check for match

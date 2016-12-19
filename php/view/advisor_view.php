@@ -47,7 +47,7 @@ session_start();
 // set the timezone to the east coast
 date_default_timezone_set('America/New_York');
 
-$email = mysqli_real_escape_string($_SESSION['email']);
+$email = mysql_real_escape_string($_SESSION['email']);
 
 //Fetching appointments
 $sql = "SELECT * FROM appointments WHERE AdvisorEmail='$email' ORDER BY `Date` ASC, `Time` ASC";
@@ -139,7 +139,7 @@ else
 
 <p> Register an Advisor: Click <a href = "../../html/forms/register_advisor.html">here</a> to register.</p>
 
-<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+<h3 style='color: #FF0000;'>Copyright &copy; umbc.edu</h3>
 
 </div>
 </left>

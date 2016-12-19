@@ -51,7 +51,7 @@ $x = ($_POST['week']*7);
 $date = date_modify($date, "+$x day");
 $date = date_format($date, 'Y-m-d');
 
-$groupPref = $_POST['group'];
+$groupPref = mysql_real_escape_string($_POST['group']);
 if($groupPref == 2)
 {
   $sql = "SELECT * FROM appointments WHERE YEARWEEK(`Date`) = YEARWEEK('$date') AND isFull=0"; 
@@ -108,7 +108,7 @@ while ($appt = mysql_fetch_array($rs))
 ?>
 </table>
   
-  <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+  <h3 style='color: #FF0000;'>Copyright &copy; umbc.edu</h3>
 
 </div>
 </left>

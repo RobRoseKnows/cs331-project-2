@@ -69,11 +69,9 @@ major of choice is not listed, please choose Other</h4></pre>
             <!-- Hyperlink to the login student page -->
             <p style='color: #FF0000;'>Already signed up? Click <a href="login_student.php">here</a> to log in.</p>
 
-            <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
+            <h3 style='color: #FF0000;'>Copyright &copy; umbc.edu</h3>
 
         </div>
     </left>
 </div>
-</body>
-</html>
 <?php require('../footer.html'); ?>

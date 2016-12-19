@@ -19,12 +19,12 @@ $error_message = "";
 date_default_timezone_set('America/New_York');
 
 // Post all the information input by the advisor
-$date = mysqli_real_escape_string($_POST['date']);
-$time = mysqli_real_escape_string($_POST['time']);
-$location = mysqli_real_escape_string($_POST['location']);
-$group = mysqli_real_escape_string($_POST['group']);
-$leader = mysqli_real_escape_string($_POST['leader']);
-$maxAttendees = mysqli_real_escape_string($_POST['maxAttend']);
+$date = mysql_real_escape_string($_POST['date']);
+$time = mysql_real_escape_string($_POST['time']);
+$location = mysql_real_escape_string($_POST['location']);
+$group = mysql_real_escape_string($_POST['group']);
+$leader = mysql_real_escape_string($_POST['leader']);
+$maxAttendees = mysql_real_escape_string($_POST['maxAttend']);
 
 // Create a date for today 
 $today = date_create();
@@ -68,7 +68,7 @@ if ($location == "")
 if(!$errors)
 {
     if(isset($_POST['ID'])){
-        $escaped_id = mysqli_real_escape_string($_POST['ID']);
+        $escaped_id = intval($_POST['ID']);
 
         // Notify students with this appointment
         $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='$escaped_id'";

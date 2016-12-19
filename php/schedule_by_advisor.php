@@ -35,7 +35,7 @@ include ('mysql_connect.php');
 // East cost timezone 
 date_default_timezone_set('America/New_York');
 //initalize varibales 
-$username = mysqli_real_escape_string($_POST['advisor']);
+$username = mysql_real_escape_string($_POST['advisor']);
 
 // Make a query to get advisors with the correct username
 $sql = "SELECT fullName FROM advisors WHERE Email='$username'";
@@ -91,7 +91,7 @@ while ($rs != false && $appt = mysql_fetch_array($rs))
 ?>
       </table></center>
       
-<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+<h3 style='color: #FF0000;'>Copyright &copy; umbc.edu</h3>
 
 </div>
 </left>

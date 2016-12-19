@@ -40,7 +40,7 @@ $rs = mysql_query($sql, $conn);
   <input type=submit value="Submit"/>
 </form>
 
-<h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+<h3 style='color: #FF0000;'>Copyright &copy; umbc.edu</h3>
 
 </div>
 </left>

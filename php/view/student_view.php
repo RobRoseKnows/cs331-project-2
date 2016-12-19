@@ -53,7 +53,7 @@
 
             if (mysql_fetch_array($rs)) {
                 //Getting Appointment Number
-                $session_email = mysqli_real_escape_string($_SESSION['email']);
+                $session_email = mysql_real_escape_string($_SESSION['email']);
                 $sql = "SELECT `Appt` FROM `students` WHERE `Email`='$session_email'";
                 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
                 $row = mysql_fetch_row($rs);
@@ -109,7 +109,7 @@
             }
             ?>
 
-            <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
+            <h3 style='color: #FF0000;'>Copyright &copy; umbc.edu</h3>
 
         </div>
     </left>

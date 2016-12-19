@@ -5,7 +5,7 @@
 
 require_once('../mysql_connect.php');
 session_start();
-$email = mysqli_real_escape_string($_POST['email']);
+$email = mysql_real_escape_string($_POST['email']);
 $password = $_POST['password'];
 $truePassword = md5($password);
 
@@ -45,7 +45,7 @@ else
   // Username does not exist in the table OR password is incorrect
   else 
   {
-    $_SESSION['error_message'] = "Email or password not recognized.<br>";
+    $_SESSION['error_message'] .= "Email or password not recognized.<br>";
   } 
   
   header('Location: ../../html/forms/login_advisor.html');

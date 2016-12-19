@@ -6,7 +6,7 @@ session_start();
 
 require_once('../mysql_connect.php');
 
-$posted_email = mysqli_real_escape_string($_POST['email']);
+$posted_email = mysql_real_escape_string($_POST['email']);
 
 $sql = "SELECT Email FROM advisors WHERE `Email` = '$posted_email'";
 $rs = mysql_query($sql, $conn);
@@ -66,9 +66,9 @@ if ($_POST['password'] != $_POST['rePassword'])
 if ($errors != True) 
 {
   //No errors - GOOD - Insert into database
-  $fullName = mysqli_real_escape_string($_POST['fName'] . " " . $_POST['lName']);
-  $email = mysqli_real_escape_string($_POST['email']);
-  $office = mysqli_real_escape_string($_POST['office']);
+  $fullName = mysql_real_escape_string($_POST['fName'] . " " . $_POST['lName']);
+  $email = mysql_real_escape_string($_POST['email']);
+  $office = mysql_real_escape_string($_POST['office']);
   $password = $_POST['password'];
     $hashedPass = md5($password);
 
