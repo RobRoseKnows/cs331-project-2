@@ -12,9 +12,10 @@ session_start();
     <link rel='stylesheet' type='text/css' href='../standard.css'/>
     <link rel="icon" type="image/png" href="../corner.png" />
   </head>
-  <body>
-
-<div id="background">
+  <div style="overflow:hidden">
+    <img src="../../html/dogw_logo.jpg" style="overflow:hidden;"/>
+  </div>
+  <body id="background">
 
   <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
 
@@ -45,7 +46,6 @@ session_destroy();
 	<p style='color: #FF0000;'> Not signed up? Click <a href = "register_student.php">here</a> to register.</p>
 
 	<h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
-</div>
 </div>
 </left>
 </body>

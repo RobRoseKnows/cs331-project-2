@@ -13,7 +13,7 @@ $sql = "UPDATE appointments SET isFull=0, NumStudents=(NumStudents-1) WHERE id =
 mysql_query($sql, $conn);
 
 //Update the students appointment number to NULL
-$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . $_SESSION['email'] . "'";
+$sql = "UPDATE students SET Appt = NULL WHERE Email = '" . $_SESSION['studentEmail'] . "'";
 mysql_query($sql, $conn);
 
 

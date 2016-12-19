@@ -3,12 +3,14 @@
 
 <html>
 <head>
-<title>Appointments</title>
+<title>Add Appointment</title>
   <link rel='stylesheet' type='text/css' href='../standard.css'/>
   <link rel='icon' type='image/png' href='../standard.css'/>
 </head>
-<body>
-<div id="background">
+<div style="overflow:hidden">
+    <img src="../../html/dogw_logo.jpg" style="overflow:hidden;"/>
+</div>
+<body id="background">
 
 <left><div id="wrapper">
 <h1>CMNS Advising</h1>
@@ -104,7 +106,6 @@ echo('</form>');
 
 </div>
 </left>
-</div>
 </body>
 </html>
 

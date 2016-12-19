@@ -9,15 +9,15 @@
     <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
     <link rel="icon" type="image/png" href="../corner.png" />
   </head>
-  <body>
-
-<div id="background">
+  <div style="overflow:hidden">
+      <img src="../html/dogw_logo.jpg" style="overflow:hidden;"/>
+  </div>
+  <body id="background">
 <left><div id="wrapper">
 <h1>Schedule an appointment </h1>
    <div id="form1">
     <form method=post action="get_appointments.php">
-	<pre><h3>When would you like to schedule the appointment?</h3></pre>
-	<pre><h4>Choose Week: <select name="week"/>
+	<h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Choose Week: <select name="week"/>
 	<option value = 0 selected>this week</option>
 	<option value = 1> next week</option>
 
@@ -41,14 +41,14 @@
 	?>
 	<!-- END PHP -->
 	</select>
-	</h4></pre>
+	</h4>
 	
-    <pre><h4>Group? <select name="group">
+    <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Group? <select name="group">
 	  <option value=1>Yes</option>
 	  <option value=0>No</option>
 	  <option value=2 selected>Don't care</option>
 		</select>
-	</h4></pre>
+	</h4>
     <p><input type=submit value="Submit"/></p>
     </form>
 </div>
@@ -57,7 +57,6 @@
 
 </div>
 </left>
-</div>
 </body>
 </html>	
 <?php include ('../html/footer.html'); ?>

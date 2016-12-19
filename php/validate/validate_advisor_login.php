@@ -28,7 +28,7 @@ if($num_rows == 1){
 if ($name_found) 
 {
  
-  $_SESSION['email'] = $email;
+  $_SESSION['advisorEmail'] = $email;
   header('Location:../../php/view/advisor_view.php');
 } 
 
