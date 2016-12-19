@@ -22,9 +22,9 @@ date_default_timezone_set('America/New_York');
 $date = $_POST['date'];
 $time = $_POST['time'];
 $location = $_POST['location'];
-$group = $_POST['group'];
 $leader = $_POST['leader'];
 $maxAttendees = $_POST['maxAttend'];
+$group = ($maxAttendees > 1) ? 1 : 0;
 
 // Create a date for today 
 $today = date_create();
