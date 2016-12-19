@@ -34,20 +34,22 @@ session_destroy();
 }
 ?>
 </h2>
+<div id="form1">
     <form method=post action='../../php/validate/validate_student_login.php'>
       <!-- Gets the only necessary data, a username from the user --> 
       <pre><h4>UMBC Email: <input type=text name="email"/></h4></pre>
       <pre><h4>Password: <input type=password name="password"/></h4></pre>
       <p><input type=submit value="Submit"/></p>
     </form>
+	</div>
 
         <!-- Hyperlink to the register students page -->   
 	<p style='color: #FF0000;'> Not signed up? Click <a href = "register_student.php">here</a> to register.</p>
 
 	<h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 </div>
-</div>
 </left>
+</div>
 </body>
 </html>
 <?php include ('../footer.html'); ?>
