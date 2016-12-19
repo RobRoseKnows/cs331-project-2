@@ -19,11 +19,12 @@ $error_message = "";
 date_default_timezone_set('America/New_York');
 
 // Post all the information input by the advisor
-$date = $_POST['date'];
-$time = $_POST['time'];
-$location = $_POST['location'];
-$leader = $_POST['leader'];
-$maxAttendees = $_POST['maxAttend'];
+$date = mysqli_real_escape_string($_POST['date']);
+$time = mysqli_real_escape_string($_POST['time']);
+$location = mysqli_real_escape_string($_POST['location']);
+$group = mysqli_real_escape_string($_POST['group']);
+$leader = mysqli_real_escape_string($_POST['leader']);
+$maxAttendees = mysqli_real_escape_string($_POST['maxAttend']);
 $group = ($maxAttendees > 1) ? 1 : 0;
 
 // Create a date for today 
@@ -68,27 +69,39 @@ if ($location == "")
 if(!$errors)
 {
     if(isset($_POST['ID'])){
+        $escaped_id = mysqli_real_escape_string($_POST['ID']);
+
         // Notify students with this appointment
-        $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='".$_POST['ID']."'";
+        $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='$escaped_id'";
         mysql_query($sql, $conn);
 
         // If the appointment's max attendees changed, make sure there are not
         // too many students by removing some if needed
-        $appt = mysql_fetch_array(mysql_query("SELECT * from appointments where id=".$_POST['ID'], $conn));
+        $appt = mysql_fetch_array(mysql_query("SELECT * from appointments where id=".$escaped_id, $conn));
         $students = mysql_query("SELECT * FROM students WHERE Appt=".$appt["id"]);
         while($appt['NumStudents'] > $appt['MaxAttendees']){
             $student = mysql_fetch_array($students);
             mysql_query("UPDATE students SET Appt = NULL, appointmentChanged=1 WHERE id=".$student['id'], $conn);
             mysql_query("UPDATE appointments SET NumStudents=NumStudents-1 WHERE id=".$appt['id'], $conn);
-            $appt = mysql_fetch_array(mysql_query("SELECT * from appointments where id=".$_POST['ID'], $conn));
+            $appt = mysql_fetch_array(mysql_query("SELECT * from appointments where id=".$escaped_id, $conn));
         }
 
         // Modify an existing appointment
-        $sql = "UPDATE appointments SET Date='%s', Time='%s', Location='%s', isGroup='%s', SessionLeader='%s', AdvisorEmail='%s', MaxAttendees='%s' WHERE id='".$_POST['ID']."'";
+        $sql = "UPDATE appointments
+                SET `Date`='%s', 
+                    `Time`='%s', 
+                    Location='%s', 
+                    isGroup='%s', 
+                    SessionLeader='%s', 
+                    AdvisorEmail='%s', 
+                    MaxAttendees='%s' 
+                    WHERE id='$escaped_id'";
     }
     else {
         // Insert a new appointment into the appointments table
-        $sql = "INSERT INTO appointments (Date, Time, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+        $sql = "INSERT INTO appointments 
+                (`Date`, `Time`, Location, isGroup, SessionLeader, AdvisorEmail, MaxAttendees) 
+                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
     }
   $formatted = sprintf($sql, $date, $time, $location, $group, $leader, $email, $maxAttendees);
 

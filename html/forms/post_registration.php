@@ -4,9 +4,9 @@ if(!isset($_SESSION)){
 }
 include_once("../../php/mysql_connect.php");
 if(isset($_POST['submit_post_register'])){
-    $email = $_SESSION['email'];
-    $plans = $_POST['plans'];
-    $questions = $_POST['questions'];
+    $email = mysqli_real_escape_string($_SESSION['email']);
+    $plans = mysqli_real_escape_string($_POST['plans']);
+    $questions = mysqli_real_escape_string($_POST['questions']);
     $sql = "UPDATE students SET Plans='".$plans."', Questions='".$questions."' WHERE Email='".$email."'";
     $rs = mysql_query($sql, $conn);
     header("Location: ../../php/view/student_view.php");

@@ -5,19 +5,20 @@ include('../CommonMethods.php');
 $debug = false;
 $COMMON = new Common($debug);
 
-$sql = "select * from `students`";
+$email = mysqli_real_escape_string($_SESSION['email']);
+
+$sql = "select * from `students` WHERE Email='$email'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 //Fetch student info for session use
-while($row = mysql_fetch_row($rs)){
-	if($row[0] == $_SESSION["email"]){
-		
-		$_SESSION["firstName"] = $row[4];
-		$_SESSION["lastName"] = $row[5];
-		$_SESSION["major"] = $row[1];
-		$_SESSION["studEmail"]=$row[0];
-		$_SESSION["SIDNumber"]=$row[6];
-	}
+
+if(mysql_num_rows($rs) == 1) {
+	$res_obj = $rs->fetch_object();
+	$_SESSION["firstName"] = $res_obj->firstName;
+	$_SESSION["lastName"] = $res_obj->lastName;
+	$_SESSION["major"] = $res_obj->Major;
+	$_SESSION["studEmail"] = $res_obj->Email;
+	$_SESSION["SIDNumber"] = $res_obj->studentID;
 }
 
 ?>
@@ -31,8 +32,8 @@ while($row = mysql_fetch_row($rs)){
   <body>
     <div id="login">
       <div id="form">
-	<!--Displays previously parsed information--------------------------------->
-	<!--Will Pass to procesStudentEdit.php to apply any and all changes---------->
+	<!--Displays previously parsed information -->
+	<!--Will Pass to procesStudentEdit.php to apply any and all changes -->
 			<div class="top">
 			<h2>Edit Student Information<span class="login-create"></span></h2>
 			<form action="processStudentEdit.php" method="post" name="Edit">
@@ -63,7 +64,7 @@ while($row = mysql_fetch_row($rs)){
 
 				  </select>
 			</div>
-			<!----------Go ahead and apply button----->
+			<!-- Go ahead and apply button -->
 			<div class="nextButton">
 				<input type="submit" name="save" class="button large go" value="Save">
 			</div>

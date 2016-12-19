@@ -5,8 +5,8 @@
 
 require_once('../mysql_connect.php');
 session_start();
-$email = $_POST['email'];
-$password = ($_POST['password']);
+$email = mysqli_real_escape_string($_POST['email']);
+$password = $_POST['password'];
 $truePassword = md5($password);
 
 // Make the query to get the info out of advisors table

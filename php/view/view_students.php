@@ -30,8 +30,10 @@
         require_once('../mysql_connect.php');
         session_start();
 
+        $escaped_id = mysqli_real_escape_string($_POST['ID']);
+
         // Select all the students that have the selected appointment
-        $sql = "SELECT * FROM students WHERE Appt=" . $_POST['ID'];
+        $sql = "SELECT * FROM students WHERE Appt='$escaped_id'";
         $rs = mysql_query($sql, $conn);
         $student = mysql_fetch_array($rs);
 
