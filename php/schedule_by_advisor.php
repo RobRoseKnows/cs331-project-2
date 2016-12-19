@@ -50,7 +50,7 @@ $rs = mysql_query($sql, $conn);
 
 <!-- Prints out a table of the available appointments  -->
 <?php echo "<h2> Showing available appointments for: <br/> $fullName ($username)</h2>"; ?>
-<table>
+<center><table>
 <tr>
 <th>Date</th>
 <th>Time</th>
@@ -89,12 +89,12 @@ while ($rs != false && $appt = mysql_fetch_array($rs))
   echo "</tr>";
   }
 ?>
-
+      </table></center>
+      
 <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
 
 </div>
 </left>
 </div>
-</table>
 </body>
 </html>
