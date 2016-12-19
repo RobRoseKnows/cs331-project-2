@@ -42,8 +42,7 @@
                     <pre><h4>UMBC Email: <input type='text' name="email"/></h4></pre>
                     <pre><h4>Password: <input type='password' name="password"/></h4></pre>
                     <pre><h4>Re-Type Password: <input type='password' name="rePassword"/></h4></pre>
-                    <pre><h4>Major: <select name="major">
-	  
+                    <pre><h4>Major: <br><select name="major">
 	  <!-- This creates a drop down box of the possible major choices -->
 	  <option value="Biological Sciences BA">Biological Sciences BA</option>
 	  <option value="Biological Sciences BS">Biological Sciences BS</option>
@@ -54,17 +53,13 @@
 	  <option value="Chemistry BS">Chemistry BS</option>
 	  <option value="Chemistry Education BA">Chemistry Education BA</option>
 	  <option value="Other">Other</option>
-	  
-	  </select>
-	    </h4></pre>
-                    <pre><h4>Select the major that you intend to pursue
-                            NEXT SEMESTER (this may be different from your
-                            current officially declared major).
-                            The major selected can be either your primary
-                            or secondary major. If you are only planning
-                            to pursue ONE major, and your major of choice
-                            is not listed, please choose Other
-                        </h4></pre>
+	  </select></h4></pre><pre><h4>Select the major that you intend to pursue
+NEXT SEMESTER (this may be different from your
+current officially declared major).
+The major selected can be either your
+primary or secondary major. If you are only
+planning to pursue ONE major, and your
+major of choice is not listed, please choose Other</h4></pre>
 
                     <p><input type=submit value="Submit"/></p>
                 </form>
