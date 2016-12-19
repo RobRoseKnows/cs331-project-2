@@ -57,8 +57,15 @@
                 echo "<td>" . $student['lastName'] . "</td>";
                 echo "<td>" . $student['Major'] . "</td>";
                 echo "<td>" . $student['studentID'] . "</td>";
-                echo "<td><div style='white-space: normal;'>" . str_replace("\n","<br>",$student['Plans']) . "</div></td>";
-                echo "<td><div style='white-space: normal;'>" . str_replace("\n","<br>",$student['Questions']) . "</div></td>";
+                echo "<td><div style='white-space: normal;'>" . str_replace("\n", "<br>", $student['Plans']) . "</div></td>";
+                echo "<td><div style='white-space: normal;'>" . str_replace("\n", "<br>", $student['Questions']) . "</div></td>";
+                echo(
+                "<td><form method='post' action='../delete_student.php'>
+                    <input type='hidden' name='studentID' value='".$student['id']."'/>
+                    <input type='hidden' name='apptID' value='".$_POST['ID']."'/>
+                    <input type='submit' name='deleteStudent' value='Delete'/>
+                </form></td>"
+                );
                 echo "</tr>";
                 $student = mysql_fetch_array($rs);
             }

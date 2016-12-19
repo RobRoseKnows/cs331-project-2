@@ -47,6 +47,10 @@ session_start();
 // set the timezone to the east coast
 date_default_timezone_set('America/New_York');
 
+// Make sure all appointments have the correct isFull value set
+$sql = "UPDATE appointments SET isFull=1 WHERE NumStudents=MaxAttendees";
+mysql_query($sql, $conn);
+
 //Fetching appointments
 $sql = "SELECT * FROM appointments WHERE AdvisorEmail='" . $_SESSION['email'] . "' ORDER BY Date ASC, Time ASC";
 $rs = mysql_query($sql, $conn);
