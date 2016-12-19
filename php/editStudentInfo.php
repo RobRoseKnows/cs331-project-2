@@ -27,9 +27,11 @@ if (mysql_num_rows($rs) == 1) {
     <meta charset="UTF-8"/>
     <title>Edit Student Information</title>
     <link rel='stylesheet' type='text/css' href='standard.css'/>
-
+<link rel="icon" type="image/png" href="../html/corner.png" />
 </head>
 <body>
+<div id="background">
+<left><div id="wrapper">
 <div id="login">
     <div id="form">
         <!--Displays previously parsed information -->
@@ -96,8 +98,11 @@ if (mysql_num_rows($rs) == 1) {
                     <input type="submit" name="save" class="button large go" value="Save">
                 </div>
 
+</div>
+</left>
+</div>
+</div>
             </form>
-        </div>
     </div>
 </body>
 
