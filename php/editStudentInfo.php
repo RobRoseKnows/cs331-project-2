@@ -23,6 +23,7 @@ if (mysql_num_rows($rs) == 1) {
 ?>
 <html>
 <head>
+    <meta charset="UTF-8"/>
     <title>Edit Account Information</title>
     <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
     <link rel='icon' type='image/png' href='../html/standard.css'/>

@@ -5,7 +5,7 @@
 <head>
 <title>Appointments</title>
   <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
-  <link rel='icon' type='image/png' href='../html/standard.css'/>
+  <link rel='icon' type='image/png' href='../html/corner.png'/>
 <style>
 table, th, td {
 border: 1px solid black;
@@ -99,7 +99,7 @@ while ($appt = mysql_fetch_array($rs))
   ?>
     <td>
        <form method=post action="table_handler.php">
-       <?php echo "<input type=hidden name='ID' value='$apptID'/>"; ?>
+       <?php echo "<input type=hidden name='ID' value=\"" .$apptID . "\"/>"; ?>
        <input type=submit value="Register"/>
        </form>
        </td>

@@ -6,7 +6,7 @@
 <html>
 <head><title>Advising</title>
 <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
-<link rel='icon' type='image/png' href='../../html/standard.css'/>
+<link rel='icon' type='image/png' href='../../html/corner.png'/>
 <style>
 table, th, td {
 border: 1px solid black;
@@ -89,8 +89,9 @@ while ($rs != false && $appt = mysql_fetch_array($rs))
   echo "</tr>";
   }
 ?>
-      </table></center>
-      
+
+</table></center>
+
 <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
 
 </div>

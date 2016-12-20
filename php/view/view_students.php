@@ -3,13 +3,13 @@
 
 <html>
 <head>
-    <title>View Students</title>
-    <link rel='stylesheet' type='text/css' href='../../html/standard.css'/>
-    <link rel='icon' type='image/png' href='../../html/standard.css'/>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
+<title>View Students</title>
+<link rel='stylesheet' type='text/css' href='../../html/standard.css'/>
+<link rel='icon' type='image/png' href='../../html/corner.png'/>
+<style>
+table, th, td {
+border: 1px solid black;
+}
 
         td {
             text-align: center;

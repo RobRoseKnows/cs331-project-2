@@ -38,7 +38,7 @@ $rs = mysql_query($sql, $conn);
 $appt = mysql_fetch_array($rs);
 
 // Select all the students that have appointments
-$sql = "SELECT * FROM  `students` WHERE `Appt` IS NOT NULL ORDER BY `lastName` ASC";
+$sql = "SELECT * FROM  `students` ORDER BY `lastName` ASC";
 $rs = mysql_query($sql, $conn);
 $student = mysql_fetch_array($rs);
 
@@ -51,48 +51,22 @@ if ($student) {
     echo "<th>First Name</th>";
     echo "<th>Email</th>";
     echo "<th>Student ID</th>";
-    echo "<th>Date</th>";
-    echo "<th>Time</th>";
-    echo "<th>Location</th>";
+    echo "<th>Has Appointment</th>";
     echo "</tr>";
 
-    $time_end = array(
-        "08:00" => " am",
-        "08:30" => " am",
-        "09:00" => " am",
-        "09:30" => " am",
-        "10:00" => " am",
-        "10:30" => " am",
-        "11:00" => " am",
-        "11:30" => " am",
-        "12:00" => " pm",
-        "12:30" => " pm",
-        "01:00" => " pm",
-        "01:30" => " pm",
-        "02:00" => " pm",
-        "02:30" => " pm",
-        "03:00" => " pm",
-        "03:30" => " pm",
-        "04:00" => " pm",
-        "04:30" => " pm",
-        "05:00" => " pm"
-    );
     // Print out the information about each student signed up
     while ($student) {
-        $sql = "SELECT * FROM appointments WHERE id=" . $student['Appt'];
-        $appt = mysql_fetch_array(mysql_query($sql, $conn));
-        if ($appt) {
-            echo "<tr>";
-            echo "<td>" . $student['lastName'] . "</td>";
-            echo "<td>" . $student['firstName'] . "</td>";
-            echo "<td>" . $student['Email'] . "</td>";
-            echo "<td>" . $student['studentID'] . "</td>";
-            echo "<td>" . date("l, F jS", strtotime($appt['Date'])) . "</td>";
-
-            echo "<td>" . $appt['Time'] . $time_end[$appt['Time']] . "</td>";
-            echo "<td>" . $appt['Location'] . "</td>";
-            echo "</tr>";
+        echo "<tr>";
+        echo "<td>" . $student['lastName'] . "</td>";
+        echo "<td>" . $student['firstName'] . "</td>";
+        echo "<td>" . $student['Email'] . "</td>";
+        echo "<td>" . $student['studentID'] . "</td>";
+        if (is_null($student['Appt'])) {
+            echo "<td>No</td>";
+        } else {
+            echo "<td>Yes</td>";
         }
+        echo "</tr>";
         $student = mysql_fetch_array($rs);
     }
     echo "</table>";

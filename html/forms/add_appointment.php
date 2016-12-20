@@ -5,7 +5,7 @@
 <head>
 <title>Add Appointment</title>
   <link rel='stylesheet' type='text/css' href='../standard.css'/>
-  <link rel='icon' type='image/png' href='../standard.css'/>
+  <link rel='icon' type='image/png' href='../corner.png'/>
 </head>
 <div style="overflow:hidden">
     <img src="../../html/dogw_logo.jpg" style="overflow:hidden;"/>
@@ -36,6 +36,7 @@ if (isset($_POST['ID'])) {
         $date = $appt['Date'];
         $time = $appt['Time'];
         $location = $appt['Location'];
+        $isGroup = $appt['isGroup'];
         $maxAttendees = $appt['MaxAttendees'];
         echo("<h1>Modify an appointment </h1>");
     }
@@ -78,13 +79,21 @@ if(isset($location)){
     echo(' value='.$location);
 }
 echo (' required></label></h4></pre>');
+echo('<pre><h4><label>Group Advising Session ? <select name = "group" required >');
+echo('<option value = 1 selected > Yes</option >');
+echo('<option value = 0');
+if(isset($isGroup) && $isGroup == 0){
+   echo(" selected");
+}
+echo('>No</option >');
+echo('</select ></label></h4></pre>');
 echo('<pre><h4><label>Maximum Number of Attendees: <input type = text name = "maxAttend"');
 if(isset($maxAttendees)){
     echo(' value='.$maxAttendees);
 }
 echo(' required></label></h4></pre>');
 echo('<pre><h4><label>Session Leader: <select name = "leader" required >');
-$advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Powers', 'CNMS Advisors');
+$advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Powers', 'CMNS Advisors');
 for($i = 0; $i < count($advisors); $i++){
     echo('<option value="'.$advisors[$i].'"');
     if(isset($leader) && $leader == $advisors[$i]){
@@ -93,15 +102,11 @@ for($i = 0; $i < count($advisors); $i++){
     echo('>'.$advisors[$i].'</option>');
 }
 echo('</select ></label ></h4></pre>');
-echo('<p><input type = submit value = "Submit" /></p >');
-echo('</form>');
-
-
+echo('<p ><input type = submit value = "Submit" /></p >');
+echo('</form >');
+echo('</div>');
 ?>
-    <form action="../../php/view/advisor_view.php">
-      <input type="submit" value="Cancel"/>
-    </form>
-  </div>
+
 <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
 
 </div>
