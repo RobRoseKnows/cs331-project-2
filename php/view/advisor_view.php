@@ -24,7 +24,7 @@ session_start();
     </style>
 </head>
 <div style="overflow:hidden">
-    <img src="../../html/dogw_logo.jpg" style="overflow:hidden;"/>
+    <img src="../../html/background.jpg" style="overflow:hidden;"/>
 </div>
 <body id="background">
 
@@ -56,6 +56,10 @@ session_start();
 
                 <tr>
                     <td><input type="submit" name="next" class="button main selection" value="Print schedule"></td>
+                    <td><input type="submit" name="next" class="button main selection" value="Students Summary"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="next" class="button main selection" value="Session Preparation"></td>
                     <td><input type="submit" name="next" class="button main selection" value="Log Out"></td>
                 </tr>
             </form>
@@ -139,7 +143,7 @@ session_start();
                     // not a group appointment
                     echo "<td>" . "Yes" . "</td>";
 
-                echo "<td>" . $appt['NumStudents'] . "</td>";
+                echo "<td>" . $appt['NumStudents'] . "/" . $appt['MaxAttendees'] . "</td>";
 
                 $apptID = $appt['id'];
 

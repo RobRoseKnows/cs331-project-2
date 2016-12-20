@@ -7,7 +7,9 @@ $value1 = "Schedule appointment";
 $value2 = "Print schedule";
 $value3a = "End Season";
 $value3b = "Start Season";
-$value4 = "Log Out";
+$value4 = "Students Summary";
+$value5 = "Log Out";
+$value6 = "Session Preparation";
 
 $value = isset($_POST['next']) ? $_POST['next'] : "";
 echo $value;
@@ -33,6 +35,12 @@ if ($value == $value3b) {
     header('Location: view/advisor_view.php');
 }
 if ($value == $value4) {
+    header('Location: student_summary.php');
+}
+if ($value == $value5) {
     header('Location: ../html/forms/first_page.html');
+}
+if ($value == $value6) {
+    header('Location: session_prep.php');
 }
 ?>

@@ -11,7 +11,7 @@ h1{
     }
 #background{
     background-color: #F3F2F2;
-    /*background-image: url("dogw_logo.jpg");*/
+    /*background-image: url("background.jpg");*/
     background-position: left top;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -212,7 +212,7 @@ pre {
 }
 
 body {
-    /*background-image: url('dogw_logo.jpg');*/
+    /*background-image: url('background.jpg');*/
     /*background-color: #F9ADCB;*/
     background-repeat: no-repeat;
     width: 100%;

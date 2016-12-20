@@ -44,7 +44,7 @@ if (mysql_num_rows($rs) == 1) {
     </style>
 </head>
 <div style="overflow:hidden">
-    <img src="../html/dogw_logo.jpg" style="overflow:hidden;"/>
+    <img src="../html/background.jpg" style="overflow:hidden;"/>
 </div>
 <body id="background">
 <left>

@@ -8,7 +8,7 @@
   <link rel='icon' type='image/png' href='../corner.png'/>
 </head>
 <div style="overflow:hidden">
-    <img src="../../html/dogw_logo.jpg" style="overflow:hidden;"/>
+    <img src="../../html/background.jpg" style="overflow:hidden;"/>
 </div>
 <body id="background">
 
@@ -106,7 +106,9 @@ echo('<p ><input type = submit value = "Submit" /></p >');
 echo('</form >');
 echo('</div>');
 ?>
-
+<form style="text-align: left" action="../../php/view/advisor_view.php">
+    <input type="submit" value="Cancel"/>
+</form>
 <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
 
 </div>

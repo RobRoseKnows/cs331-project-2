@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="../corner.png" />
   </head>
   <div style="overflow:hidden">
-      <img src="../html/dogw_logo.jpg" style="overflow:hidden;"/>
+      <img src="../html/background.jpg" style="overflow:hidden;"/>
   </div>
   <body id="background">
 <left><div id="wrapper">

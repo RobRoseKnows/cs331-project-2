@@ -47,13 +47,12 @@ if ($student) {
     echo "<h3>Advisor Appointment Schedule</h3>";
     echo "<table style='margin: 0 auto'>";
     echo "<tr>";
+    echo "<th>Date of Session</th>";
+    echo "<th>Time of Session</th>";
+    echo "<th>Campus ID</th>";
     echo "<th>Last Name</th>";
     echo "<th>First Name</th>";
-    echo "<th>Email</th>";
-    echo "<th>Student ID</th>";
-    echo "<th>Date</th>";
-    echo "<th>Time</th>";
-    echo "<th>Location</th>";
+    echo "<th>Major</th>";
     echo "</tr>";
 
     $time_end = array(
@@ -83,14 +82,14 @@ if ($student) {
         $appt = mysql_fetch_array(mysql_query($sql, $conn));
         if ($appt) {
             echo "<tr>";
-            echo "<td>" . $student['lastName'] . "</td>";
-            echo "<td>" . $student['firstName'] . "</td>";
-            echo "<td>" . $student['Email'] . "</td>";
-            echo "<td>" . $student['studentID'] . "</td>";
             echo "<td>" . date("l, F jS", strtotime($appt['Date'])) . "</td>";
 
             echo "<td>" . $appt['Time'] . $time_end[$appt['Time']] . "</td>";
-            echo "<td>" . $appt['Location'] . "</td>";
+            echo "<td>" . $student['studentID'] . "</td>";
+
+            echo "<td>" . $student['lastName'] . "</td>";
+            echo "<td>" . $student['firstName'] . "</td>";
+            echo "<td>" . $student['Major'] . "</td>";
             echo "</tr>";
         }
         $student = mysql_fetch_array($rs);

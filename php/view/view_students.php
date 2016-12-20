@@ -22,7 +22,7 @@ border: 1px solid black;
         }
     </style>
 </head>
-<body style="width:100% height:auto; top: 0; left:0; padding: 10px; margin: 0px; border: 0px;">
+<body style="background-color: #F3F2F2; width:100% height:auto; top: 0; left:0; padding: 10px; margin: 0px; border: 0px;">
 <div id="wrapper" style="width:100%; top: 0; left:0; margin: 0px; border: 0px;">
 
     <?php
@@ -41,23 +41,22 @@ border: 1px solid black;
         echo "<h3>Students Registered</h3>";
         echo "<table>";
         echo "<tr>";
-        echo "<th>Email</th>";
         echo "<th>First Name</th>";
         echo "<th>Last Name</th>";
         echo "<th>Major</th>";
         echo "<th>Student ID</th>";
-        echo "<th>Post-UMBC Plans</th>";
-        echo "<th>Questions / Concerns</th>";
+        echo "<th>Career Goal(s)</th>";
+        echo "<th>Questions and Concerns</th>";
+        echo "<th>Remove Student</th>";
         echo "</tr>";
 
         // Print out the information about each student signed up
         while ($student) {
             echo "<tr>";
-            echo "<td>" . $student['Email'] . "</td>";
-            echo "<td>" . $student['firstName'] . "</td>";
-            echo "<td>" . $student['lastName'] . "</td>";
-            echo "<td>" . $student['Major'] . "</td>";
             echo "<td>" . $student['studentID'] . "</td>";
+            echo "<td>" . $student['lastName'] . "</td>";
+            echo "<td>" . $student['firstName'] . "</td>";
+            echo "<td>" . $student['Major'] . "</td>";
             echo "<td><div style='white-space: normal;'>" . str_replace("\n", "<br>", $student['Plans']) . "</div></td>";
             echo "<td><div style='white-space: normal;'>" . str_replace("\n", "<br>", $student['Questions']) . "</div></td>";
             echo(

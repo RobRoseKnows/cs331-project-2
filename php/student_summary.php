@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Print View</title>
+    <title>Student Summary</title>
     <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
     <link rel="icon" type="image/png" href="../html/corner.png" />
     <style>
@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body>
+<body id="wrapper" style="width: 95%; top: 10px; left: 0; right: 0; bottom: 0; margin: 0 auto auto auto;">
 
 <?php
 //advisor_view.php
@@ -44,7 +44,7 @@ $student = mysql_fetch_array($rs);
 
 // Print out the titles of the table
 if ($student) {
-    echo "<h3>Advisor Appointment Schedule</h3>";
+    echo "<h3>Student List</h3>";
     echo "<table style='margin: 0 auto'>";
     echo "<tr>";
     echo "<th>Last Name</th>";
