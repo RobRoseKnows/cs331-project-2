@@ -27,7 +27,7 @@ top:8px;
    <img src="../../html/background.jpg" style="overflow:hidden;"/>
 </div>
 <body id="background">
-<left><div id="wrapper">
+<left><div id="wrapper" style="width:65%">
 <h1>CMNS Advising</h1>
 
 <?php
