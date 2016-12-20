@@ -55,7 +55,7 @@ include_once "../mysql_connect.php";
                     }
                     echo '"></td>';
                     ?>
-                    <td><input type="submit" name="next" class="button main selection" value="Edit Account Information"></td>
+                    <td><input type="submit" name="next" class="button main selection" value="Edit Account Info"></td>
                 </tr>
 
                 <tr>
