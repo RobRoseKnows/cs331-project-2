@@ -8,11 +8,10 @@
   <link rel='icon' type='image/png' href='../corner.png'/>
 </head>
 <div style="overflow:hidden">
-    <img src="../../html/background.jpg" style="overflow:hidden;"/>
+    <img src="../../html/background1.png" style="margin: 0 auto; height: 230px; overflow:hidden;"/>
 </div>
 <body id="background">
-
-<left><div id="wrapper">
+<left><div id="wrapper" style="margin: 0 auto; position: relative; top:10px; left:0;">
 <h1>CMNS Advising</h1>
 
 <?php
