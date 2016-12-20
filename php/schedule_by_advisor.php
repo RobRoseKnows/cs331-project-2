@@ -24,10 +24,10 @@ top:8px;
 </style>
 </head>
 <div style="overflow:hidden">
-   <img src="../html/background.jpg" style="overflow:hidden;"/>
+   <img src="../html/background1.png" style="margin: 0 auto; height: 230px; overflow:hidden;"/>
 </div>
 <body id="background">
-<left><div id="wrapper">
+<left><div id="wrapper" style="margin: 0 auto; position: relative; top:10px; left:0;">
 <h1>CMNS Advising</h1>
 
 <?php
@@ -36,21 +36,17 @@ include ('mysql_connect.php');
 // East cost timezone 
 date_default_timezone_set('America/New_York');
 //initalize varibales 
-$username = $_POST['advisor'];
+$name = $_POST['advisor'];
 
-// Make a query to get advisors with the correct username
-$sql = "SELECT fullName FROM advisors WHERE Email='$username'";
-$rs = mysql_query($sql, $conn);
-$fullName = mysql_fetch_array($rs)['fullName'];
 
 // Make a query to get appointmenst where it has the correct advisor username
-$sql = "SELECT * FROM appointments WHERE AdvisorEmail='$username' AND isFull=0";
+$sql = "SELECT * FROM appointments WHERE SessionLeader='$name' AND isFull=0 AND isAvailable=1";
 $rs = mysql_query($sql, $conn);
 
 ?>
 
 <!-- Prints out a table of the available appointments  -->
-<?php echo "<h2> Showing available appointments for: <br/> $fullName ($username)</h2>"; ?>
+<?php echo "<h2> Showing available appointments for: <br/>$name</h2>"; ?>
 <center><table>
 <tr>
 <th>Date</th>

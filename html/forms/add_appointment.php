@@ -92,7 +92,7 @@ if(isset($maxAttendees)){
 }
 echo(' required></label></h4>');
 echo('<h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;"><label>Session Leader: <select name = "leader" required >');
-$advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Powers', 'CMNS Advisors');
+
 for($i = 0; $i < count($advisors); $i++){
     echo('<option value="'.$advisors[$i].'"');
     if(isset($leader) && $leader == $advisors[$i]){

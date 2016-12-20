@@ -44,11 +44,10 @@ if (mysql_num_rows($rs) == 1) {
     </style>
 </head>
 <div style="overflow:hidden">
-    <img src="../html/background.jpg" style="overflow:hidden;"/>
+    <img src="../html/background1.png" style="margin: 0 auto; height: 230px; overflow:hidden;"/>
 </div>
 <body id="background">
-<left>
-    <div id="wrapper">
+<left><div id="wrapper" style="margin: 0 auto; position: relative; top:10px; left:0;">
         <!--Displays previously parsed information -->
         <!--Will Pass to procesStudentEdit.php to apply any and all changes -->
         <h2>Edit Student Information<span class="login-create"></span></h2>
