@@ -113,7 +113,7 @@ if ($_SESSION['search'] == "") {
 
                             if ($appt['NumStudents'] > 0) {
                                 echo "<td>";
-                                echo "<form method=post action='view_students.php'>";
+                                echo "<form method=post action='view/view_students.php'>";
                                 echo "<input type=hidden name='ID' value='$apptID' />";
                                 echo "<input type=submit value='View Registered Students'/>";
                                 echo "</form>";
@@ -165,7 +165,7 @@ if ($_SESSION['search'] == "") {
 
                         if ($appt['NumStudents'] > 0) {
                             echo "<td>";
-                            echo "<form method=post action='view_students.php'>";
+                            echo "<form method=post action='view/view_students.php'>";
                             echo "<input type=hidden name='ID' value='$apptID' />";
                             echo "<input type=submit value='View Registered Students'/>";
                             echo "</form>";
