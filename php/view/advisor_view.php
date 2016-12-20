@@ -1,6 +1,7 @@
 <?php
 require_once('../mysql_connect.php');
 session_start();
+$_SESSION['search'] = "";
 ?>
 <html>
 <head>
@@ -37,7 +38,7 @@ session_start();
 
             <form action="../processAdvisorHomepage.php" method="post" name="Home">
                 <tr>
-                    <td><input type="submit" name="next" class="button main selection" value="Schedule appointment">
+                    <td><input type="submit" name="next" class="button main selection" value="Schedule Appointment">
                     </td>
 
                     <?php
@@ -55,12 +56,16 @@ session_start();
                 </tr>
 
                 <tr>
-                    <td><input type="submit" name="next" class="button main selection" value="Print schedule"></td>
+                    <td><input type="submit" name="next" class="button main selection" value="Print Schedule"></td>
                     <td><input type="submit" name="next" class="button main selection" value="Students Summary"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="next" class="button main selection" value="Session Preparation"></td>
-                    <td><input type="submit" name="next" class="button main selection" value="Log Out"></td>
+                    <td><input type="submit" name="next" class="button main selection" value="Search Appointments"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input style="width:100%" type="submit" name="next" class="button main selection"
+                                           value="Log Out"></td>
                 </tr>
             </form>
 

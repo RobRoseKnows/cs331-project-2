@@ -24,7 +24,7 @@ top:8px;
 </style>
 </head>
 <div style="overflow:hidden">
-   <img src="../../html/background.jpg" style="overflow:hidden;"/>
+   <img src="../html/background.jpg" style="overflow:hidden;"/>
 </div>
 <body id="background">
 <left><div id="wrapper" style="width:65%">

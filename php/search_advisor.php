@@ -1,34 +1,49 @@
-<?php
-if (!defined('ADVISOR_LOGIN_PHP')) {
-    define('ADVISOR_LOGIN_PHP', true);
-    include("AdvisorSQL.php");
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+<!-- search_advisor.php -->
+<!-- This file get the advisors by name and posts to them schedule_by_advisor.php
+     this will eventually put them in a dropdown box -->
 
-    if (isset($_SESSION['advisorID'])) {
-        include("createAppointment.php");
-    } else {
-        if (isset($_POST['advisorSubmit'])) {
-            if (isset($_POST['advisorEmail']) && isset($_POST['advisorPassword'])) {
-                $advisorEmail = $_POST['advisorEmail'];
-                $advisorPassword = $_POST['advisorPassword'];
+<!--<?php
+include ('../html/header.html'); ?>-->
 
-                $hashedPassword = hash("sha256", $advisorPassword);
+<html>
+<head>
+    <title>View Appointments</title>
+    <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+    <link rel='icon' type='image/png' href='../html/corner.png'/>
+</head>
+<div style="overflow:hidden">
+    <img src="../html/background.jpg" style="overflow:hidden;"/>
+</div>
+<body id="background">
+    <left><div id="wrapper" style="width:65%">
+            <h1>CMNS Advising</h1>
 
-                $id = getAdvisorID($advisorEmail, $hashedPassword);
-                if ($id != NULL) {
-                    $_SESSION['advisorID'] = $id;
-                    include_once("createAppointment.php");
-                } else {
-                    include("head.html");
-                    echo('<p align="center"> <font color="red"> Login failed </font> </p>');
-                    include("advisorLogin.html");
+            <?php
+            // connect to the database
+            include ('mysql_connect.php');
+            // make a query that will select all rows from the advisors table
+            $sql = "SELECT * FROM advisors";
+            $rs = mysql_query($sql, $conn);
+            ?>
+            <h2>Choose An Advisor</h2>
+            <form method=post action='schedule_by_advisor.php'>
+                <select name="advisor">
+                    <?php
+                    // Prints out all the names of the advisors
+                    while ($advisor = mysql_fetch_array($rs)) {
+                        echo "<option value='" . $advisor['Email'] . "'>" . $advisor['fullName'] . " - " . $advisor['Username'] . "</option>";
+                    }
+                    ?>
+                </select>
+                <input type=submit value="Submit"/>
+            </form>
 
-                    include("tail.html");
+            <h3 style='color: #FF0000;'>Copyright umbc.edu</h3>
 
-                }
-            } else {
-                include("head.html");
-                echo('<p align="center"> <font color="red"> Login failed </font> </p>');
-                include("advi
+        </div>
+    </left>
+</div>
+</body>
+</html>
+
+<?php include('../html/footer.html'); ?>
