@@ -27,11 +27,11 @@ if ($posted_email == "")
     $error_message .= "Email field can't be blank.<br>";
 }
 
-elseif (!preg_match("/^[A-Za-z0-9._+-]+@[A-Za-z0-9._-]*umbc.edu$/", $_POST['email']))
-{
-    $errors = True;
-    $error_message .= "Not a valid UMBC Email Address<br>";
-}
+// elseif (!preg_match("/^[A-Za-z0-9._+-]+@[A-Za-z0-9._-]*umbc.edu$/", $_POST['email']))
+// {
+//     $errors = True;
+//     $error_message .= "Not a valid UMBC Email Address<br>";
+// }
 
 
 //First name left blank check

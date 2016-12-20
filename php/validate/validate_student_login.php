@@ -30,7 +30,7 @@ if ($num_rows == 1) {
 // This is the pass case
 if ($name_found) {
     session_start();
-    $_SESSION['email'] = $email;
+    $_SESSION['studentEmail'] = $email;
     $student = mysql_fetch_assoc($rs);
     if($student['appointmentChanged'] == 1){
         $_SESSION['other_message'] = "Your appointment was changed by an advisor";

@@ -22,9 +22,10 @@ top:8px;
 }
 </style>
 </head>
-  
-<body>
-<div id="background">
+<div style="overflow:hidden">
+    <img src="../html/dogw_logo.jpg" style="overflow:hidden;"/>
+</div>
+<body id="background">
 <left><div id="wrapper">
 <h1>CMNS Advising</h1>
 
@@ -54,11 +55,11 @@ $date = date_format($date, 'Y-m-d');
 $groupPref = mysql_real_escape_string($_POST['group']);
 if($groupPref == 2)
 {
-  $sql = "SELECT * FROM appointments WHERE YEARWEEK(`Date`) = YEARWEEK('$date') AND isFull=0"; 
+  $sql = "SELECT * FROM appointments WHERE YEARWEEK(`Date`) = YEARWEEK('$date') AND isFull=0 AND isAvailable=1";
 }
 else
 {
-  $sql = "SELECT * FROM appointments WHERE YEARWEEK(`Date`) = YEARWEEK('$date') AND isFull=0 AND isGroup = " . $groupPref;                                                      
+  $sql = "SELECT * FROM appointments WHERE YEARWEEK(`Date`) = YEARWEEK('$date') AND isFull=0 AND isAvailable=1 AND isGroup = " . $groupPref;
 }
 $rs = mysql_query($sql, $conn);
 ?>
@@ -112,6 +113,5 @@ while ($appt = mysql_fetch_array($rs))
 
 </div>
 </left>
-</div>
 </body>
 </html>

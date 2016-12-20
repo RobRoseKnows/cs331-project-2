@@ -7,8 +7,7 @@
 require_once('../mysql_connect.php');
 session_start();
 
-$email = $_SESSION['email'];
-
+$email = $_SESSION['advisorEmail'];
 // Creates the query to get the information from the appointments database where the username is equal to the current session username
 $sql = "SELECT * FROM appointments WHERE `AdvisorEmail` = '$email'";
 $rs = mysql_query($sql, $conn);

@@ -10,10 +10,10 @@
     <link rel='stylesheet' type='text/css' href='../standard.css'/>
     <link rel="icon" type="image/png" href="../corner.png"/>
 </head>
-<body>
-
-
-<div id="background">
+<div style="overflow:hidden">
+    <img src="../../html/dogw_logo.jpg" style="overflow:hidden;"/>
+</div>
+<body id="background">
     <!--<img src='dognologo.jpg' height='100%' width='100%'/>-->
     <left>
         <div id="wrapper">
@@ -73,5 +73,5 @@ major of choice is not listed, please choose Other</h4></pre>
 
         </div>
     </left>
-</div>
-<?php require('../footer.html'); ?>
+</body>
+</html>

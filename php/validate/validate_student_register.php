@@ -8,6 +8,7 @@ $debug = false;
 $COMMON = new Common($debug);
 
 // Finds all the usernames from the database
+
 $email = mysql_real_escape_string($_POST['email']);
 
 $sql = "SELECT * FROM `students` WHERE `Email` = '$email'";
@@ -77,7 +78,7 @@ if ($password != $rePass) {
 
 if ($errors != TRUE) {
     echo 1234;
-    $_SESSION["email"] = $email;
+    $_SESSION["studentEmail"] = $email;
     $hashedPass = md5($password);
     //No errors - GOOD - Continue to the additional info page
     $sql = "INSERT INTO `students` (`Email`, `Major`, `firstName`, `lastName`, `studentID`, `Password`, `prefName`) VALUES ('$email', '$major', '$firstName', '$lastName', '$studentID', '$hashedPass', '$prefName')";

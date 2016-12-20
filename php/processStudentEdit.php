@@ -1,6 +1,9 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
+<<<<<<< HEAD
 //grabs session vars
 $_SESSION["firstName"] = mysql_real_escape_string($_POST["firstName"]);
 $_SESSION["lastName"] = mysql_real_escape_string($_POST["lastName"]);
@@ -13,13 +16,17 @@ $lastn = mysql_real_escape_string($_POST["lastName"]);
 $email = mysql_real_escape_string($_POST["studEmail"]);
 $major = mysql_real_escape_string($_POST["major"]);
 $sid = $_SESSION["SIDNumber"];
+=======
+
+//makes changes
+$preferred = $_POST["prefName"];
+$email = $_SESSION["studentEmail"];
+>>>>>>> master
 
 //Actually update student data
-$debug = false;
-include('../CommonMethods.php');
-$COMMON = new Common($debug);
-	$sql = "update `students` set `firstName` = '$firstn', `lastName` = '$lastn', `Email` = '$email', `Major` = '$major' where `studentID` = '$sid'";
-	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+include_once "mysql_connect.php";
+$sql = "update `students` set `prefName` = '$preferred', `Major` = '$major' where `Email` = '$email'";
+$rs = mysql_query($sql, $conn);
 
 header('Location: view/student_view.php');
 ?>
