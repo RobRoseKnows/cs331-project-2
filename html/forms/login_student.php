@@ -38,8 +38,8 @@ session_destroy();
 <div id="form1">
     <form method=post action='../../php/validate/validate_student_login.php'>
       <!-- Gets the only necessary data, a username from the user --> 
-      <pre><h4>UMBC Email: <input type=text name="email"/></h4></pre>
-      <pre><h4>Password: <input type=password name="password"/></h4></pre>
+      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">UMBC Email: <input type=text name="email"/></h4>
+      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Password: <input type=password name="password"/></h4>
       <p><input type=submit value="Submit"/></p>
     </form>
 	</div>

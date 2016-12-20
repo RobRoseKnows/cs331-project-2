@@ -27,7 +27,7 @@ if (isset($_POST['submit_post_register'])) {
         <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
 
         <left>
-            <div id="wrapper" style = "width: 65%">
+            <div id="wrapper">
 
                 <h1>Student Registration</h1>
                 <?php
@@ -41,7 +41,7 @@ if (isset($_POST['submit_post_register'])) {
                     $rs = mysql_query($sql, $conn);
                     ?>
 
-                    Advisors are not accepting appointments at this time.<br>
+                    Advising is currently disabled. Come back next season!<br>
                     <input id="backtoRegister" type="button" value="Back"
                            onclick="window.location='../../html/forms/register_student.php';"/>
 

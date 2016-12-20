@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 $value1 = "Schedule Appointment";
 $value2 = "Cancel Appointment";
-$value3 = "Edit Account Information";
+$value3 = "Edit Account Info";
 $value3b = "Start Season";
 $value4 = "Log Out";
 

@@ -15,7 +15,7 @@ include ('../html/header.html'); ?>-->
     <img src="../html/background.jpg" style="overflow:hidden;"/>
 </div>
 <body id="background">
-    <left><div id="wrapper" style="width:65%">
+    <left><div id="wrapper">
             <h1>CMNS Advising</h1>
 
             <?php

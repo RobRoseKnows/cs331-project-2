@@ -83,6 +83,7 @@ if ($_SESSION['search'] == "") {
                     echo "<th>Date</th>";
                     echo "<th>Time</th>";
                     echo "<th>Location</th>";
+                    echo "<th>Group</th>";
                     echo "<th>#Students</th>";
                     echo "<th>View Registered Students</th>";
                     echo "</tr>";
@@ -96,9 +97,15 @@ if ($_SESSION['search'] == "") {
                             echo "<td>" . $appt['Date'] . "</td>";
                             echo "<td>" . date("g:ia", strtotime($appt['Time'])) . "</td>";
                             echo "<td>" . $appt['Location'] . "</td>";
+                            // check if the appointment is a group appointment or not
+                            if ($appt['isGroup'] == 0) {
+                                echo "<td>" . "No" . "</td>";
+                            } else {
+                                echo "<td>" . "Yes" . "</td>";
+                            }
 
                             // check if the appointment is a group appointment or not
-                            echo "<td>" . $appt['NumStudents'] . "</td>";
+                            echo "<td>" . $appt['NumStudents'] . "/" . $appt['MaxAttendees'] . "</td>";
 
                             $apptID = $appt['id'];
 
@@ -150,7 +157,7 @@ if ($_SESSION['search'] == "") {
                             echo "<td>" . "Yes" . "</td>";
                         }
 
-                        echo "<td>" . $appt['NumStudents'] . "</td>";
+                        echo "<td>" . $appt['NumStudents'] . "/" . $appt['MaxAttendees'] . "</td>";
 
                         $apptID = $appt['id'];
 
@@ -206,7 +213,7 @@ if ($_SESSION['search'] == "") {
                             echo "<td>" . "Yes" . "</td>";
                         }
 
-                        echo "<td>" . $appt['NumStudents'] . "</td>";
+                        echo "<td>" . $appt['NumStudents'] . "/" . $appt['MaxAttendees'] . "</td>";
 
                         $apptID = $appt['id'];
 

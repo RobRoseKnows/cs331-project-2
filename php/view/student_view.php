@@ -30,7 +30,7 @@ include_once "../mysql_connect.php";
 </div>
 <body id="background">
 <left>
-    <div id="wrapper" style="width:65%;">
+    <div id="wrapper"">
         <h1>CMNS Advising</h1>
 
         <?php
@@ -90,11 +90,11 @@ include_once "../mysql_connect.php";
             $_SESSION['appt'] = $row[0];
 
             echo "<h4 style='font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: center;'>Logged in as: " . $_SESSION["studentEmail"] . "<br></h4>";
-
+            echo "<table style=\"margin:0 auto; \">";
             if (!is_null(($studentApptNum))) {
                 //print a table containing info about the student's appointment
                 ?>
-                <table style="margin:0 auto; width: 90%">
+
                 <tr>
                     <th>Date</th>
                     <th>Time</th>
@@ -114,7 +114,7 @@ include_once "../mysql_connect.php";
                 echo "<td class='not_register'>" . $myRow[3] . "</td>";
                 echo "<td class='not_register'>" . $myRow[0] . "</td>";
                 echo "</tr></table>";
-                echo("Now that you have selected and scheduled your advising session, please fill out our Pre-Registration Sheet. Bring a completed copy of the sheet with you to your session. Thank you for scheduling your advising session.");
+                echo("Now that you have selected and scheduled your advising session, please fill out our Pre-Registration Sheet. <br>Bring a completed copy of the sheet with you to your session. Thank you for scheduling your advising session.");
             } else {
                 // Print a button to schedule an appointment
 
