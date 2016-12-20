@@ -1,14 +1,15 @@
 <?php
+session_start();
 
 $value1 = "Schedule appointment";
 $value2 = "Print schedule";
-$value3 = "Seach appointments";
+$value3 = "Search appointments";
 
 $value = isset($_POST['next']) ? $_POST['next'] : "";
 echo $value;
 
 if($value == $value1) {
-  header('Location: view/advisor_view.php');
+  header('Location: ../html/forms/add_appointment.php');
 } 
 
 if($value == $value2) {
@@ -16,6 +17,7 @@ if($value == $value2) {
 }
 
 if($value == $value3) {
-  header('Location: schedule_');
+  $_SESSION['search'] = "";
+  header('Location: search_appts.php');
 }
 ?>

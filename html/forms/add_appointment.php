@@ -5,7 +5,7 @@
 <head>
 <title>Appointments</title>
   <link rel='stylesheet' type='text/css' href='../standard.css'/>
-  <link rel='icon' type='image/png' href='../standard.css'/>
+  <link rel='icon' type='image/png' href='../corner.png'/>
 </head>
 <body>
 <div id="background">
@@ -91,7 +91,7 @@ if(isset($maxAttendees)){
 }
 echo(' required></label></h4></pre>');
 echo('<pre><h4><label>Session Leader: <select name = "leader" required >');
-$advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Powers', 'CNMS Advisors');
+$advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Powers', 'CMNS Advisors');
 for($i = 0; $i < count($advisors); $i++){
     echo('<option value="'.$advisors[$i].'"');
     if(isset($leader) && $leader == $advisors[$i]){

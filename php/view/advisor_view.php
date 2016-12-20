@@ -2,7 +2,7 @@
 <head>
 <title>View Appointments</title>
    <link rel='stylesheet' type='text/css' href='../../html/standard.css'/>
-   <link rel='icon' type='image/png' href='../../html/standard.css'/>
+   <link rel='icon' type='image/png' href='../../html/corner.png'/>
 <style>
 table, th, td {
 border: 1px solid black;
@@ -25,7 +25,7 @@ top:8px;
 <left><div id="wrapper">
 <h1>CMNS Advising</h1>
 
-<table border="0">
+<center><table border="0">
 <tr>
 <form action="../processAdvisorHomepage.php" method="post" name="Home">
   <td><input type="submit" name="next" class="button main selection" value="Schedule appointment"></td>
@@ -35,7 +35,7 @@ top:8px;
   <td><input type="submit" name="next" class="button main selection" value="Search appointments"></td>
 </form>
 </tr>
-</table>
+</table></center>
 
 <?php
 //advisor_view.php
@@ -44,17 +44,20 @@ top:8px;
 require_once('../mysql_connect.php'); 
 session_start();
 
+//reset search variable to empty string
+$_SESSION['search'] = "";
+
 // set the timezone to the east coast
 date_default_timezone_set('America/New_York');
 
 $email = mysql_real_escape_string($_SESSION['email']);
 
 //Fetching appointments
-$sql = "SELECT * FROM appointments WHERE AdvisorEmail='$email' ORDER BY `Date` ASC, `Time` ASC";
+$sql = "SELECT * FROM appointments WHERE AdvisorEmail='$email' ORDER BY Date ASC, Time ASC";
 $rs = mysql_query($sql, $conn);
 
 // Tell the user who they are logged in as
-echo "Logged in as: " . $email; 
+echo "Logged in as: $email"; 
 echo  "<pre>  <a href = '../../html/forms/first_page.html'>Log Me Out</a></pre>";
 
 

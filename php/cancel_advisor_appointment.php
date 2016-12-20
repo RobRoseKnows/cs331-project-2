@@ -4,7 +4,11 @@
 <?php
 include ('mysql_connect.php');
 
+<<<<<<< HEAD
 $apptID = intval($_POST['ID']);
+=======
+$apptID = $_POST['ID'];
+>>>>>>> master
 
 // Deletes appointment from the appointment table
 $sql = "DELETE FROM appointments WHERE id=$apptID";

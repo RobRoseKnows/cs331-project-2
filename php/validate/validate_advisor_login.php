@@ -47,7 +47,7 @@ else
   {
     $_SESSION['error_message'] .= "Email or password not recognized.<br>";
   } 
-  
+
   header('Location: ../../html/forms/login_advisor.html');
 }
 

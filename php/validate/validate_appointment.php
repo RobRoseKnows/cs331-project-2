@@ -26,6 +26,8 @@ $group = mysql_real_escape_string($_POST['group']);
 $leader = mysql_real_escape_string($_POST['leader']);
 $maxAttendees = mysql_real_escape_string($_POST['maxAttend']);
 
+$group = ($maxAttendees > 1) ? 1 : 0;
+
 // Create a date for today 
 $today = date_create();
 $todayStr = date_format($today, 'Y-m-d');
@@ -73,6 +75,18 @@ if(!$errors)
         // Notify students with this appointment
         $sql = "UPDATE students SET appointmentChanged=1 WHERE Appt='$escaped_id'";
         mysql_query($sql, $conn);
+
+        // If the appointment's max attendees changed, make sure there are not
+        // too many students by removing some if needed
+        $appt = mysql_fetch_array(mysql_query("SELECT * from appointments where id=".$escaped_id, $conn));
+        $students = mysql_query("SELECT * FROM students WHERE Appt=".$appt["id"]);
+        while($appt['NumStudents'] > $appt['MaxAttendees']){
+            $student = mysql_fetch_array($students);
+            mysql_query("UPDATE students SET Appt = NULL, appointmentChanged=1 WHERE id=".$student['id'], $conn);
+            mysql_query("UPDATE appointments SET NumStudents=NumStudents-1 WHERE id=".$appt['id'], $conn);
+            $appt = mysql_fetch_array(mysql_query("SELECT * from appointments where id=".$escaped_id, $conn));
+        }
+
         // Modify an existing appointment
         $sql = "UPDATE appointments
                 SET `Date`='%s', 

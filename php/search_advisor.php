@@ -2,14 +2,14 @@
 <!-- This file get the advisors by name and posts to them schedule_by_advisor.php
      this will eventually put them in a dropdown box -->
 
-<?php
-include ('../html/header.html'); ?>
+<!--<?php
+include ('../html/header.html'); ?>-->
 
 <html>
 <head>
     <title>View Appointments</title>
     <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
-    <link rel='icon' type='image/png' href='../../html/standard.css'/>
+    <link rel='icon' type='image/png' href='../html/corner.png'/>
 </head>
 <body>
 

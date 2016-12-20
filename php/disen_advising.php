@@ -6,8 +6,8 @@ require('error_codes.php');
 session_start();
 
 // Grab the username and the requested action
-$email = mysql_real_escape_string($_SESSION['email']);
 $do = mysql_real_escape_string($_POST['do']);
+$email = $_SESSION['username'];
 
 // This query checks to see if the person on the page is an advisor.
 $verifySQL = "SELECT id FROM advisors WHERE `Email` = $email";

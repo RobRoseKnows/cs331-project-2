@@ -2,7 +2,7 @@
 <head>
     <title>Print View</title>
     <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
-    <link rel='icon' type='image/png' href='../html/standard.css'/>
+    <link rel="icon" type="image/png" href="../html/corner.png" />
     <style>
         table, th, td {
             border: 1px solid black;
@@ -20,8 +20,6 @@
     </style>
 </head>
 <body>
-<left>
-    <div id="wrapper" style="width: 100%">
 
         <?php
         //advisor_view.php
@@ -103,7 +101,5 @@
         ?>
         <p><a href="view/advisor_view.php"> Go Back to Advisor View </a></p>
 
-    </div>
-</left>
 </body>
 </html>

@@ -5,20 +5,18 @@ include('../CommonMethods.php');
 $debug = false;
 $COMMON = new Common($debug);
 
-$email = mysql_real_escape_string($_SESSION['email']);
+$email = $_SESSION['email'];
 
 $sql = "select * from `students` WHERE Email='$email'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-//Fetch student info for session use
-
 if(mysql_num_rows($rs) == 1) {
-	$res_obj = $rs->fetch_object();
-	$_SESSION["firstName"] = $res_obj->firstName;
-	$_SESSION["lastName"] = $res_obj->lastName;
-	$_SESSION["major"] = $res_obj->Major;
-	$_SESSION["studEmail"] = $res_obj->Email;
-	$_SESSION["SIDNumber"] = $res_obj->studentID;
+		$res_obj =$rs->fetch_object();
+		$_SESSION["firstName"] = $res_obj->firstName;
+		$_SESSION["lastName"] = $res_obj->lastName;
+		$_SESSION["major"] = $res_obj->Major;
+		$_SESSION["studEmail"]=$res_obj->Email;
+		$_SESSION["SIDNumber"]=$res_obj->studentID;
 }
 
 ?>
@@ -26,10 +24,12 @@ if(mysql_num_rows($rs) == 1) {
   <head>
     <meta charset="UTF-8" />
     <title>Edit Student Information</title>
-    	<link rel='stylesheet' type='text/css' href='standard.css'/>
-
+    	<link rel='stylesheet' type='text/css' href='../html/standard.css'/>
+        <link rel="icon" type="image/png" href="../html/corner.png" />
   </head>
   <body>
+  <div id="background">
+  <left><div id="wrapper">
     <div id="login">
       <div id="form">
 	<!--Displays previously parsed information -->
@@ -64,10 +64,13 @@ if(mysql_num_rows($rs) == 1) {
 
 				  </select>
 			</div>
-			<!-- Go ahead and apply button -->
+			<!--Go ahead and apply button-->
 			<div class="nextButton">
 				<input type="submit" name="save" class="button large go" value="Save">
 			</div>
+  </div>
+  </left>
+  </div>
 			</div>
 		</form>
   </body>
