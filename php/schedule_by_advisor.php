@@ -23,9 +23,10 @@ top:8px;
 }
 </style>
 </head>
-<body>
-
-<div id="background">
+<div style="overflow:hidden">
+   <img src="../../html/background.jpg" style="overflow:hidden;"/>
+</div>
+<body id="background">
 <left><div id="wrapper">
 <h1>CMNS Advising</h1>
 
@@ -96,6 +97,5 @@ while ($rs != false && $appt = mysql_fetch_array($rs))
 
 </div>
 </left>
-</div>
 </body>
 </html>

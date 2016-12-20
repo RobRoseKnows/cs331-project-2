@@ -11,9 +11,10 @@ include ('../html/header.html'); ?>-->
     <link rel='stylesheet' type='text/css' href='../html/standard.css'/>
     <link rel='icon' type='image/png' href='../html/corner.png'/>
 </head>
-<body>
-
-<div id="background">
+<div style="overflow:hidden">
+    <img src="../html/background.jpg" style="overflow:hidden;"/>
+</div>
+<body id="background">
 <left><div id="wrapper">
 <h1>CMNS Advising</h1>
 
@@ -44,7 +45,6 @@ $rs = mysql_query($sql, $conn);
 
 </div>
 </left>
-</div>
 </body>
 </html>
 
