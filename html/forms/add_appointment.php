@@ -18,6 +18,9 @@
 require('../../html/header.html');
 
 require_once('../../php/mysql_connect.php');
+$advisors = array('Ms. Michelle Bulger', 'Ms. Julie Crosby', 'Ms. Christine Pow\
+ers', 'CMNS Advisors');
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
