@@ -1,44 +1,54 @@
 <!-- register_advisor.html -->
 <!-- Gets information from a potential advisor compares it to make sure 
      there is not a match by username in the database then creates and logs in a new advisor 
---> 
+-->
 
 <?php require('../header.html'); ?>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Advising Homepage</title>
     <link rel='stylesheet' type='text/css' href='../standard.css'/>
-    <link rel="icon" type="image/png" href="../corner.png" />
-  </head>
-  <div style="overflow:hidden">
+    <link rel="icon" type="image/png" href="../corner.png"/>
+</head>
+<div style="overflow:hidden">
     <img src="../../html/background1.png" style="margin: 0 auto; height: 230px; overflow:hidden;"/>
-  </div>
-  <body id="background">
-  <left><div id="wrapper" style="margin: 0 auto; position: relative; top:10px; left:0;">
-  <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
-  <h1>Welcome to CMNS Advising</h1>
-    <h1>Advisor Registration</h1>
-    <div id="form1">
-    <form method=post action='../../php/validate/validate_advisor_register.php'>
-      <!-- Gets information from the potential advisor, username, first name, last name -->
-      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">UMBC Email: <input type=text name="email"/></h4>
-      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">First Name: <input type=text name="fName"/></h4>
-      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Last Name: <input type=text name="lName"/></h4>
-      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Office: <input type=text name="office"/></h4>
-      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Password: <input type=password name="password"/></h4>
-      <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Re-Type Password: <input type=password name="rePassword"/></h4>
-      <p><input type=submit value="Submit"/></p>
-    </form>
 </div>
+<body id="background">
+<left>
+    <div id="wrapper" style="margin: 0 auto; position: relative; top:10px; left:0;">
+        <!--<p style='clear:both;'><img src='umbc50logo.jpg' height='13%' width='25%'/></p>-->
+        <h1>Welcome to CMNS Advising</h1>
+        <h1>Advisor Registration</h1>
+        <div id="form1">
+            <form method=post action='../../php/validate/validate_advisor_register.php'>
+                <!-- Gets information from the potential advisor, username, first name, last name -->
+                <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">UMBC
+                    Email: <input type=text name="email"/></h4>
+                <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">
+                    First Name: <input type=text name="fName"/></h4>
+                <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">Last
+                    Name: <input type=text name="lName"/></h4>
+                <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">
+                    Office: <input type=text name="office"/></h4>
+                <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">
+                    Password: <input type=password name="password"/></h4>
+                <h4 style="font-family: monospace; font-size: 15px; padding: 1%; color: #FF0000; text-align: left;">
+                    Re-Type Password: <input type=password name="rePassword"/></h4>
+                <p><input type=submit value="Submit"/></p>
+            </form>
+            <form style="text-align: left" action="../../php/view/advisor_view.php">
+                <input type="submit" value="Cancel"/>
+            </form>
+        </div>
 
-	<!-- Hyperlink to the login advisor page -->
-	<p style='color: #FF0000;'>Already signed up? Click <a href = "login_advisor.html">here</a> to log in.</p>
+        <!-- Hyperlink to the login advisor page -->
+        <p style='color: #FF0000;'>Already signed up? Click <a href="login_advisor.html">here</a> to log in.</p>
 
 
-<h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
+        <h3 style='color: #FF0000;'>Copyright © umbc.edu</h3>
 
-</div>
+    </div>
 </left>
 </body>
 </html>
